@@ -52,3 +52,13 @@
   transition: margin-left .5s;
   padding: 16px;
 }
+
+.scrollUp {
+  display: none;
+  transition: 0.5s all ease;
+}
+
+.hide {
+  display: block;
+  transition: 0.5s all ease;
+}

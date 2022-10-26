@@ -14,28 +14,26 @@ export class UsersService {
     let dataUrl: string = `${this.serverUrl}/users`;
     return this._httpClient.get<IUser[]>(dataUrl).pipe(catchError(this.handleError), delay(500))
   }
+  getAllComments(): Observable<IUser[]> {
+    let dataUrl: string = `${this.serverUrl}/comments`;
+    return this._httpClient.get<IUser[]>(dataUrl).pipe(catchError(this.handleError), delay(500))
+  }
+  getAllAlbums(): Observable<IUser[]> {
+    let dataUrl: string = `${this.serverUrl}/albums`;
+    return this._httpClient.get<IUser[]>(dataUrl).pipe(catchError(this.handleError), delay(500))
+  }
 
   // Error Handling
   public handleError(error: HttpErrorResponse) {
-
     let errorMessage: any = 'error';
-
     if (error.error instanceof ErrorEvent) {
-
       // client-side error
-
       errorMessage = `Error: ${error.error.message}`;
-
     } else {
-
       // server-side error
-
       errorMessage = `Error Code: ${error.status} \nMessage: ${error.message}`;
-
     }
-
     // window.alert(errorMessage);
-
     return throwError(errorMessage);
 
   }

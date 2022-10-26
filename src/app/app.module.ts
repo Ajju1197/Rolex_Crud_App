@@ -15,6 +15,13 @@ import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY } from '@angular/material/autocomplete
 import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER } from '@angular/material/tooltip';
+import { LoginComponent } from './Components/login/login.component';
+import { LogoutComponent } from './Components/logout/logout.component';
+import { FilterUsersPipe } from './Pipes/filter-users.pipe';
+import { ViewComponent } from './Components/view/view.component';
+import { AddComponent } from './Components/add/add.component';
+import { EditComponent } from './Components/edit/edit.component';
+import { GalleryComponent } from './Components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +29,14 @@ import { MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER } from '@angular/material/
     AdminComponent,
     FooterComponent,
     NavbarComponent,
-    UserComponentComponent
+    UserComponentComponent,
+    LoginComponent,
+    LogoutComponent,
+    FilterUsersPipe,
+    ViewComponent,
+    AddComponent,
+    EditComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

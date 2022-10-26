@@ -9,13 +9,13 @@
                     <a class="nav-link active" aria-current="page" routerLink="/">Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/admin/albums" routerLinkActive="active">Gallery</a>
+                    <a class="nav-link" routerLink="/admin/albums" >Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/admin/posts" routerLinkActive="active">Posts</a>
+                    <a class="nav-link" routerLink="/admin/posts">Posts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/admin/users" routerLinkActive="active">Users</a>
+                    <a class="nav-link" routerLink="/admin/view">view</a>
                 </li>
             </ul>
         </div>
@@ -32,7 +32,6 @@
     </div>
 </nav>
 <div id="mySidenav" *ngIf="showSideNav" class="sidenav" @onOff>
-    <!-- <span class="closebtn" id="closeBtn" (click)="closeNav()">&times;</span> -->
     <a href="#">About</a>
     <a href="#">Services</a>
     <a href="#">Clients</a>

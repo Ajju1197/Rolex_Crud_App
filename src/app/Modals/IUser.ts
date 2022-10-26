@@ -22,3 +22,11 @@ export interface IUser {
   }
 }
 
+export interface IComments {
+
+}
+
+export interface IAlbums {
+
+}
+
