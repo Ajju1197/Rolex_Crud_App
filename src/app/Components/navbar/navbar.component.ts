@@ -33,11 +33,15 @@ export class NavbarComponent implements OnInit {
       var y = window.scrollY;
       if (y > 10) {
         var header = document.getElementsByClassName('header')[0];
+        var sideNav = document.getElementById('mySidenav');
         header.classList.add('small');
+        sideNav.classList.add('sideNavHeightClass');
 
       } else if (y < 10) {
         var header = document.getElementsByClassName('header')[0];
+        var sideNav = document.getElementById('mySidenav');
         header.classList.remove('small');
+        sideNav.classList.remove('sideNavHeightClass');
       }
     }
 

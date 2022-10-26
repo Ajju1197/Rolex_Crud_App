@@ -1,6 +1,6 @@
 .active {
-  margin-left: 300px;
-  width: 80% !important;
+  /* margin-left: 300px; */
+  width: auto;
   transition: margin-left .5s;
 }
 
@@ -13,12 +13,16 @@
   width: 300px;
   position: fixed;
   z-index: 2;
-  top: 0;
+  top: 82px;
   left: 0;
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+}
+
+.sideNavHeightClass {
+  top: 35px;
 }
 
 .sidenav a {

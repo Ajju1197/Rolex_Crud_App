@@ -19,21 +19,11 @@
                 </li>
             </ul>
         </div>
-        <div class="dropdown me-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button">Action</button>
-              <button class="dropdown-item" type="button">Another action</button>
-              <button class="dropdown-item" type="button">Something else here</button>
-            </div>
-          </div>
     </div>
 </nav>
 <div id="mySidenav" *ngIf="showSideNav" class="sidenav" @onOff>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <a  routerLink="/" type="button">Admin</a>
+    <a  routerLink="/admin/albums" type="button">Gallery</a>
+    <a  routerLink="/admin/posts" type="button">Posts</a>
+    <a  routerLink="/admin/view" type="button">View</a>
 </div>
