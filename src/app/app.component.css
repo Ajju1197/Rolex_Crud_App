@@ -1,0 +1,54 @@
+.example-sidenav {
+  padding: 20px;
+  width: 300px;
+  background-color: #000;
+}
+
+.mat-drawer-container {
+  background-color: #fff !important;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* Side Nav Css */
+.example-menu {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 250px;
+  max-width: 280px;
+  background-color: #000;
+  color: #fff;
+  padding: 6px 0;
+}
+
+.example-menu-item {
+  background-color: transparent;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+
+  user-select: none;
+  min-width: 100%;
+  line-height: 36px;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex: 1;
+}
+
+.example-menu-item:hover {
+  background-color: rgb(208, 208, 208);
+}
+
+.example-menu-item:active {
+  background-color: rgb(170, 170, 170);
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
