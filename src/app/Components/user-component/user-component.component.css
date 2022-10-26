@@ -8,5 +8,10 @@
 @media (max-width:768px) {
   .mat-card-actions {
     display: flex;
+    flex-wrap: wrap;
+  }
+
+  .btn-danger {
+    margin-left: 0px !important;
   }
 }
