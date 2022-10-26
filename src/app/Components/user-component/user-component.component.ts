@@ -9,7 +9,7 @@ import { IUser } from 'src/app/Modals/IUser';
 export class UserComponentComponent implements OnInit {
 
   @Input()
-  usersList!: IUser[];
+  filterUsers: IUser[];
   constructor() { }
 
   ngOnInit(): void {

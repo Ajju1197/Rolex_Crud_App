@@ -4,3 +4,9 @@
   color: #000 !important;
   box-shadow: 2px 2px 5px #000;
 }
+
+@media (max-width:768px) {
+  .mat-card-actions {
+    display: flex;
+  }
+}
