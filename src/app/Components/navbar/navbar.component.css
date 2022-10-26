@@ -1,5 +1,6 @@
 .active {
   margin-left: 300px;
+  width: 80% !important;
   transition: margin-left .5s;
 }
 
@@ -69,6 +70,11 @@
   text-align: center;
   background: gold;
   transition: .3s;
+}
+
+.navWidth {
+  width: 80%;
+  transition: 0.4s;
 }
 
 .header.small {
