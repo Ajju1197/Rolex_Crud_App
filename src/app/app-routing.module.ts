@@ -10,8 +10,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ViewComponent } from './Components/view/view.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/admin' },
-  { path: 'admin', component: AdminComponent, data: { animation: 'HomePage' } },
+  { path: '', component: AdminComponent, data: { animation: 'HomePage' } },
   { path: 'login', component: LoginComponent },
   { path: 'admin/view', component: ViewComponent, data: { animation: 'AboutPage' } },
   { path: 'admin/about', component: AboutComponent, data: { animation: 'AboutPage' } },
