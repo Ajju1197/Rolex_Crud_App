@@ -1,6 +1,12 @@
-<app-navbar></app-navbar>
-<div class="pt-5">
-    <router-outlet></router-outlet>
+<div class="main">
+    <div class="appnav">
+        <app-navbar></app-navbar>
+    </div>
+    <div class="content" [@routeAnimations]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+    <div class="footer">
+        <app-footer></app-footer>
+    </div>
 </div>
-<app-footer></app-footer>
 <a href="#" style="position: fixed;bottom:20px;right:30px;z-index: 999;" class="btn btn-primary scrollUp">Go up</a>

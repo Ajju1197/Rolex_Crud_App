@@ -22,6 +22,7 @@ import { ViewComponent } from './Components/view/view.component';
 import { AddComponent } from './Components/add/add.component';
 import { EditComponent } from './Components/edit/edit.component';
 import { GalleryComponent } from './Components/gallery/gallery.component';
+import { AboutComponent } from './Components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { GalleryComponent } from './Components/gallery/gallery.component';
     ViewComponent,
     AddComponent,
     EditComponent,
-    GalleryComponent
+    GalleryComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,12 +50,8 @@ import { GalleryComponent } from './Components/gallery/gallery.component';
     FormsModule
   ],
   providers: [UsersService,
-    MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER,
-    {
-      provide: MAT_AUTOCOMPLETE_SCROLL_STRATEGY,
-      useValue: MAT_SELECT_SCROLL_STRATEGY_PROVIDER,
-    },
   ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

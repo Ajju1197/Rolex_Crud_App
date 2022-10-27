@@ -1,29 +1,63 @@
 <nav class="navbar navbar-expand-lg bg-white header" @onOff [ngClass]="{active: isActive}">
     <div class="container">
-        <a class="navbar-brand header_logo" routerLink="/" routerLinkActive=""
+        <a class="navbar-brand header_logo" routerLink="/" routerLinkActive="active"
             style="color: #012970;font-size:26px;font-weight:700;">Rolex<img src="../../../assets/roleximg-removebg-preview.png" alt="Rolex Img" style="vertical-align: bottom;margin-left: 5px;" width="27" height="24"></a>
-            <span style="font-size:25px;cursor:pointer;margin-left: 10px;" (click)="openNav()" class="menu">&#9776;</span>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 m-auto mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" routerLink="/">Admin</a>
+                    <a class="nav-link" style="font-size:20px;font-weight:400;" aria-current="page" routerLink="/" routerLinkActive="active" >Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/admin/albums" >Gallery</a>
+                    <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/about" routerLinkActive="active">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/admin/posts">Posts</a>
+                    <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/albums" routerLinkActive="active" >Albums</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/admin/view">view</a>
+                    <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/view" routerLinkActive="active" >View</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/posts" routerLinkActive="active">Posts</a>
                 </li>
             </ul>
         </div>
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow" style="list-style:none;">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                    <img class="img-profile rounded-circle" style="position:relative;left:16px;" height="30" width="30"
+                        src="../../../assets/undraw_profile.svg">
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                    aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Settings
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Activity Log
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                </div>
+            </li>
+        <span style="font-size:25px;cursor:pointer;margin-left: 10px;" (click)="openNav()" class="menu">&#9776;</span>
     </div>
 </nav>
 <div id="mySidenav" *ngIf="showSideNav" class="sidenav" @onOff>
     <a  routerLink="/" type="button">Admin</a>
-    <a  routerLink="/admin/albums" type="button">Gallery</a>
-    <a  routerLink="/admin/posts" type="button">Posts</a>
+    <a  routerLink="/admin/about" type="button">About</a>
+    <a  routerLink="/admin/albums" type="button">Albums</a>
     <a  routerLink="/admin/view" type="button">View</a>
+    <a  routerLink="/admin/posts" type="button">Posts</a>
 </div>

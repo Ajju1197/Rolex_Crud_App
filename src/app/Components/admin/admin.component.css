@@ -1,9 +1,31 @@
-.searchUserClass {
-  width: 20%;
+.fOXUpi {
+  margin: 0px 0px 10px;
+  font-family: RolexFont-S, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-weight: 300;
+  font-size: calc(0.75rem + 0.5 * ((100vw - 20rem) / 100));
+  line-height: 1.3;
 }
 
-@media (max-width:768px) {
-  .searchUserClass {
-    width: 100%;
-  }
+.eyDhvh {
+  text-align: center;
+  margin: 0px auto;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  top: 50%;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.idLvDf {
+  margin: 0px 0px 30px;
+  font-family: RolexFont-S, sans-serif;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: calc(1.5rem + 1.625 * ((100vw - 20rem) / 100));
+  line-height: 1.1;
 }

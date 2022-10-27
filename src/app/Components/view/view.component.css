@@ -1,0 +1,9 @@
+.searchUserClass {
+  width: 20%;
+}
+
+@media (max-width:768px) {
+  .searchUserClass {
+    width: 100%;
+  }
+}
