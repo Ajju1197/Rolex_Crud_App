@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IUser } from 'src/app/Modals/IUser';
 
 @Component({
   selector: 'app-user-component',
@@ -8,8 +7,6 @@ import { IUser } from 'src/app/Modals/IUser';
 })
 export class UserComponentComponent implements OnInit {
 
-  @Input()
-  filterUsers: IUser[];
   constructor() { }
 
   ngOnInit(): void {

@@ -1,7 +1,21 @@
+
+<!-- load spinner -->
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+
 <div class="container pt-5">
     <div class="row">
-        <div class="col-lg-12 col-sm-12">
-            <p>post works!</p>
+        <div class="col-lg-12 col-sm-12 text-end">
+            <form  style="display: flex;">
+              <input class="form-control searchUserClass me-2" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}"
+                placeholder="Search User">
+              <button class="btn btn-outline-success me-3" type="submit">Search</button>
+            </form>
+          </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <app-user *ngIf="filterUsers.length > 0" [filterUsers]="filterUsers"></app-user>
         </div>
     </div>
 </div>
+

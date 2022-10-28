@@ -14,7 +14,12 @@ export class UsersService {
 
   getAllUsers(): Observable<IUser[]> {
     let dataUrl: string = `${this.serverUrl}/users`;
-    return this._httpClient.get<IUser[]>(dataUrl).pipe(catchError(this.handleError))
+    return this._httpClient.get<IUser[]>(dataUrl).pipe(catchError(this.handleError), delay(1000))
+  }
+
+  getUser(userId: string): Observable<IUser> {
+    let dataUrl: string = `${this.serverUrl}/users/${userId}`;
+    return this._httpClient.get<IUser>(dataUrl).pipe(catchError(this.handleError), delay(1000))
   }
   getAllComments(): Observable<IComments[]> {
     let dataUrl: string = `${this.serverUrl}/comments`;

@@ -12,7 +12,7 @@ import { ViewComponent } from './Components/view/view.component';
 const routes: Routes = [
   { path: '', component: AdminComponent, data: { animation: 'HomePage' } },
   { path: 'login', component: LoginComponent },
-  { path: 'admin/view', component: ViewComponent, data: { animation: 'AboutPage' } },
+  { path: 'admin/view/:userId', component: ViewComponent, data: { animation: 'AboutPage' } },
   { path: 'admin/about', component: AboutComponent, data: { animation: 'AboutPage' } },
   { path: 'admin/edit', component: EditComponent },
   { path: 'admin/add', component: AddComponent },

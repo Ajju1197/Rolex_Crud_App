@@ -23,6 +23,8 @@ import { AddComponent } from './Components/add/add.component';
 import { EditComponent } from './Components/edit/edit.component';
 import { GalleryComponent } from './Components/gallery/gallery.component';
 import { AboutComponent } from './Components/about/about.component';
+import { PostsModule } from './Components/posts/posts.module';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { AboutComponent } from './Components/about/about.component';
     BrowserAnimationsModule,
     MeterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    PostsModule,
   ],
   providers: [UsersService,
   ],
