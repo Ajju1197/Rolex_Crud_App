@@ -2,7 +2,8 @@
     <div class="row" style="row-gap: 1em;">
         <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let album of albums">
             <div class="card p-2" style="height: 300px;text-overflow: ellipsis;">
-              <img src="{{album.img}}" loading="lazy" class="lazy-bg-image" alt="{{album.title}}">
+                <img ngSrc="{{album.img}}" width="400" height="200" ngSrcset="100w, 200w, 300w" class="lazy-bg-image"
+                    loading="lazy" alt="{{album.title}}">
             </div>
         </div>
     </div>

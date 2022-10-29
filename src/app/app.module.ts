@@ -24,6 +24,7 @@ import { EditComponent } from './Components/edit/edit.component';
 import { GalleryComponent } from './Components/gallery/gallery.component';
 import { AboutComponent } from './Components/about/about.component';
 import { PostsModule } from './Components/posts/posts.module';
+import { NgOptimizedImage } from '@angular/common';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { PostsModule } from './Components/posts/posts.module';
     ReactiveFormsModule,
     FormsModule,
     PostsModule,
+    NgOptimizedImage,
   ],
   providers: [UsersService,
   ],
