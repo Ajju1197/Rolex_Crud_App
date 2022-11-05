@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'admin/about', component: AboutComponent, data: { animation: 'AboutPage' } },
   { path: 'admin/edit', component: EditComponent },
   { path: 'admin/add', component: AddComponent },
-  { path: 'admin/edit', component: EditComponent },
+  { path: 'admin/edit/:userId', component: EditComponent },
   { path: 'admin/albums', component: GalleryComponent, data: { animation: 'AlbumsPage' } },
   { path: 'admin/posts', loadChildren: () => import('./Components/posts/posts.module').then(m => m.PostsModule) },
   { path: 'lazyimages', loadChildren: () => import('./shared/images-lazyload/images-lazyload/images-lazyload.module').then(m => m.ImagesLazyloadModule) },

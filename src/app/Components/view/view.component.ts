@@ -19,11 +19,14 @@ export class ViewComponent implements OnInit {
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((param) => {
       this.userId = param.get('userId')
+      console.log(this.userId)
     });
     if (this.userId) {
       this.loading = true;
       this._userService.getUser(this.userId).subscribe((data) => {
         this.user = data;
+        console.log(this.user);
+        
         this.loading = false;
       }, (err) => {
         this.errorMessage = err;

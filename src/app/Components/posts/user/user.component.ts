@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { outputAst } from '@angular/compiler';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IUser } from 'src/app/Modals/IUser';
+import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
   selector: 'app-user',
@@ -7,11 +9,20 @@ import { IUser } from 'src/app/Modals/IUser';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+
+ 
   @Input()
   filterUsers: IUser[];
-  constructor() { }
+  @Output() notifyDeleteUser:EventEmitter<any> = new EventEmitter<any>();
+    
+  constructor(private _userService:UsersService) { }
 
   ngOnInit(): void {
+  }
+
+  deleteUser() {
+    // this._userService.deleteUser(this.user)
+    this.notifyDeleteUser.emit();
   }
 
 }

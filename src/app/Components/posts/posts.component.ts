@@ -44,6 +44,15 @@ export class PostsComponent implements OnInit {
       (err) => { this.errorMessage = err }
     )
   }
+  
+  deleteUser(userId: any) {
+    this.loading = true;
+    this._userService.deleteUser(userId).subscribe((data) => { 
+      this.users = this.users.filter(item => item.id !== userId)
+      console.log('Post deleted successfully!');
+      this.loading = false;
+    })
+  }
 
 
 }
