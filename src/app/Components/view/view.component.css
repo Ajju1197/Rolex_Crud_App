@@ -5,6 +5,20 @@
   color: #000 !important;
   box-shadow: 2px 2px 5px #000;
 }
+@media (min-width:580px) {
+  .rolexGoldPaddingClass{
+    padding-left: 0px;
+  }
+}
+@media (max-width:575px) {
+  .rolexWatchWidthClass{
+    width:100% !important;
+    height: 245px;
+  }
+  .rolexDisplayClass{
+    flex-direction: column-reverse;
+  }
+}
 
 @media (max-width:1200px) {
   .mat-card-actions {
