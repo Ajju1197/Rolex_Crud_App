@@ -13,6 +13,8 @@ export class UserComponent implements OnInit {
  
   @Input()
   filterUsers: IUser[];
+  @Input()
+  loading;
   @Output() notifyDeleteUser:EventEmitter<any> = new EventEmitter<any>();
     
   constructor(private _userService:UsersService) { }

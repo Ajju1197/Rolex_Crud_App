@@ -27,6 +27,7 @@ import { PostsModule } from './Components/posts/posts.module';
 import { NgOptimizedImage } from '@angular/common';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

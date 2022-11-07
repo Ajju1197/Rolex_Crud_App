@@ -173,6 +173,9 @@ label {
   background: #FDFDFD;
   border: 1px solid #312BC6;
 }
+.form-control:focus{
+  border:1px solid lime
+}
 
 .custom-select {
   height: auto;

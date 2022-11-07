@@ -1,5 +1,6 @@
 .example-card {
-  max-width: 400px;
+  max-width: 100%;
+  padding-top: 91px;
   background-color: #fff;
   color: #000 !important;
   box-shadow: 2px 2px 5px #000;
@@ -15,4 +16,20 @@
   .btn-danger {
     margin-left: 0px !important;
   }
+}
+.mat-card-title{
+  position: absolute;
+  height: 60px;
+  margin-bottom: 0px;
+  top: 0;
+  background: #012970;
+  color: white;
+  width: 100%;
+  font-size: 30px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  letter-spacing: 10px;
 }

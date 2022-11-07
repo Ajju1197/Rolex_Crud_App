@@ -1,55 +1,103 @@
-<div class="jumbotron text-center">
-<h1 class="display-5">Angular 7 Reactive Forms Tutorial</h1>
+<!-- Loading -->
+<div class="spinnerClass" *ngIf="loading">
+    <app-spinner></app-spinner>
 </div>
+
+
+<div class="jumbotron text-center">
+    <h1 class="display-5">Angular 7 Reactive Forms Tutorial</h1>
+</div>
+
 
 <div class="container">
-<div class="row custom-wrapper">
-    <div class="col-md-12">
-    <!-- Form starts -->
-    <form [formGroup]="fb" (ngSubmit)="onSubmit()">
-        <div class="group-gap">
+    <div class="row custom-wrapper">
+        <div class="col-md-12">
+            <!-- Form starts -->
+            <form [formGroup]="fb" (ngSubmit)="onSubmit()">
+                <div class="group-gap">
 
-        <!-- name name -->
-        <div>
-            <div class="mb-3">
-            <label [ngClass]="{error: submitted && myForm.name.errors}">
-                Name</label>
-            <input type="text" [(ngModel)]="user.name" class="form-control" formControlName="name" [ngClass]="{ error: submitted && myForm.name.errors}" />
-            <!-- error block -->
-            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
-                <sup>*</sup>Enter your name
-            </div>
-            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.minlength">
-                <sup>*</sup>Name must be 2 characters long
-            </div>
-            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.pattern">
-                <sup>*</sup>No special charcter allowed
-            </div>
-            </div>
+                    <!-- name name -->
+                    <div>
+                        <div class="mb-3">
+                            <label [ngClass]="{error: submitted && myForm.name.errors}">
+                                Name</label>
+                            <input type="text" [(ngModel)]="user.name" class="form-control" formControlName="name"
+                                [ngClass]="{ error: submitted && myForm.name.errors}" />
+                            <!-- error block -->
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+                                <sup>*</sup>Enter your name
+                            </div>
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.minlength">
+                                <sup>*</sup>Name must be 2 characters long
+                            </div>
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.pattern">
+                                <sup>*</sup>No special charcter allowed
+                            </div>
+                        </div>
+                    </div>
+                    <!-- username -->
+                    <div>
+                        <div class="mb-3">
+                            <label [ngClass]="{error: submitted && myForm.username.errors}">
+                                User name</label>
+                            <input type="text" [(ngModel)]="user.username" class="form-control"
+                                formControlName="username" [ngClass]="{ error: submitted && myForm.username.errors}" />
+                            <!-- error block -->
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.username.errors?.required">
+                                <sup>*</sup>Enter your username
+                            </div>
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.username.errors?.minlength">
+                                <sup>*</sup>Name must be 2 characters long
+                            </div>
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.username.errors?.pattern">
+                                <sup>*</sup>No special charcter allowed
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div>
+                        <div class="mb-3">
+                            <label [ngClass]="{error: submitted && myForm.email.errors}">
+                                Email</label>
+                            <input type="text" [(ngModel)]="user.email" class="form-control" formControlName="email"
+                                [ngClass]="{ error: submitted && myForm.email.errors}" />
+                            <!-- error block -->
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
+                                <sup>*</sup>Enter your Email
+                            </div>
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.minlength">
+                                <sup>*</sup>Name must be 2 characters long
+                            </div>
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.pattern">
+                                <sup>*</sup>special charcter allowed
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PhoneNumber -->
+                    <div>
+                        <div class="mb-3">
+                            <label [ngClass]="{error: submitted && myForm.phone.errors}">
+                                Phone Number</label>
+                            <input type="text" [(ngModel)]="user.phone" class="form-control" formControlName="phone"
+                                [ngClass]="{ error: submitted && myForm.phone.errors}" />
+                            <!-- error block -->
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.required">
+                                <sup>*</sup>Enter your PhoneNumber
+                            </div>
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.minlength">
+                                <sup>*</sup>Name must be 2 characters long
+                            </div>
+                            <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.pattern">
+                                <sup>*</sup>special charcter Not allowed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" [disabled]="!fb.valid" class="btn btn-success">Submit</button>
+                <button class="btn ms-3" style="background-color: #012970;color:#fff;" onclick="history.go(-1)">GO
+                    Back</button>
+            </form>
+            <!-- Form ends -->
         </div>
-        <!-- username name -->
-        <div>
-            <div class="mb-3">
-            <label [ngClass]="{error: submitted && myForm.username.errors}">
-                User name</label>
-            <input type="text" [(ngModel)]="user.username" class="form-control" formControlName="username" [ngClass]="{ error: submitted && myForm.username.errors}" />
-            <!-- error block -->
-            <div class="invalid-feedback" *ngIf="submitted && myForm.username.errors?.required">
-                <sup>*</sup>Enter your username
-            </div>
-            <div class="invalid-feedback" *ngIf="submitted && myForm.username.errors?.minlength">
-                <sup>*</sup>Name must be 2 characters long
-            </div>
-            <div class="invalid-feedback" *ngIf="submitted && myForm.username.errors?.pattern">
-                <sup>*</sup>No special charcter allowed
-            </div>
-            </div>
-        </div>
-        </div>
-        <button type="submit" [disabled]="!fb.valid" class="btn btn-success">Submit</button>
-        <button class="btn btn-dark ms-3" onclick="history.go(-1)">GO Back</button>
-    </form>
-    <!-- Form ends -->
     </div>
-</div>
 </div>

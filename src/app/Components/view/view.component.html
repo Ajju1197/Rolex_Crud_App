@@ -1,15 +1,30 @@
 <!-- Loading Spinner -->
-<div *ngIf="loading">
+<div *ngIf="loading" class="spinnerclass">
     <app-spinner></app-spinner>
 </div>
 <div class="container py-5">
-    <div class="row">
-        <div class="col-lg-4 col-sm-6 col-xs-6 mb-4">
+    <div class="row" style="row-gap: 1.5px;">
+        <div class="col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-2 col-sm-2">
+                    <div class="rolex-logo-image">
+                        <img src="../../../assets/rolex-gold-watch-removebg-preview.png" alt="Rolex Gold Watch Landscape">
+                    </div>
+                </div>
+                <div class="col-lg-10 col-sm-10" style="padding-left: 0px;">
+                    <div class="rolex-logo-image">
+                        <img src="../../../assets/rolex-gold-logo-landscape-removebg-preview.webp" style="width:100%;height: 245px;" alt="Rolex Logo Image Landscape">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xs-12 mb-4">
             <mat-card class="example-card">
                 <mat-card-title>{{user.username}}</mat-card-title>
-                <mat-card-subtitle class="text-black">{{user.name}}</mat-card-subtitle>
-                <mat-card-subtitle class="text-black">{{user.email}}</mat-card-subtitle>
-                <mat-card-content>
+                <div style="background-color: #012970;padding:15px;margin-top:-13px;color:#fff;text-align:center;letter-spacing: 5px;">
+                    <mat-card-subtitle class="text-white">{{user.name}}</mat-card-subtitle>
+                    <mat-card-subtitle class="text-white">{{user.email}}</mat-card-subtitle>
+                    <mat-card-content>
                     <p>
                         {{user.address.city}}
                         <br>
@@ -17,13 +32,14 @@
                         <br>
                         {{user.address.zipcode}}
                     </p>
-                </mat-card-content>
+                    </mat-card-content>
+                </div>
             </mat-card>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-4">
-            <button class="btn btn-dark" onclick="history.go(-1)">GO Back</button>
+            <button class="btn" style="background-color: #012970;color:#fff;" onclick="history.go(-1)">GO Back</button>
         </div>
     </div>
 </div>

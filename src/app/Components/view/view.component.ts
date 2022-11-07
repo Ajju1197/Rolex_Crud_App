@@ -26,7 +26,6 @@ export class ViewComponent implements OnInit {
       this._userService.getUser(this.userId).subscribe((data) => {
         this.user = data;
         console.log(this.user);
-        
         this.loading = false;
       }, (err) => {
         this.errorMessage = err;

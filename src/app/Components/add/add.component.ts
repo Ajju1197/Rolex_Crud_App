@@ -29,17 +29,14 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {
  /*##################### Registration Form #####################*/
     this.fb = new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required,Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]),
       username: new FormControl('', [Validators.required]),
-
-  // name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]],
-  // username: ['', [Validators.required]],
-  // email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-  // phone: ['', [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
-  // address: this.fb.group({
-  //   street: ['', [Validators.required]],
-  //   city: ['', [Validators.required]],
-  //   zipcode: ['', [Validators.required]]
+      email: new FormControl('', [Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
+      phone: new FormControl('', [Validators.required,Validators.maxLength(10),Validators.minLength(10), Validators.pattern('^[0-9]+$')]),
+      // address: this.fb.group({
+      //   street: ['', [Validators.required]],
+      //   city: ['', [Validators.required]],
+      //   zipcode: ['', [Validators.required]]
   // }),
 })
 
@@ -51,14 +48,6 @@ export class AddComponent implements OnInit {
   }
 
 
-
-  // onSubmit() {
-  //   this.submitted = true;
-  //   this._userService.createUser(this.fb.value).subscribe((data: any) => {
-  //     this._router.navigate(['admin/posts'])
-  //   })
-  // console.log(this.fb.value)
-  // }
   onSubmit(){
       this.loading = true;
     console.log(this.fb.value);

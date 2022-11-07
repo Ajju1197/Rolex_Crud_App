@@ -19,9 +19,27 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
-
+.spinnerClass{
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 app-root {
   position: relative !important;
 }
-
+app-posts{
+  position:relative;
+}
+app-spinner{
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  z-index: 9999;
+  align-items: center;
+  background: rgba(0,0,0,0.9);
+}
 
