@@ -46,12 +46,14 @@ export class PostsComponent implements OnInit {
   }
   
   deleteUser(userId: any) {
-    this.loading = true;
-    this._userService.deleteUser(userId).subscribe((data) => { 
-      this.users = this.users.filter(item => item.id !== userId)
-      console.log('Post deleted successfully!');
-      this.loading = false;
-    })
+
+    this.users = userId;
+    // this.loading = true;
+    // this._userService.deleteUser(userId).subscribe((data) => { 
+    //   this.users = this.users.filter(item => item.id !== userId)
+    //   console.log('Post deleted successfully!');
+    //   this.loading = false;
+    // })
   }
 
 

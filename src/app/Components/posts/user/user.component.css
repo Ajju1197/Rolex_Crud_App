@@ -16,3 +16,7 @@
     margin-left: 0px !important;
   }
 }
+.changeBgColor{
+  background-color: #48e6a8 !important;
+  transition: background-color 2s ease-in-out;
+}

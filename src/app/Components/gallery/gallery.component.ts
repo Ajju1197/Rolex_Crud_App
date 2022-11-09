@@ -14,6 +14,7 @@ export class GalleryComponent implements OnInit {
 
   albums: any;
   loading: boolean;
+  searchStringAlbum: string = '';
   erroMessage: any;
   constructor(private _userService: UsersService, private _httpClient: HttpClient) { }
 
@@ -24,15 +25,8 @@ export class GalleryComponent implements OnInit {
       console.log(this.albums)
       this.loading = false;
     })
-    // this.getAllAlbums();
   }
-
-  // getAllAlbums() {
-  //   this.loading = true;
-  //   this._userService.getAllAlbums().subscribe((data) => {
-  //     this.albums = data;
-  //     console.log(this.albums)
-  //     this.loading = false;
-  //   }, (err) => { this.erroMessage = err })
-  // }
+  searchAlbumValue(stringValue: string) {
+    this.searchStringAlbum = stringValue;
+  }
 }

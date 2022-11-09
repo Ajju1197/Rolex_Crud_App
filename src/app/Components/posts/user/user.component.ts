@@ -10,7 +10,11 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class UserComponent implements OnInit {
 
- 
+  searchValue: string = '';
+  userId: any;
+  users: IUser[] = [];
+
+  @Input() user: IUser;
   @Input()
   filterUsers: IUser[];
   @Input()
@@ -22,9 +26,20 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  searchPostsValue(searchStringValue: string) {
+    this.searchValue = searchStringValue;
+  }
+
+
   deleteUser() {
     // this._userService.deleteUser(this.user)
-    this.notifyDeleteUser.emit();
+    this.loading = true;
+    this._userService.deleteUser(this.userId).subscribe((data) => {
+      this.users = this.users.filter(item => item.id !== this.userId)
+      console.log('Post deleted successfully!');
+      this.loading = false;
+    })
+    this.notifyDeleteUser.emit(this.userId);
   }
 
 }

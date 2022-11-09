@@ -7,6 +7,7 @@ import { UserComponent } from './user/user.component';
 import { MeterialModule } from 'src/app/meterial/meterial.module';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { SearchComponent } from '../search/search.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     PostsComponent,
     UserComponent,
     SpinnerComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MeterialModule,
     FormsModule,
   ],
-  exports: [SpinnerComponent],
+  exports: [SpinnerComponent,SearchComponent],
 })
 export class PostsModule { }

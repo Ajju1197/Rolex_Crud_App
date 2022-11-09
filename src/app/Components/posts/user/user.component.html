@@ -1,32 +1,38 @@
-<!-- load spinner -->
-<div *ngIf="loading" class="spinnerClass">
-  <app-spinner></app-spinner>
-</div>
-
-<div class="container py-5">
+<div class="container">
   <div class="row">
-    <div class="col-lg-4 col-sm-6 col-xs-6 mb-4" *ngFor="let user of filterUsers">
-      <mat-card class="example-card">
-        <mat-card-title>{{ user.username }}</mat-card-title>
-        <mat-card-subtitle class="text-black">{{
-          user.name
-          }}</mat-card-subtitle>
-        <mat-card-subtitle class="text-black">{{
-          user.email
-          }}</mat-card-subtitle>
-        <mat-card-content>
-          <p>
-            {{ user.address.city }}<br />{{ user.address.street }}<br />{{
-            user.address.zipcode
-            }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button class="btn btn-success" routerLink="/admin/view/{{ user.id }}" mat-button>View</button>
-          <button class="btn btn-warning" routerLink="/admin/edit/{{user.id}}" mat-button>Edit</button>
-          <button class="btn btn-danger" (click)="deleteUser()" mat-button>Delete</button>
-        </mat-card-actions>
-      </mat-card>
+    <div class="col-lg-12 col-sm-12 text-end mb-3" [ngClass]="{'changeBgColor': searchValue !== ''}">
+      <form style="display: flex">
+          <app-search (searchPosts)="searchPostsValue($event)"></app-search>
+        <button class="btn btn-success ms-2" routerLink="/admin/add" mat-button>
+          Add
+        </button>
+      </form>
     </div>
+    <ng-container *ngFor="let user of filterUsers">
+      <div class="col-lg-4 col-sm-6 col-xs-6 mb-4" *ngIf="searchValue === '' || user.username.toLowerCase().includes(searchValue)">
+        <mat-card class="example-card">
+          <mat-card-title>{{ user.username }}</mat-card-title>
+          <mat-card-subtitle class="text-black">{{
+            user.name
+            }}</mat-card-subtitle>
+          <mat-card-subtitle class="text-black">{{
+            user.email
+            }}</mat-card-subtitle>
+          <mat-card-content>
+            <p>
+              {{ user.address.city }}<br />{{ user.address.street }}<br />{{
+              user.address.zipcode
+              }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button class="btn btn-success" routerLink="/admin/view/{{ user.id }}" mat-button>View</button>
+            <button class="btn btn-warning" routerLink="/admin/edit/{{user.id}}" mat-button>Edit</button>
+            <button class="btn btn-danger" (click)="deleteUser()" mat-button>Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </ng-container>
+
   </div>
 </div>
