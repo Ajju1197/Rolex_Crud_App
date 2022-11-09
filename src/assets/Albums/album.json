@@ -2,101 +2,121 @@
   {
     "id": "1",
     "title": "Rolex-1",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-1.webp"
   },
   {
     "id": "2",
     "title": "Rolex-2",
+    "item":"Not-Available",
     "img": "assets/Rolex_Watches/rolex-2.webp"
   },
   {
     "id": "3",
     "title": "Rolex-3",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-3.webp"
   },
   {
     "id": "4",
     "title": "Rolex-4",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-4.webp"
   },
   {
     "id": "5",
     "title": "Rolex-5",
+    "item":"Not-Available",
     "img": "assets/Rolex_Watches/rolex-5.webp"
   },
   {
     "id": "7",
     "title": "Rolex-7",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-7.webp"
   },
   {
     "id": "8",
     "title": "Rolex-8",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-8.webp"
   },
   {
     "id": "9",
     "title": "Rolex-9",
+    "item":"Not-Available",
     "img": "assets/Rolex_Watches/rolex-9.webp"
   },
   {
     "id": "10",
     "title": "Rolex-10",
+    "item":"Not-Available",
     "img": "assets/Rolex_Watches/rolex-10.webp"
   },
   {
     "id": "11",
     "title": "Rolex-11",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-11.webp"
   },
   {
     "id": "12",
     "title": "Rolex-12",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-12.webp"
   },
   {
     "id": "13",
     "title": "Rolex-13",
+    "item":"Not-Available",
     "img": "assets/Rolex_Watches/rolex-13.webp"
   },
   {
     "id": "14",
     "title": "Rolex-14",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-14.webp"
   },
   {
     "id": "15",
     "title": "Rolex-15",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-15.webp"
   },
   {
     "id": "16",
     "title": "Rolex-16",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-16.webp"
   },
   {
     "id": "17",
     "title": "Rolex-17",
+    "item":"Not-Available",
     "img": "assets/Rolex_Watches/rolex-17.webp"
   },
   {
     "id": "18",
     "title": "Rolex-18",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-18.webp"
   },
   {
     "id": "19",
     "title": "Rolex-19",
+    "item":"Not-Available",
     "img": "assets/Rolex_Watches/rolex-19.webp"
   },
   {
     "id": "20",
     "title": "Rolex-20",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-20.webp"
   },
   {
     "id": "21",
     "title": "Rolex-21",
+    "item":"Available",
     "img": "assets/Rolex_Watches/rolex-21.webp"
   }
 ]

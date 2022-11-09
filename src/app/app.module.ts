@@ -25,6 +25,7 @@ import { GalleryComponent } from './Components/gallery/gallery.component';
 import { AboutComponent } from './Components/about/about.component';
 import { PostsModule } from './Components/posts/posts.module';
 import { NgOptimizedImage } from '@angular/common';
+// import { SearchComponent } from './Components/search/search.component';
 
 
 
