@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/Modals/IUser';
+import { AlertService } from 'src/app/Services/alert.service';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
@@ -26,7 +27,7 @@ export class PostsComponent implements OnInit {
     return this.users.filter((user) => user.username.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)
   }
 
-  constructor(private _userService: UsersService, private _router: Router) { }
+  constructor(private alertService:AlertService,private _userService: UsersService, private _router: Router) { }
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -35,13 +36,15 @@ export class PostsComponent implements OnInit {
   getAllUsers() {
     this.loading = true;
     this._userService.getAllUsers().subscribe((data) => {
+      // this.alertService.success('Data Fetched successfully', true);
       console.log(data)
       this.users = data;
       this.filterUsers = this.users;
       console.log(this.users)
       this.loading = false
     },
-      (err) => { this.errorMessage = err }
+      
+      (err) => { this.alertService.error(err),this.errorMessage = err }
     )
   }
   

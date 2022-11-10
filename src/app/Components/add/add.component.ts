@@ -5,6 +5,7 @@ import { first } from 'rxjs';
 import { Users } from 'src/app/Modals/data';
 import { IUser } from 'src/app/Modals/IUser';
 import { ValidatePassword } from 'src/app/Modals/validate-password';
+import { AlertService } from 'src/app/Services/alert.service';
 import { UsersService } from 'src/app/Services/users.service';
 @Component({
   selector: 'app-add',
@@ -21,6 +22,7 @@ export class AddComponent implements OnInit {
 
   constructor(
     private _userService: UsersService,
+    private alertService:AlertService,
     private _router: Router,
     private route: ActivatedRoute,
   ) { }
@@ -51,9 +53,13 @@ export class AddComponent implements OnInit {
   onSubmit(){
       this.loading = true;
     console.log(this.fb.value);
-    this._userService.createUser(this.fb.value).subscribe((res:any) => {
-        console.log('Post created successfully!');
-        this._router.navigateByUrl('admin/posts');
+    this._userService.createUser(this.fb.value).subscribe((res) => {
+      console.log('Post created successfully!');
+      this.loading = false;
+      this._router.navigateByUrl('admin/posts');
+      setTimeout(() => {
+        this.alertService.success('Post created successfully!', true);
+      }, 1100)
     })
   }
 }

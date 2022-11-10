@@ -25,6 +25,9 @@ import { GalleryComponent } from './Components/gallery/gallery.component';
 import { AboutComponent } from './Components/about/about.component';
 import { PostsModule } from './Components/posts/posts.module';
 import { NgOptimizedImage } from '@angular/common';
+import { AlertDirective } from './CustomDirectives/alert.directive';
+import { AlertComponent } from './CustomDirectives/alert/alert.component';
+import { AlertService } from './Services/alert.service';
 // import { SearchComponent } from './Components/search/search.component';
 
 
@@ -44,6 +47,8 @@ import { NgOptimizedImage } from '@angular/common';
     EditComponent,
     GalleryComponent,
     AboutComponent,
+    AlertDirective,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,7 @@ import { NgOptimizedImage } from '@angular/common';
     PostsModule,
     NgOptimizedImage,
   ],
-  providers: [UsersService,
+  providers: [UsersService,AlertService
   ],
   exports: [],
   bootstrap: [AppComponent]
