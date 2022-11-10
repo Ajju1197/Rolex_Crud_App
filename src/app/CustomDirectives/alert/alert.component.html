@@ -1,4 +1,4 @@
-<div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }" style="width:50%;margin:auto;margin-top:18px;display: flex;justify-content: space-between;">
+<div *ngIf="message" class="alertWidthClass" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
   <span>{{message.text}}</span>
   <span style="cursor: pointer;" (click)="deleteNotification()">&#10060;</span>
 </div>
