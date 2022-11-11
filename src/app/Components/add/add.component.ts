@@ -35,11 +35,6 @@ export class AddComponent implements OnInit {
       username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
       phone: new FormControl('', [Validators.required,Validators.maxLength(10),Validators.minLength(10), Validators.pattern('^[0-9]+$')]),
-      // address: this.fb.group({
-      //   street: ['', [Validators.required]],
-      //   city: ['', [Validators.required]],
-      //   zipcode: ['', [Validators.required]]
-  // }),
 })
 
   }
@@ -51,15 +46,18 @@ export class AddComponent implements OnInit {
 
 
   onSubmit(){
-      this.loading = true;
-    console.log(this.fb.value);
-    this._userService.createUser(this.fb.value).subscribe((res) => {
-      console.log('Post created successfully!');
-      this.loading = false;
-      this._router.navigateByUrl('admin/posts');
-      setTimeout(() => {
-        this.alertService.success('Post created successfully!', true);
-      }, 1100)
-    })
+    this.submitted = true;
+    if (this.fb.valid) {
+      this._userService.createUser(this.fb.value).subscribe((res) => {
+        this._router.navigateByUrl('admin/posts');
+        setTimeout(() => {
+          this.alertService.success('Post created successfully!', true);
+        }, 1100)
+      }, (error) => {
+        this._router.navigate(['/admin/add'])
+        this.alertService.error(error);
+        this.errorMessage = error;
+      })
+   }
   }
 }

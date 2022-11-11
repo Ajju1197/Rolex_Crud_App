@@ -45,17 +45,17 @@ export class EditComponent implements OnInit {
 
     onSubmit() {
     this.submitted = true;
-    this.loading = true;
-    this._userService.updateUser(this.id, this.fb.value).subscribe((data) => {
-        console.log('Post updated successfully!');
-      this._router.navigateByUrl('admin/posts');
-      setTimeout(() => {
-        this.alertService.success('Post updated successfully!',true)
-      }, 1100);
-    }, (error) => {
-      this.alertService.error(error)
-      this.errorMessage = error;
-    })
-      this.loading = false;
+      if (this.fb.valid) {
+        this._userService.updateUser(this.id, this.fb.value).subscribe((data) => {
+        this._router.navigateByUrl('admin/posts');
+        setTimeout(() => {
+          this.alertService.success('Post updated successfully!',true)
+        }, 1100);
+      }, (error) => {
+        this.alertService.error(error)
+        this.errorMessage = error;
+        this._router.navigate(['admin/edit'])
+      })
+    }
   }
 }

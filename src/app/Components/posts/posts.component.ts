@@ -36,7 +36,6 @@ export class PostsComponent implements OnInit {
   getAllUsers() {
     this.loading = true;
     this._userService.getAllUsers().subscribe((data) => {
-      // this.alertService.success('Data Fetched successfully', true);
       console.log(data)
       this.users = data;
       this.filterUsers = this.users;

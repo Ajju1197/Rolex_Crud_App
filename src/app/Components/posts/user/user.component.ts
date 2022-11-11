@@ -1,6 +1,7 @@
 import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IUser } from 'src/app/Modals/IUser';
+import { AlertService } from 'src/app/Services/alert.service';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class UserComponent implements OnInit {
   loading;
   @Output() notifyDeleteUser:EventEmitter<any> = new EventEmitter<any>();
     
-  constructor(private _userService:UsersService) { }
+  constructor(private alertService:AlertService,private _userService:UsersService) { }
 
   ngOnInit(): void {
   }
@@ -36,6 +37,7 @@ export class UserComponent implements OnInit {
     this.loading = true;
     this._userService.deleteUser(this.userId).subscribe((data) => {
       this.users = this.users.filter(item => item.id !== this.userId)
+      this.alertService.success('Post deleted successfully!',true)
       console.log('Post deleted successfully!');
       this.loading = false;
     })

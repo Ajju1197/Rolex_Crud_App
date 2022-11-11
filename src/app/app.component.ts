@@ -1,13 +1,15 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './Animations/animation';
+import { titleAnimation } from './CustomDirectives/alert/alert.component';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    slideInAnimation
+    slideInAnimation,titleAnimation
     // animation triggers go here
   ]
 })
