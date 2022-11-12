@@ -1,15 +1,6 @@
 <!-- load spinner -->
 <div class="container py-5">
   <div class="row">
-    <!-- <div class="col-lg-12 col-sm-12 text-end">
-      <form style="display: flex">
-        <input class="form-control searchUserClass me-2" [(ngModel)]="searchTerm"
-          [ngModelOptions]="{ standalone: true }" placeholder="Search User" />
-        <button class="btn btn-success" routerLink="/admin/add" mat-button>
-          Add
-        </button>
-      </form>
-    </div> -->
     <div class="col-lg-12 col-md-12 col-sm-12">
       <app-user (notifyDeleteUser)="deleteUser($event)" [loading]="loading" [filterUsers]="filterUsers"></app-user>
     </div>

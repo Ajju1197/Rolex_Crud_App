@@ -18,5 +18,28 @@
 }
 .changeBgColor{
   background-color: #48e6a8 !important;
+  border-radius: 20px;
   transition: background-color 2s ease-in-out;
+}
+
+@media (min-width:768px) {
+  .searchInputClass{
+    width:97% !important;
+    border-radius: 10px;
+  }
+}
+@media (max-width:768px) {
+  .searchInputClass{
+    width:91% !important;
+    border-radius: 10px;
+  }
+}
+.formClass{
+  transition:2s ease-in-out;
+}
+@media (min-width:767px) {
+  .searchInputClass:hover .formClass{
+    transform: translateX(40%);
+    transition: transform 2s ease-in-out;
+  }
 }

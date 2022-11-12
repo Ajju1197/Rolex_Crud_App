@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-white header" @onOff [ngClass]="{active: isActive}">
     <div class="container">
         <div style="display:flex;justify-content:center;align-items:center;coulumn-gap:10px;">
-            <span style="font-size:25px;cursor:pointer;margin-left: 10px;" (click)="openNav()"
-                class="menu">&#9776;</span>
+            <mat-icon title="menu-bar" style="font-size:24px;cursor:pointer;width:25px;color:#012970;" (click)="openNav()"
+                class="menu">watch</mat-icon>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 m-auto mb-lg-0">
                     <li class="nav-item">
@@ -37,7 +37,7 @@
             <li class="nav-item dropdown no-arrow" style="list-style:none;">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Syed Ajmathula</span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{headerName}}</span>
                     <img class="img-profile rounded-circle" style="position:relative;left:16px;" height="30" width="30"
                         src="../../../assets/undraw_profile.svg">
                 </a>
@@ -67,6 +67,18 @@
 </nav>
 
 <div id="mySideNav" class="sidebar-slider" [class.sidebar-slide-in]="showSideNavShow">
+    <header class="d-flex" style="height:60px;background-color: #012970;">
+        <div class="container-fluid m-auto">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <mat-icon class="text-white" style="margin-top:10px;cursor: pointer;" (click)="openNav()">arrow_back</mat-icon>
+                </div>
+                <div class="logo-name">
+                    <h3 class="text-white m-0">{{headerName}}</h3>
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="sidebar-content">
         <div>
             <a routerLink="/" (click)="showSideNavOf()" type="button">Admin</a>
@@ -82,3 +94,4 @@
         </div>
     </div>
 </div>
+<div class="overlay" [ngClass]="{'sidebar-slide-in': showSideNavShow}" (click)="openNav()"></div>

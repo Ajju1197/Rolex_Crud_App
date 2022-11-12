@@ -8,6 +8,8 @@ import { MeterialModule } from 'src/app/meterial/meterial.module';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SearchComponent } from '../search/search.component';
+import { CardHighlightDirective } from 'src/app/CustomDirectives/card-highlight.directive';
+
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { SearchComponent } from '../search/search.component';
     UserComponent,
     SpinnerComponent,
     SearchComponent,
+    CardHighlightDirective,
   ],
   imports: [
     CommonModule,
@@ -23,6 +26,6 @@ import { SearchComponent } from '../search/search.component';
     MeterialModule,
     FormsModule,
   ],
-  exports: [SpinnerComponent,SearchComponent],
+  exports: [SpinnerComponent,SearchComponent,CardHighlightDirective],
 })
 export class PostsModule { }

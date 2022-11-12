@@ -19,6 +19,7 @@ import { IUser } from 'src/app/Modals/IUser';
 })
 export class NavbarComponent implements OnInit {
 
+  headerName = "Syed Ajmathulla"
   showSideNavShow: boolean = false;
   isActive: boolean = false;
 
@@ -35,15 +36,23 @@ export class NavbarComponent implements OnInit {
         var header = document.getElementsByClassName('header')[0];
         var sideNav = document.getElementsByClassName('sidebar-slider')[0];
         header.classList.add('small');
-        sideNav.classList.add('sideNavHeightClass');
+        // sideNav.classList.add('sideNavHeightClass');
 
       } else if (y < 10) {
         var header = document.getElementsByClassName('header')[0];
         var sideNav = document.getElementsByClassName('sidebar-slider')[0];
         header.classList.remove('small');
-        sideNav.classList.remove('sideNavHeightClass');
+        // sideNav.classList.remove('sideNavHeightClass');
       }
     }
+
+    // window.addEventListener('click', function () {
+    //   if (window.innerWidth >= 800) {
+    //     this.showSideNavShow = false;
+    //   } else {
+    //     this.showSideNavShow = true;
+    //   }
+    // })
 
   }
   openNav() {

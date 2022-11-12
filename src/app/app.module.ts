@@ -28,6 +28,9 @@ import { NgOptimizedImage } from '@angular/common';
 import { AlertDirective } from './CustomDirectives/alert.directive';
 import { AlertComponent } from './CustomDirectives/alert/alert.component';
 import { AlertService } from './Services/alert.service';
+import { CardHighlightDirective } from './CustomDirectives/card-highlight.directive';
+import { MatIconModule } from '@angular/material/icon';
+
 // import { SearchComponent } from './Components/search/search.component';
 
 
@@ -60,6 +63,7 @@ import { AlertService } from './Services/alert.service';
     FormsModule,
     PostsModule,
     NgOptimizedImage,
+    MatIconModule,
   ],
   providers: [UsersService,AlertService
   ],
