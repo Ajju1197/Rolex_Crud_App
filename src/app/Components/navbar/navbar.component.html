@@ -7,7 +7,7 @@
                 <ul class="navbar-nav me-auto mb-2 m-auto mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" style="font-size:20px;font-weight:400;" aria-current="page" routerLink="/"
-                            routerLinkActive="active">Admin</a>
+                            routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Admin</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/about"
@@ -26,7 +26,7 @@
         </div>
 
         <div>
-            <a class="navbar-brand header_logo" routerLink="/" routerLinkActive="active"
+            <a class="navbar-brand header_logo" routerLink="/" [routerLinkActiveOptions]={exact:true} routerLinkActive="active"
                 style="color: #012970;font-size:26px;font-weight:700;">Rolex<img
                     src="../../../assets/roleximg-removebg-preview.png" alt="Rolex Img"
                     style="vertical-align: bottom;margin-left: 5px;" width="27" height="24"></a>
@@ -81,7 +81,7 @@
     </header>
     <div class="sidebar-content">
         <div>
-            <a routerLink="/" (click)="showSideNavOf()" type="button">Admin</a>
+            <a routerLink="/" [routerLinkActiveOptions]={exact:true} routerLinkActive="active" (click)="showSideNavOf()" type="button">Admin</a>
         </div>
         <div>
             <a routerLink="/admin/about" (click)="showSideNavOf()" type="button">About</a>

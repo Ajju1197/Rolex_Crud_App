@@ -30,6 +30,7 @@ import { AlertComponent } from './CustomDirectives/alert/alert.component';
 import { AlertService } from './Services/alert.service';
 import { CardHighlightDirective } from './CustomDirectives/card-highlight.directive';
 import { MatIconModule } from '@angular/material/icon';
+import { AlertDirectiveComponent } from './CustomDirectives/alert-directive/alert-directive.component';
 
 // import { SearchComponent } from './Components/search/search.component';
 
@@ -52,6 +53,7 @@ import { MatIconModule } from '@angular/material/icon';
     AboutComponent,
     AlertDirective,
     AlertComponent,
+    AlertDirectiveComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   providers: [UsersService,AlertService
   ],
-  exports: [],
+  exports: [AlertDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

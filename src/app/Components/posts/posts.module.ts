@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SearchComponent } from '../search/search.component';
 import { CardHighlightDirective } from 'src/app/CustomDirectives/card-highlight.directive';
+import { AlertDirective } from 'src/app/CustomDirectives/alert.directive';
 
 
 
