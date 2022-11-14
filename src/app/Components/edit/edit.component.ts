@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IUser } from 'src/app/Modals/IUser';
 import { AlertService } from 'src/app/Services/alert.service';
 import { UsersService } from 'src/app/Services/users.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-edit',
@@ -47,6 +48,12 @@ export class EditComponent implements OnInit {
     this.submitted = true;
       if (this.fb.valid) {
         this._userService.updateUser(this.id, this.fb.value).subscribe((data) => {
+          Swal.fire({
+            title: 'success',
+            icon: 'success',
+            text: 'Post Can be Updated Successfully',
+            confirmButtonText: 'Cool',
+          })
         this._router.navigateByUrl('admin/posts');
         setTimeout(() => {
           this.alertService.success('Post updated successfully!',true)

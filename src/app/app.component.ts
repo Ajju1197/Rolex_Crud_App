@@ -1,7 +1,8 @@
-import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './Animations/animation';
 import { titleAnimation } from './CustomDirectives/alert/alert.component';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -18,7 +19,18 @@ export class AppComponent implements OnInit {
   isShow: boolean;
   topPosToStartShowing = 50;
 
+  @ViewChild('dateInput') dateOfBirth:ElementRef;
+  @ViewChild('age') age: ElementRef;
+  
   @HostListener('window:scroll')
+    
+  calculateAge() {
+    let birthYear = new Date(this.dateOfBirth.nativeElement.value).getFullYear();
+    let currYear = new Date().getFullYear();
+    let age = currYear - birthYear;
+    this.age.nativeElement.value = age.toString();
+
+    }
   
  checkScroll() {
       
@@ -63,5 +75,8 @@ export class AppComponent implements OnInit {
   }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
+  submitSuccess() {
+    Swal.fire('Any fool can use a computer')
   }
 }

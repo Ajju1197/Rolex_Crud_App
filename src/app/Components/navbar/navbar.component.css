@@ -1,9 +1,11 @@
-.active {
-  /* margin-left: 300px; */
-  color: #012970 !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  transition: .1s all ease-in-out;
+@media (min-width:768px) {
+  .active {
+    /* margin-left: 300px; */
+    color: #012970 !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    transition: .1s all ease-in-out;
+  }
 }
 
 .navbar {
@@ -131,7 +133,7 @@
   top: 0;
   left: 0;
   bottom: 0;
-  transform: translateX(-100%);
+  transform: translateX(100%);
   transition: ease-in-out 300ms transform;
 }
 .sidebar-slide-in {
