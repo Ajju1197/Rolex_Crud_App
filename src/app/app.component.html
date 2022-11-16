@@ -1,17 +1,9 @@
-<div class="main">
+<div class="main" [ngClass]="{'backColor': darkTheme}">
     <div class="appnav">
-        <app-navbar></app-navbar>
+        <app-navbar (isDarkTheme)="changeDarkTheme($event)" [darkTheme]="darkTheme"></app-navbar>
     </div>
     <div class="content" [@routeAnimations]="prepareRoute(outlet)">
         <app-alert></app-alert>
-        <!-- <div class="row">
-            <div class="col-md-2">
-                <input type="date" class="form-control" #dateInput (blur)="calculateAge()"><br>
-            </div>
-            <div class="col-md-2">
-                <input type="number" class="form-control" placeholder="Get Age" #age>
-            </div>
-        </div> -->
         <!-- <button (click)="submitSuccess()">Click me</button> -->
         <router-outlet #outlet="outlet"></router-outlet>
     </div>

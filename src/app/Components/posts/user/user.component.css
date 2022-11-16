@@ -22,6 +22,9 @@
   transition: background-color 2s ease-in-out;
 }
 
+.bodyBgChange{
+  background-color: #000 !important;
+}
 @media (min-width:768px) {
   .searchInputClass{
     width:97% !important;

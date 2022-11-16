@@ -22,6 +22,9 @@ export class NavbarComponent implements OnInit {
   headerName = "Syed Ajmathulla"
   showSideNavShow: boolean = false;
   isActive: boolean = false;
+  @Output()
+  isDarkTheme: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() darkTheme;
 
   constructor() { }
 
@@ -66,6 +69,21 @@ export class NavbarComponent implements OnInit {
       this.showSideNavShow = true;
     }
   }
+
+
+  toggleTheme() {
+    this.isDarkTheme.emit();
+  }
+
+
+
+
+
+
+
+
+
+
 
 
 

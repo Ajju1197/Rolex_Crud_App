@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -9,6 +9,17 @@ export class AboutComponent implements OnInit {
 
   constructor() { }
 
+  @ViewChild('dateInput') dateOfBirth:ElementRef;
+  @ViewChild('age') age: ElementRef;
+  
+  calculateAge() {
+    let birthYear = new Date(this.dateOfBirth.nativeElement.value).getFullYear();
+    let currYear = new Date().getFullYear();
+    let age = currYear - birthYear;
+    this.age.nativeElement.value = age.toString();
+
+  }
+  
   ngOnInit(): void {
   }
 

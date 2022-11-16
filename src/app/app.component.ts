@@ -18,19 +18,11 @@ export class AppComponent implements OnInit {
   title = 'Angular-Crud-With-Api-App';
   isShow: boolean;
   topPosToStartShowing = 50;
+  darkTheme: boolean = false;
 
-  @ViewChild('dateInput') dateOfBirth:ElementRef;
-  @ViewChild('age') age: ElementRef;
-  
+
   @HostListener('window:scroll')
     
-  calculateAge() {
-    let birthYear = new Date(this.dateOfBirth.nativeElement.value).getFullYear();
-    let currYear = new Date().getFullYear();
-    let age = currYear - birthYear;
-    this.age.nativeElement.value = age.toString();
-
-    }
   
  checkScroll() {
       
@@ -79,4 +71,11 @@ export class AppComponent implements OnInit {
   submitSuccess() {
     Swal.fire('Any fool can use a computer')
   }
+
+  
+  changeDarkTheme(data) {
+    this.darkTheme =! this.darkTheme
+  }
+
+
 }

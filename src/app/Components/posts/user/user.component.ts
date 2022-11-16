@@ -1,4 +1,3 @@
-import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IUser } from 'src/app/Modals/IUser';
 import { AlertService } from 'src/app/Services/alert.service';
@@ -21,11 +20,26 @@ export class UserComponent implements OnInit {
   @Input()
   loading;
   @Output() notifyDeleteUser:EventEmitter<any> = new EventEmitter<any>();
+  searchText = "";
     
   constructor(private alertService:AlertService,private _userService:UsersService) { }
 
-  ngOnInit(): void {
+  @Input() bgColor = false;
+
+  chBackcolor() {
+  this.bgColor !== this.bgColor;
+    // this.bgColor !== this.bgColor
   }
+
+  ngOnInit(): void {
+    
+  }
+
+  // click to change body color
+
+
+
+
 
   searchPostsValue(searchStringValue: string) {
     this.searchValue = searchStringValue;
@@ -45,3 +59,11 @@ export class UserComponent implements OnInit {
   }
 
 }
+
+// click multiple background color change? 
+
+
+
+
+
+
