@@ -35,9 +35,10 @@
         <!-- Nav Item - User Information -->
         <div class="d-flex align-items-center">
             <span>
-                <mat-icon style="vertical-align:-webkit-baseline-middle;font-size: 19px;margin-right: 10px;" *ngIf="darkTheme else star" (click)="toggleTheme()">wb_sunny</mat-icon>
+                <mat-icon style="vertical-align:-webkit-baseline-middle;font-size: 19px;margin-right: 15px;cursor: pointer;" *ngIf="darkTheme else star" (click)="toggleTheme()">wb_sunny</mat-icon>
                 <ng-template #star>
-                    <mat-icon style="vertical-align:-webkit-baseline-middle;margin-right: 10px;font-size: 19px;" (click)="toggleTheme()">star_half</mat-icon>
+                    <!-- <mat-icon style="vertical-align:-webkit-baseline-middle;margin-right: 10px;font-size: 19px;" (click)="toggleTheme()">star_half</mat-icon> -->
+                    <img src="../../../assets/half-moon.png" (click)="toggleTheme()" style="vertical-align:text-top;margin-right: 15px;font-size: 19px;cursor: pointer;" width="18" height="18" alt="Half Moon Icon">
                 </ng-template>
             </span>
             <li class="nav-item dropdown no-arrow" style="list-style:none;">
@@ -86,18 +87,50 @@
         </div>
     </header>
     <div class="sidebar-content">
-        <div>
-            <a routerLink="/" (click)="showSideNavOf()" type="button">Admin</a>
-        </div>
-        <div>
-            <a routerLink="/admin/about" (click)="showSideNavOf()" type="button">About</a>
-        </div>
-        <div>
-            <a routerLink="/admin/albums" (click)="showSideNavOf()" type="button">Albums</a>
-        </div>
-        <div>
-            <a routerLink="/admin/posts" (click)="showSideNavOf()" type="button">Posts</a>
-        </div>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <a routerLink="/" (click)="showSideNavOf()" type="button">Admin</a>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <a routerLink="/admin/about" (click)="showSideNavOf()" type="button">About</a>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingTheree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTheree" aria-expanded="false" aria-controls="flush-collapseTheree">
+                            <a routerLink="/admin/albums" (click)="showSideNavOf()" type="button">Albums</a>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTheree" class="accordion-collapse collapse" aria-labelledby="flush-headingTheree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                            <a routerLink="/admin/posts" (click)="showSideNavOf()" type="button">Posts</a>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body sidebarContentDiv">
+                            <a routerLink="/admin/add" (click)="showSideNavOf()" type="button">Add</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 <div class="overlay" [ngClass]="{'sidebar-slide-in': showSideNavShow}" (click)="openNav()"></div>

@@ -243,3 +243,19 @@ body .btn-danger:hover {
 .custom-control label {
   font-weight: 400;
 }
+
+/* Button Style */
+.inverted-3 {
+  color: #fff;
+  background:
+    linear-gradient(-135deg, #00FC79  50%, #fff 0) var(--_d, 100%)/250% no-repeat,
+    linear-gradient(-135deg, #012970 50%, #00FC79 0) var(--_d, 100%)/250% no-repeat;
+  -webkit-background-clip: text, padding-box;
+          background-clip: text, padding-box;
+  transition: 0.8s
+}
+
+.inverted-3:hover {
+  --_d: 50%;
+  color: #fff;
+}

@@ -1,0 +1,22 @@
+.rolex-watch-moving{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  animation: movingWatch 10s infinite ease-in-out;
+}
+
+@keyframes movingWatch {
+  0% {left: 0px;}
+  50% {left: 80%;}
+  100% {left: 0%;}
+}
+
+.rolexImgWatchMovingClass{
+  background: aqua;
+  background: -webkit-linear-gradient(0deg, #15442b 0%, aqua 100%);
+  background: linear-gradient(0deg, #15442b 0%, aqua 100%);
+  margin-bottom: 1rem;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}

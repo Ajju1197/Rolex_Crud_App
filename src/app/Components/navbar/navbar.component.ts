@@ -75,21 +75,6 @@ export class NavbarComponent implements OnInit {
     this.isDarkTheme.emit();
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

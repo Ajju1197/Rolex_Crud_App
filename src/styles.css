@@ -23,7 +23,6 @@ body {
 }
 .backColor{
   background-color: #000 !important;
-  color: --bs-white !important;
   transition: background-color 1s ease-out;
 }
 .spinnerClass{

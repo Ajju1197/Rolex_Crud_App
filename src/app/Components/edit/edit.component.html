@@ -10,7 +10,7 @@
 
 
 <div class="container">
-    <div class="row custom-wrapper">
+    <div class="row custom-wrapper" style="background:#fff;padding:10px;border-radius:5px;">
         <div class="col-md-12">
             <!-- Form starts -->
             <form [formGroup]="fb" (ngSubmit)="onSubmit()">
@@ -93,8 +93,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-                <span class="btn ms-3" style="background-color: #012970;color:#fff;" onclick="history.go(-1)">GO
+                <button type="submit" class="btn inverted-3">Submit</button>
+                <span class="btn ms-3 inverted-3" style="background-color: #012970;color:#fff;" onclick="history.go(-1)">GO
                     Back</span>
             </form>
             <!-- Form ends -->
