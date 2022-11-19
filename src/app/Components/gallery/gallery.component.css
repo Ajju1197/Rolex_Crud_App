@@ -1,8 +1,9 @@
-.card{
+.card .card{
   overflow: hidden;
   cursor: pointer;
   position: relative;
   padding-bottom: 50%;
+  border-radius: 0px !important;
 }
 .card img{
   max-width:100%;
@@ -15,4 +16,19 @@
 }
 .card:hover img{
   transform:scale(1.1);
+}
+span{
+  font-size: 1rem;
+  font-family:Arial, Helvetica, sans-serif;
+  color: #f7efed;
+}
+.albumflexClass{
+  background-color:#012970;
+}
+@media (max-width:768px) {
+  .albumflexClass{
+    justify-content: start !important;
+    column-gap: .8rem;
+    background-color:#012970;
+  }
 }

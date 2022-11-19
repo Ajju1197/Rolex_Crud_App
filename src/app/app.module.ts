@@ -31,6 +31,7 @@ import { AlertService } from './Services/alert.service';
 import { CardHighlightDirective } from './CustomDirectives/card-highlight.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { AlertDirectiveComponent } from './CustomDirectives/alert-directive/alert-directive.component';
+import { FilterComponent } from './Components/filter/filter.component';
 
 // import { SearchComponent } from './Components/search/search.component';
 
@@ -54,6 +55,7 @@ import { AlertDirectiveComponent } from './CustomDirectives/alert-directive/aler
     AlertDirective,
     AlertComponent,
     AlertDirectiveComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
