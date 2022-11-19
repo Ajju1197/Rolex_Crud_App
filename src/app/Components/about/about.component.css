@@ -5,11 +5,18 @@
   object-fit: cover;
   animation: movingWatch 10s infinite ease-in-out;
 }
-
 @keyframes movingWatch {
   0% {left: 0px;}
   50% {left: 80%;}
   100% {left: 0%;}
+}
+
+@media (max-width:768px) {
+  @keyframes movingWatch {
+    0% {left: 0px;}
+    50% {left: 20%;}
+    100% {left: 0%;}
+  }
 }
 
 .rolexImgWatchMovingClass{
