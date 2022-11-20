@@ -6,11 +6,11 @@
     </div> -->
     <div class="row" style="row-gap: 2em;">
         <div class="col-lg-12 col-sm-12 text-end mb-3">
-            <div class="row" style="display: flex;column-gap: 3rem;align-items: center;background-color:#012970;padding: 1rem;row-gap: 1rem;">
-                <div class="col-lg-2 col-sm-12">
+            <div class="searchAndFilterClass">
+                <div>
                     <app-search (searchPosts)="searchAlbumValue($event)"></app-search>
                 </div>
-                <div class="col-lg-7 col-md-10 col-sm-12 text-start">
+                <div class="text-start">
                 <app-filter
                     [all]="getAllAlbums()" 
                     [premiumCount]="getAllPremiumAlbums()"

@@ -6,19 +6,19 @@
 
 <div class="jumbotron text-center">
     <h1 class="display-5">Angular 7 Reactive Forms Tutorial</h1>
+    <!-- <app-root></app-root> -->
 </div>
 
 
 <div class="container">
-    <div class="row custom-wrapper" style="background:#fff;padding:10px;border-radius:5px;">
+    <div class="row custom-wrapper" style="background:#fff;padding:10px;border-radius:5px;" [ngStyle]="{'background': this._commonService.darkTheme === true?'#fff':'#000'}">
         <div class="col-md-12">
             <!-- Form starts -->
             <form [formGroup]="fb" (ngSubmit)="onSubmit()">
                 <div class="group-gap">
-
                     <!-- name name -->
                     <div>
-                        <div class="mb-3">
+                        <div class="mb-3" [ngStyle]="{'color': this._commonService.darkTheme === true?'#000':'#fff'}">
                             <label [ngClass]="{error: submitted && myForm.name.errors}">
                                 Name</label>
                             <input type="text" [(ngModel)]="user.name" class="form-control" formControlName="name"
@@ -37,7 +37,7 @@
                     </div>
                     <!-- username -->
                     <div>
-                        <div class="mb-3">
+                        <div class="mb-3" [ngStyle]="{'color': this._commonService.darkTheme === true?'#000':'#fff'}">
                             <label [ngClass]="{error: submitted && myForm.username.errors}">
                                 User name</label>
                             <input type="text" [(ngModel)]="user.username" class="form-control"
@@ -56,7 +56,7 @@
                     </div>
                     <!-- Email -->
                     <div>
-                        <div class="mb-3">
+                        <div class="mb-3" [ngStyle]="{'color': this._commonService.darkTheme === true?'#000':'#fff'}">
                             <label [ngClass]="{error: submitted && myForm.email.errors}">
                                 Email</label>
                             <input type="text" [(ngModel)]="user.email" class="form-control" formControlName="email"
@@ -75,7 +75,7 @@
                     </div>
                     <!-- PhoneNumber -->
                     <div>
-                        <div class="mb-3">
+                        <div class="mb-3" [ngClass]="{'color': this._commonService.darkTheme === false}">
                             <label [ngClass]="{error: submitted && myForm.phone.errors}">
                                 Phone Number</label>
                             <input type="text" [(ngModel)]="user.phone" class="form-control" formControlName="phone"

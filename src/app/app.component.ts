@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './Animations/animation';
 import { titleAnimation } from './CustomDirectives/alert/alert.component';
 import Swal from 'sweetalert2'
+import { CommonService } from './shared/sharedServices/common.service';
 
 
 @Component({
@@ -21,8 +22,8 @@ export class AppComponent implements OnInit {
   darkTheme: boolean = false;
 
 
+  constructor(private _commonService:CommonService){}    
   @HostListener('window:scroll')
-    
   
  checkScroll() {
       
@@ -50,20 +51,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkScroll();
-    // window.addEventListener('scroll', function () {
-    //   navbarScrollUp();
-    // });
-    // function navbarScrollUp() {
-    //   var y = window.scrollY;
-    //   if (y > 300) {
-    //     var header = document.getElementsByClassName('scrollUp')[0];
-    //     header.classList.add('hide');
-
-    //   } else if (y < 300) {
-    //     var header = document.getElementsByClassName('scrollUp')[0];
-    //     header.classList.remove('hide');
-    //   }
-    // }
+    this.changeDarkTheme(DataTransfer)
   }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
@@ -72,6 +60,7 @@ export class AppComponent implements OnInit {
   
   changeDarkTheme(data) {
     this.darkTheme = !this.darkTheme;
+    this._commonService.darkTheme = this.darkTheme
   }
 
 

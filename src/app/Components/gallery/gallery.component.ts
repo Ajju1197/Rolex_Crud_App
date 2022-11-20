@@ -29,7 +29,7 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this._httpClient.get<any>('assets/Albums/album.json').pipe(delay(2000)).subscribe((data) => {
-      this.alertServices.success('Images fetched successfully');
+      this.alertServices.success('Watches fetched successfully');
       this.showNotifications = true;
       this.albums = data
       console.log(this.albums)

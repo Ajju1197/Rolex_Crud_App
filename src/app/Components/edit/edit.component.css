@@ -37,7 +37,7 @@ h2 {
 label {
   font-size: 15px;
   font-weight: 600;
-  color: #222;
+  /* color: #222; */
   margin-bottom: 6px;
 }
 
@@ -257,5 +257,9 @@ body .btn-danger:hover {
 
 .inverted-3:hover {
   --_d: 50%;
+  color: #fff;
+}
+
+.color{
   color: #fff;
 }

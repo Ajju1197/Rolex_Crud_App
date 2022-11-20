@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IUser } from 'src/app/Modals/IUser';
 import { AlertService } from 'src/app/Services/alert.service';
 import { UsersService } from 'src/app/Services/users.service';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
   selector: 'app-user',
@@ -22,7 +23,7 @@ export class UserComponent implements OnInit {
   @Output() notifyDeleteUser:EventEmitter<any> = new EventEmitter<any>();
   searchText = "";
     
-  constructor(private alertService:AlertService,private _userService:UsersService) { }
+  constructor(public _commonService:CommonService,private alertService:AlertService,private _userService:UsersService) { }
 
   @Input() bgColor = false;
 

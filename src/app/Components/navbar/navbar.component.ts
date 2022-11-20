@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { IUser } from 'src/app/Modals/IUser';
 
 @Component({
