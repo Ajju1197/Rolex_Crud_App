@@ -11,15 +11,15 @@
         </div>
         <ng-container *ngFor="let user of filterUsers">
             <div class="col-lg-4 col-sm-6 col-xs-6 mb-4" *ngIf="searchValue === '' 
-      || user.username.toLowerCase().includes(searchValue) || 
-      user.email.toLowerCase().includes(searchValue) ||  user.name.toLowerCase().includes(searchValue)">
+        || user.username.toLowerCase().includes(searchValue) || 
+        user.email.toLowerCase().includes(searchValue) ||  user.name.toLowerCase().includes(searchValue)">
                 <mat-card class="example-card" [ngClass]="{'cardBgClass': this._commonService.darkTheme === false}">
                     <mat-card-title>{{ user.username }}</mat-card-title>
                     <h3>{{user.name}}</h3>
                     <h3>{{user.email}}</h3>
                     <mat-card-content>
                         <p>
-                            {{ user.address.city }}<br />{{ user.address.street }}<br />{{user.address.zipcode}}
+                            {{ user.address.city }}<br />{{ user.address.street }}<br/>{{user.address.zipcode}}
                         </p>
                     </mat-card-content>
                     <mat-card-actions>

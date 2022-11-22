@@ -13,12 +13,11 @@ import { UsersService } from 'src/app/Services/users.service';
 })
 export class GalleryComponent implements OnInit {
 
-  albums: any;
-  loading: boolean;
+  albums: IAlbums[]=[];
+  public loading: boolean;
   searchStringAlbum: string = '';
   erroMessage: any;
   showNotifications: boolean = false;
-  alertMessage:string = "Images fetched Successfully"
   redalertMessage: string = "There is an Error to fetch Images"
   public premium = "Premium"
   public normal = "Normal"
@@ -28,11 +27,10 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this._httpClient.get<any>('assets/Albums/album.json').pipe(delay(2000)).subscribe((data) => {
+    this._userService.getAllAlbums().subscribe((img) => {
       this.alertServices.success('Watches fetched successfully');
       this.showNotifications = true;
-      this.albums = data
-      console.log(this.albums)
+      this.albums = img
       this.loading = false;
       setTimeout(() => {
         this.showNotifications = false;

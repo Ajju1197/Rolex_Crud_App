@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   title = 'Angular-Crud-With-Api-App';
   isShow: boolean;
   topPosToStartShowing = 50;
-  darkTheme: boolean = false;
+  darkTheme: boolean = true;
 
 
   constructor(private _commonService:CommonService){}    

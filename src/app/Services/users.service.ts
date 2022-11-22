@@ -9,7 +9,7 @@ import { IAlbums, IComments, IUser } from '../Modals/IUser';
 export class UsersService {
   public serverUrl = 'https://jsonplaceholder.typicode.com';
   // public usersUrl = "../../assets/Users/user.json"
-  public albumUrl = '../../assets/Albums/album.json';
+  public albumUrl = 'assets/Albums/album.json';
   constructor(private _httpClient: HttpClient) { }
 
 
@@ -61,7 +61,11 @@ export class UsersService {
 
   getAllAlbums(): Observable<IAlbums[]> {
     let dataUrl: string = `${this.albumUrl}`;
-    return this._httpClient.get<IAlbums[]>(dataUrl).pipe(catchError(this.handleError))
+    return this._httpClient.get<IAlbums[]>(dataUrl).pipe(catchError(this.handleError),delay(1000))
+  }
+  getAlbum(albumId:string):Observable<IAlbums>{
+    let dataUrl: string = `${this.albumUrl}/`;
+    return this._httpClient.get<IAlbums>(dataUrl + albumId, this.httpOptions).pipe(catchError(this.handleError),delay(2000))
   }
 
   // Error Handling
