@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 col-sm-12 text-end mb-3 m-auto searchInputClass" appCardHighlight
+        <div class="col-lg-12 col-sm-12 text-end mb-3 m-auto" appCardHighlight
             [ngClass]="{'changeBgColor': searchValue !== '','cardBgClass':this._commonService.darkTheme === true}">
             <div style="display: flex" class="formClass">
                 <app-search (searchPosts)="searchPostsValue($event)"></app-search>
@@ -9,23 +9,26 @@
                 </button>
             </div>
         </div>
-        <ng-container *ngFor="let user of filterUsers">
+        <div *ngIf="filterUsers.length < 1">
+            <h3>No Users are Available</h3>
+        </div>
+        <ng-container *ngFor="let user of filterUsers; even as isEven; odd as isOdd">
             <div class="col-lg-4 col-sm-6 col-xs-6 mb-4" *ngIf="searchValue === '' 
         || user.username.toLowerCase().includes(searchValue) || 
         user.email.toLowerCase().includes(searchValue) ||  user.name.toLowerCase().includes(searchValue)">
-                <mat-card class="example-card" [ngClass]="{'cardBgClass': this._commonService.darkTheme === false}">
+                <mat-card class="example-card">
                     <mat-card-title>{{ user.username }}</mat-card-title>
                     <h3>{{user.name}}</h3>
                     <h3>{{user.email}}</h3>
-                    <mat-card-content>
+                    <!-- <mat-card-content>
                         <p>
                             {{ user.address.city }}<br />{{ user.address.street }}<br/>{{user.address.zipcode}}
                         </p>
-                    </mat-card-content>
+                    </mat-card-content> -->
                     <mat-card-actions>
                         <button class="btn btn-success" routerLink="/admin/view/{{ user.id }}" mat-button>View</button>
                         <button class="btn btn-warning" routerLink="/admin/edit/{{user.id}}" mat-button>Edit</button>
-                        <button class="btn btn-danger" (click)="deleteUser()" mat-button>Delete</button>
+                        <button class="btn btn-danger" (click)="deleteUser(user.id)" mat-button>Delete</button>
                     </mat-card-actions>
                 </mat-card>
             </div>

@@ -1,13 +1,14 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, delay, Observable, throwError } from 'rxjs';
+import { catchError, delay, map, Observable, throwError } from 'rxjs';
 import { IAlbums, IComments, IUser } from '../Modals/IUser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  public serverUrl = 'https://jsonplaceholder.typicode.com';
+  // public serverUrl = 'https://jsonplaceholder.typicode.com';
+  public serverUrl = 'https://angularrolexapp-default-rtdb.firebaseio.com';
   // public usersUrl = "../../assets/Users/user.json"
   public albumUrl = 'assets/Albums/album.json';
   constructor(private _httpClient: HttpClient) { }
@@ -25,31 +26,38 @@ export class UsersService {
   }
 
   getAllUsers(): Observable<IUser[]> {
-    let dataUrl: string = `${this.serverUrl}/users`;
-    return this._httpClient.get<IUser[]>(dataUrl).pipe(catchError(this.handleError), delay(1000))
+    let dataUrl: string = `${this.serverUrl}/users.json`;
+    return this._httpClient.get<IUser[]>('https://angularrolexapp-default-rtdb.firebaseio.com/users.json').pipe(map((res) => {
+      const users = [];
+      for (const key in res) {
+        if (res.hasOwnProperty(key)) {
+          users.push({...res[key],id:key});
+        }
+      }
+      return users;
+    }),delay(1000))
   }
 
   getUser(userId: string): Observable<IUser> {
-    let dataUrl: string = `${this.serverUrl}/users/${userId}`;
+    let dataUrl: string = `${this.serverUrl}/users/${userId}.json`;
     console.log(dataUrl)
-    return this._httpClient.get<IUser>(dataUrl).pipe(catchError(this.handleError), delay(1000))
+    return this._httpClient.get<IUser>('https://angularrolexapp-default-rtdb.firebaseio.com/users/'+userId+'.json').pipe(catchError(this.handleError), delay(1000))
   }
 
   createUser(user:IUser): Observable<any> {
   
-    return this._httpClient.post(this.serverUrl + '/users/', JSON.stringify(user), this.httpOptions)
-    .pipe(
-      catchError(this.handleError)
-    )
+    let dataUrl: string = `${this.serverUrl}/users.json`;
+    return this._httpClient.post('https://angularrolexapp-default-rtdb.firebaseio.com/users.json',user, this.httpOptions)
+    .pipe(catchError(this.handleError))
   }  
   updateUser(userId: string, user: IUser): Observable<IUser>{
-    let dataUrl: string = `${this.serverUrl}/users/`;
-    return this._httpClient.put<IUser>(dataUrl + userId,JSON.stringify(user),this.httpOptions).pipe(catchError(this.handleError))
+    let dataUrl: string = `${this.serverUrl}`;
+    return this._httpClient.put<IUser>('https://angularrolexapp-default-rtdb.firebaseio.com/users/'+userId+'.json',JSON.stringify(user),this.httpOptions).pipe(catchError(this.handleError),delay(1000))
   }
 
   deleteUser(userId: string): Observable<IUser> { 
-    let dataUrl: string = `${this.serverUrl}/users/`;
-    return this._httpClient.delete<IUser>(dataUrl + userId,this.httpOptions).pipe(catchError(this.handleError))
+    let dataUrl: string = `${this.serverUrl}/users/${userId}.json`;
+    return this._httpClient.delete<IUser>('https://angularrolexapp-default-rtdb.firebaseio.com/users/'+userId+'.json',this.httpOptions).pipe(catchError(this.handleError))
   }
 
 

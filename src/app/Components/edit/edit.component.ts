@@ -29,9 +29,11 @@ export class EditComponent implements OnInit {
   constructor(public _commonService:CommonService,private alertService:AlertService,private _userService: UsersService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.id = this._route.snapshot.params['userId'];
     this._userService.getUser(this.id).subscribe((data) => {
       this.user = data;
+      this.loading = false;
     });
     /*##################### Registration Form #####################*/
     this.fb = new FormGroup({
@@ -50,7 +52,8 @@ export class EditComponent implements OnInit {
   
 
     onSubmit() {
-    this.submitted = true;
+      this.submitted = true;
+
       if (this.fb.valid) {
         this._userService.updateUser(this.id, this.fb.value).subscribe((data) => {
           Swal.fire({

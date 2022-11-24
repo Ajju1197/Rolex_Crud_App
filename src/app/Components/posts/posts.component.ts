@@ -16,12 +16,12 @@ export class PostsComponent implements OnInit {
   public loading: boolean = false;
   public filterUsers: IUser[];
   public _searchTerm: string;
-  get searchTerm(): string {
-    return this._searchTerm;
-  }
   set searchTerm(value: string) {
     this._searchTerm = value;
     this.filterUsers = this.filterUsersFun(value)
+  }
+  get searchTerm(): string {
+    return this._searchTerm;
   }
   filterUsersFun(searchString: string) {
     return this.users.filter((user) => user.username.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)
@@ -47,16 +47,16 @@ export class PostsComponent implements OnInit {
     )
   }
   
-  deleteUser(userId: any) {
+  // deleteUser(userId: any) {
 
-    this.users = userId;
-    // this.loading = true;
-    // this._userService.deleteUser(userId).subscribe((data) => { 
-    //   this.users = this.users.filter(item => item.id !== userId)
-    //   console.log('Post deleted successfully!');
-    //   this.loading = false;
-    // })
-  }
+  //   this.users = userId;
+  //   // this.loading = true;
+  //   // this._userService.deleteUser(userId).subscribe((data) => { 
+  //   //   this.users = this.users.filter(item => item.id !== userId)
+  //   //   console.log('Post deleted successfully!');
+  //   //   this.loading = false;
+  //   // })
+  // }
 
 
 }

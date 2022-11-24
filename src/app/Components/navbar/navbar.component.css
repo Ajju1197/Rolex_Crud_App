@@ -4,7 +4,23 @@
     color: #012970 !important;
     font-size: 22px !important;
     font-weight: 700 !important;
-    transition: .1s all ease-in-out;
+    transition: .5s all ease-in-out;
+    position: relative;
+  }
+  .active::after{
+    content: '';
+    position: absolute;
+    left: 8px;
+    bottom: -3px;
+    transition: all .5s ease-in-out;
+    width:20%;
+    height: 2px;
+    background-color: #012970;
+    border-radius: 2px;
+  }
+  .active:hover::after{
+    transition: all .5s ease-in-out;
+    width: 80%;
   }
 }
 

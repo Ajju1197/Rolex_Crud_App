@@ -3,6 +3,8 @@ import { IUser } from 'src/app/Modals/IUser';
 import { AlertService } from 'src/app/Services/alert.service';
 import { UsersService } from 'src/app/Services/users.service';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-user',
@@ -29,14 +31,13 @@ export class UserComponent implements OnInit {
 
   chBackcolor() {
   this.bgColor !== this.bgColor;
-    // this.bgColor !== this.bgColor
   }
 
   ngOnInit(): void {
     
   }
 
-  // click to change body color
+
 
 
 
@@ -47,21 +48,21 @@ export class UserComponent implements OnInit {
   }
 
 
-  deleteUser() {
+  deleteUser(userId) {
     // this._userService.deleteUser(this.user)
     this.loading = true;
-    this._userService.deleteUser(this.userId).subscribe((data) => {
-      this.users = this.users.filter(item => item.id !== this.userId)
-      this.alertService.success('Post deleted successfully!',true)
+    this._userService.deleteUser(userId).subscribe((data) => {
+      // this.users = this.users.filter(item => item.id !== this.userId)
+      this.alertService.success('Post deleted successfully!', true)
+      window.location.reload();
       console.log('Post deleted successfully!');
       this.loading = false;
     })
-    this.notifyDeleteUser.emit(this.userId);
+    this.notifyDeleteUser.emit(userId);
   }
 
 }
 
-// click multiple background color change? 
 
 
 

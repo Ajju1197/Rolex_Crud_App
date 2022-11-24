@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef, ElementRef, ViewChild, OnInit } from '@an
 import { FormBuilder, FormArray, Validators, FormGroup, FormControl } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
-import { Users } from 'src/app/Modals/data';
+// import { Users } from 'src/app/Modals/data';
 import { IUser } from 'src/app/Modals/IUser';
 import { ValidatePassword } from 'src/app/Modals/validate-password';
 import { AlertService } from 'src/app/Services/alert.service';
@@ -66,6 +66,6 @@ export class AddComponent implements OnInit {
         this.alertService.error(error);
         this.errorMessage = error;
       })
-   }
+    }
   }
 }
