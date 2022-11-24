@@ -44,7 +44,7 @@ export class UsersService {
     return this._httpClient.get<IUser>('https://angularrolexapp-default-rtdb.firebaseio.com/users/'+userId+'.json').pipe(catchError(this.handleError), delay(1000))
   }
 
-  createUser(user:IUser): Observable<any> {
+  createUser(user:any): Observable<any> {
   
     let dataUrl: string = `${this.serverUrl}/users.json`;
     return this._httpClient.post('https://angularrolexapp-default-rtdb.firebaseio.com/users.json',user, this.httpOptions)

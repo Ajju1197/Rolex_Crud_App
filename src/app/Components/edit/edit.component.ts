@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
@@ -26,7 +26,7 @@ export class EditComponent implements OnInit {
   public darkThemeFromAppCompo: boolean;
 
 
-  constructor(public _commonService:CommonService,private alertService:AlertService,private _userService: UsersService, private _router: Router, private _route: ActivatedRoute) { }
+  constructor(private cd: ChangeDetectorRef,public _commonService:CommonService,private alertService:AlertService,private _userService: UsersService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -37,12 +37,47 @@ export class EditComponent implements OnInit {
     });
     /*##################### Registration Form #####################*/
     this.fb = new FormGroup({
+      file:new FormControl(''),
       name: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
     });
     
+  }
+
+  @ViewChild('fileInput') el: ElementRef;
+  imageUrl: any = 'https://images.unsplash.com/photo-1640437831350-cacb7fa66989?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvbGV4fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60';
+  editFile: boolean = true;
+  removeUpload: boolean = false;
+  uploadFile(event) {
+    let reader = new FileReader();// HTML5 FileReader API
+    let file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      reader.readAsDataURL(file)
+
+      // When file uploads set it to file formcontrol
+      reader.onload = () => {
+        this.imageUrl = reader.result;
+        this.fb.patchValue({
+          file: reader.result
+        });
+        this.editFile = false;
+        this.removeUpload = true;
+      }
+      // ChangeDetectorRef since file is loading outside the zone
+      this.cd.markForCheck();
+    }
+  }
+
+  removeUploadedFile() {
+    let newFileList = Array.from(this.el.nativeElement.files);
+    this.imageUrl = 'https://images.unsplash.com/photo-1640437831350-cacb7fa66989?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvbGV4fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60';
+    this.editFile = true;
+    this.removeUpload = false;
+    this.fb.patchValue({
+      file: new FormControl(null)
+    });
   }
 
     // Getter method to access formcontrols

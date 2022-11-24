@@ -8,18 +8,31 @@
 </div>
 
 <div class="container">
-  <div class="row custom-wrapper" style="background:#fff;padding:10px;border-radius:5px;">
+  <div class="row custom-wrapper" style="padding:10px;border-radius:5px;" [ngStyle]="{'background': this._commonService.darkTheme ? '#fff':'#e6e6e6'}">
     <div class="col-md-12">
       <!-- Form starts -->
       <form [formGroup]="fb" (ngSubmit)="onSubmit()">
         <div class="group-gap">
 
+          <!-- Upload image -->
+          <div class="avatar-upload">
+            <div class="avatar-edit">
+              <input type='file' id="imageUpload" formControlName="file" value={this.state.image} accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+              <label for="imageUpload" *ngIf="editFile" [ngClass]="['custom-label', 'upload-image']"></label>
+              <label *ngIf="removeUpload" [ngClass]="['custom-label', 'remove-image']" (click)="removeUploadedFile()"></label>
+            </div>
+            <div class="avatar-preview">
+              <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+              </div>
+            </div>
+          </div>
+
           <!-- name -->
           <div>
             <div class="mb-3">
-              <label [ngClass]="{error: submitted && myForm.name.errors}">
+              <label [ngClass]="{'error': submitted && myForm.name.errors}">
                 Name</label>
-              <input type="text" class="form-control" formControlName="name" [ngClass]="{ error: submitted && myForm.name.errors}" />
+              <input type="text" class="form-control" formControlName="name" [ngClass]="{ 'error': submitted && myForm.name.errors}" />
               <!-- error block -->
               <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
                 <sup>*</sup>Enter your name
@@ -35,9 +48,9 @@
           <!-- username -->
           <div>
             <div class="mb-3">
-              <label [ngClass]="{error: submitted && myForm.username.errors}">
+              <label [ngClass]="{'error': submitted && myForm.username.errors}">
                 User name</label>
-              <input type="text" class="form-control" formControlName="username" [ngClass]="{ error: submitted && myForm.username.errors}" />
+              <input type="text" class="form-control" formControlName="username" [ngClass]="{ 'error': submitted && myForm.username.errors}" />
               <!-- error block -->
               <div class="invalid-feedback" *ngIf="submitted && myForm.username.errors?.required">
                 <sup>*</sup>Enter your username
@@ -51,21 +64,16 @@
             </div>
           </div>
           <!-- Email -->
-          <div>
-            <div class="mb-3">
-              <label [ngClass]="{error: submitted && myForm.email.errors}">
-                Email</label>
-              <input type="text" class="form-control" formControlName="email" [ngClass]="{ error: submitted && myForm.email.errors}" />
-              <!-- error block -->
-              <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
-                <sup>*</sup>Enter your Email
-              </div>
-              <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.minlength">
-                <sup>*</sup>Name must be 2 characters long
-              </div>
-              <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.pattern">
-                <sup>*</sup>special charcter allowed
-              </div>
+          <div class="mb-3">
+            <label [ngClass]="{'error': submitted && myForm.email.errors}">Email</label>
+            <input type="email" class="form-control" formControlName="email" [ngClass]="{'error': submitted && myForm.email.errors}">
+
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
+              <sup>*</sup>Please enter your email
+            </div>
+            <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.pattern">
+              <sup>*</sup>Please enter valid email
             </div>
           </div>
           <!-- PhoneNumber -->
@@ -86,9 +94,58 @@
               </div>
             </div>
           </div>
+
+          <!-- Address -->
+        <div class="group-gap" formGroupName="address">
+          <h5 class="mb-3">Address</h5>
+          <div class="mb-3">
+            <label [ngClass]="{'error': submitted && myForm.address.controls.street.errors}">Street</label>
+            <input type="text" class="form-control" formControlName="street" [ngClass]="{'error': submitted && myForm.address.controls.street.errors}">
+
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.address.controls.street.errors?.required">
+              <sup>*</sup>Please enter your street
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label [ngClass]="{'error': submitted && myForm.address.controls.city.errors}">City</label>
+            <input type="text" class="form-control" formControlName="city" [ngClass]="{'error': submitted && myForm.address.controls.city.errors}">
+
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.address.controls.city.errors?.required">
+              <sup>*</sup>Please enter your city
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label [ngClass]="{'error': submitted && myForm.address.controls.zipcode.errors}">Zipcode</label>
+            <input type="text" class="form-control" formControlName="zipcode" [ngClass]="{'error': submitted && myForm.address.controls.zipcode.errors}">
+
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.address.controls.zipcode.errors?.required">
+              <sup>*</sup>Please enter your zipcode
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label [ngClass]="{'error': submitted && myForm.address.controls.state.errors}">State</label>
+            <select class="custom-select d-block w-100" (change)="changeState($event)" formControlName="state"
+              [ngClass]="{'error': submitted && myForm.address.controls.state.errors}">
+              <option value="">Choose...</option>
+              <option *ngFor="let state of States" [ngValue]="state">{{state}}</option>
+            </select>
+
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.address.controls.state.errors?.required">
+              <sup>*</sup>Please enter your state name
+            </div>
+          </div>
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-        <span class="btn ms-3" style="background-color: #012970;color:#fff;" onclick="history.go(-1)">GO Back</span>
+
+        </div>
+        <button type="submit" class="btn inverted-3">Submit</button>
+        <span class="btn ms-3 inverted-3" style="background-color: #012970;color:#fff;" onclick="history.go(-1)">GO Back</span>
       </form>
       <!-- Form ends -->
     </div>

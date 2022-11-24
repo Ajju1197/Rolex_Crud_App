@@ -135,11 +135,11 @@ label {
 }
 
 .avatar-upload .avatar-edit .upload-image:after {
-  content: url('/assets/edit.svg');
+  content: url('/assets/Rolex_Watches/edit.svg');
 }
 
 .avatar-upload .avatar-edit .remove-image:after {
-  content: url('/assets/close.svg');
+  content: url('/assets/Rolex_Watches/close.svg');
   left: 0px !important;
 }
 

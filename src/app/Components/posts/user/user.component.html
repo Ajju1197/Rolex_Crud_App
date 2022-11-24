@@ -9,22 +9,27 @@
                 </button>
             </div>
         </div>
-        <div *ngIf="filterUsers.length < 1">
-            <h3>No Users are Available</h3>
+        <div *ngIf="filterUsers.length < 1" class="text-center bg-dark py-5">
+            <span class="text-danger">No Users are Available</span>
         </div>
         <ng-container *ngFor="let user of filterUsers; even as isEven; odd as isOdd">
             <div class="col-lg-4 col-sm-6 col-xs-6 mb-4" *ngIf="searchValue === '' 
-        || user.username.toLowerCase().includes(searchValue) || 
-        user.email.toLowerCase().includes(searchValue) ||  user.name.toLowerCase().includes(searchValue)">
+                || user.username.toLowerCase().includes(searchValue) || 
+                user.email.toLowerCase().includes(searchValue) ||  user.name.toLowerCase().includes(searchValue)">
                 <mat-card class="example-card">
-                    <mat-card-title>{{ user.username }}</mat-card-title>
-                    <h3>{{user.name}}</h3>
-                    <h3>{{user.email}}</h3>
-                    <!-- <mat-card-content>
-                        <p>
-                            {{ user.address.city }}<br />{{ user.address.street }}<br/>{{user.address.zipcode}}
-                        </p>
-                    </mat-card-content> -->
+                    <div class="d-flex w-100 justify-content-between">
+                        <div>
+                            <mat-card-title>{{ user.username }}</mat-card-title>
+                            <h3>{{user.name}}</h3>
+                            <h3>{{user.email}}</h3>
+                            <h3>{{user.address.street}},{{user.address.city}},{{user.address.zipcode}}</h3>
+                            <h3>{{user.address.state}}</h3>
+
+                        </div>
+                        <div class="user-image">
+                            <img src="{{user.file}}" alt="{{user.name}}" width="200" height="200">
+                        </div>
+                    </div>
                     <mat-card-actions>
                         <button class="btn btn-success" routerLink="/admin/view/{{ user.id }}" mat-button>View</button>
                         <button class="btn btn-warning" routerLink="/admin/edit/{{user.id}}" mat-button>Edit</button>

@@ -135,11 +135,11 @@ label {
 }
 
 .avatar-upload .avatar-edit .upload-image:after {
-  content: url('/assets/edit.svg');
+  content: url('/assets/Rolex_Watches/edit.svg');
 }
 
 .avatar-upload .avatar-edit .remove-image:after {
-  content: url('/assets/close.svg');
+  content: url('/assets/Rolex_Watches/close.svg');
   left: 0px !important;
 }
 
@@ -245,4 +245,24 @@ body .btn-danger:hover {
 
 .custom-control label {
   font-weight: 400;
+}
+
+/* Button Style */
+.inverted-3 {
+  color: #fff;
+  background:
+    linear-gradient(-135deg, #00FC79  50%, #fff 0) var(--_d, 100%)/250% no-repeat,
+    linear-gradient(-135deg, #012970 50%, #00FC79 0) var(--_d, 100%)/250% no-repeat;
+  -webkit-background-clip: text, padding-box;
+          background-clip: text, padding-box;
+  transition: 0.8s
+}
+
+.inverted-3:hover {
+  --_d: 50%;
+  color: #fff;
+}
+
+.color{
+  color: #fff;
 }

@@ -6,6 +6,7 @@
 .main {
   width: 100%;
   /* height: 100%; */
+  background-color: #ecfdfe;
   display: flex;
   flex-direction: column;
   transition: background-color 1s ease-out;
