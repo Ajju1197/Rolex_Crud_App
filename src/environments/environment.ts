@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-   firebaseConfig : {
+  firebaseConfig : {
     apiKey: "AIzaSyCysM9s0ERVjqFVqGbCNBpyqeCotCsJoEM",
     authDomain: "angularrolexapp.firebaseapp.com",
     databaseURL: "https://angularrolexapp-default-rtdb.firebaseio.com",
