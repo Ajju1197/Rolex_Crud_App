@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './Components/admin/admin.component';
@@ -13,10 +17,10 @@ import { MeterialModule } from './meterial/meterial.module';
 import { UserComponentComponent } from './Components/user-component/user-component.component';
 import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY } from '@angular/material/autocomplete';
 import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER } from '@angular/material/select';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER } from '@angular/material/tooltip';
-import { LoginComponent } from './Components/login/login.component';
-import { LogoutComponent } from './Components/logout/logout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './Components/Logins/login/login.component';
+import { LogoutComponent } from './Components/Logins/logout/logout.component';
 import { FilterUsersPipe } from './Pipes/filter-users.pipe';
 import { ViewComponent } from './Components/view/view.component';
 import { AddComponent } from './Components/add/add.component';
@@ -33,9 +37,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { AlertDirectiveComponent } from './CustomDirectives/alert-directive/alert-directive.component';
 import { FilterComponent } from './Components/filter/filter.component';
 import { ImageViewComponent } from './Components/image-view/image-view.component';
+import { environment } from 'src/environments/environment';
+import { RegisterComponent } from './Components/Logins/register/register.component';
+
 
 // import { SearchComponent } from './Components/search/search.component';
-
 
 
 @NgModule({
@@ -58,9 +64,13 @@ import { ImageViewComponent } from './Components/image-view/image-view.component
     AlertDirectiveComponent,
     FilterComponent,
     ImageViewComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+    provideAuth(()=>getAuth()),
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -73,7 +83,7 @@ import { ImageViewComponent } from './Components/image-view/image-view.component
   ],
   providers: [UsersService,AlertService
   ],
-  exports: [AlertDirective],
+  exports: [AlertDirective,ReactiveFormsModule,FormsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

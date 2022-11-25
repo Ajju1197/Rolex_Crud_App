@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class CommonService {
 
   public darkTheme: boolean;
+  public showHidePages: boolean= false;
   constructor() { }
 
   setMessage(data) {

@@ -28,6 +28,11 @@ h5 {
   max-width: 70%;
   margin: 0 auto 150px;
 }
+@media (max-width:768px) {
+  .custom-wrapper {
+    max-width: 100%;
+  }
+}
 
 .h2,
 h2 {

@@ -178,3 +178,18 @@
   transform: translateX(0%);
   transition: ease-in-out 600ms transform;
 }
+mat-icon{
+  vertical-align: middle;
+}
+@media (max-width:992px) and (min-width:768px) {
+  .dropdown-menu{
+    position: absolute;
+    left: -100px;
+  }
+}
+@media (max-width:767px) {
+  .dropdown-menu{
+    position: absolute;
+    right: -3px;
+  }
+}

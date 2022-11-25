@@ -13,8 +13,8 @@
             <span class="text-danger">No Users are Available</span>
         </div>
         <ng-container *ngFor="let user of filterUsers; even as isEven; odd as isOdd">
-            <div class="col-lg-4 col-sm-6 col-xs-6 mb-4" *ngIf="searchValue === '' 
-                || user.username.toLowerCase().includes(searchValue) || 
+            <div class="col-lg-4 col-sm-12 col-xs-6 my-4 py-4" *ngIf="searchValue === '' 
+                || user.username.toLowerCase().includes(searchValue)      || 
                 user.email.toLowerCase().includes(searchValue) ||  user.name.toLowerCase().includes(searchValue)">
                 <mat-card class="example-card">
                     <div class="d-flex w-100 justify-content-between">

@@ -41,3 +41,7 @@
   transition: 0.5s all ease;
 }
 
+.navBarDispayClass{
+  display: none;
+}
+

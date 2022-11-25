@@ -1,7 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { IUser } from 'src/app/Modals/IUser';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,8 +28,9 @@ export class NavbarComponent implements OnInit {
   @Output()
   isDarkTheme: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() darkTheme;
+  @Input() showHidePages: boolean = false;
 
-  constructor() { }
+  constructor(private router:Router,public commonService:CommonService) { }
 
 
   ngOnInit(): void {
@@ -74,6 +77,13 @@ export class NavbarComponent implements OnInit {
 
   toggleTheme() {
     this.isDarkTheme.emit();
+  }
+
+  loginPage() {
+    // this.router.navigate(['/login'])
+    // this.showHidePages = !this.showHidePages;
+    // this.commonService.showHidePages = this.showHidePages;
+    // window.location.reload()
   }
 
 }

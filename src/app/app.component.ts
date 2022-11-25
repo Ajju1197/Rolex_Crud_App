@@ -1,9 +1,10 @@
-import { Component, ElementRef, HostBinding, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './Animations/animation';
 import { titleAnimation } from './CustomDirectives/alert/alert.component';
 import Swal from 'sweetalert2'
 import { CommonService } from './shared/sharedServices/common.service';
+
 
 
 @Component({
@@ -20,9 +21,10 @@ export class AppComponent implements OnInit {
   isShow: boolean;
   topPosToStartShowing = 50;
   darkTheme: boolean = true;
+  @Input() loginFormShowHide: boolean = true;
 
 
-  constructor(private _commonService:CommonService){}    
+  constructor(public _commonService:CommonService){}    
   @HostListener('window:scroll')
   
  checkScroll() {
@@ -52,6 +54,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.checkScroll();
     this.changeDarkTheme(DataTransfer)
+    
+    
   }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];

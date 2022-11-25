@@ -6,13 +6,15 @@ import { AdminComponent } from './Components/admin/admin.component';
 import { EditComponent } from './Components/edit/edit.component';
 import { GalleryComponent } from './Components/gallery/gallery.component';
 import { ImageViewComponent } from './Components/image-view/image-view.component';
-import { LoginComponent } from './Components/login/login.component';
+import { LoginComponent } from './Components/Logins/login/login.component';
+import { RegisterComponent } from './Components/Logins/register/register.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ViewComponent } from './Components/view/view.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent, data: { animation: 'HomePage' } },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'admin/view/:userId', component: ViewComponent, data: { animation: 'AboutPage' } },
   { path: 'admin/about', component: AboutComponent, data: { animation: 'AboutPage' } },
   { path: 'admin/edit', component: EditComponent },

@@ -5,7 +5,7 @@ import { PostsRoutingModule } from './posts-routing.module';
 import { PostsComponent } from './posts.component';
 import { UserComponent } from './user/user.component';
 import { MeterialModule } from 'src/app/meterial/meterial.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SearchComponent } from '../search/search.component';
 import { CardHighlightDirective } from 'src/app/CustomDirectives/card-highlight.directive';
@@ -26,7 +26,8 @@ import { AlertDirective } from 'src/app/CustomDirectives/alert.directive';
     PostsRoutingModule,
     MeterialModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
-  exports: [SpinnerComponent,SearchComponent,CardHighlightDirective],
+  exports: [SpinnerComponent,SearchComponent,CardHighlightDirective,ReactiveFormsModule],
 })
 export class PostsModule { }
