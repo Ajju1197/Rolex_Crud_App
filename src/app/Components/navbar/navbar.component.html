@@ -1,74 +1,112 @@
-<nav class="navbar navbar-expand-lg bg-white header" [ngClass]="{'backColor': darkTheme}" @onOff [ngClass]="{active: isActive}">
+<nav class="navbar navbar-expand-lg header" [ngClass]="{'backColor': darkTheme}" @onOff [ngClass]="{active: isActive}">
     <div class="container">
         <div style="display:flex;justify-content:center;align-items:center;coulumn-gap:10px;">
-            <mat-icon title="menu-bar" style="font-size:24px;cursor:pointer;width:25px;color:#012970;" (click)="openNav()"
+            <mat-icon *ngIf="email" title="menu-bar" style="font-size:24px;cursor:pointer;width:25px;color:#012970;" (click)="openNav()"
                 class="menu">watch</mat-icon>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 m-auto mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" style="font-size:20px;font-weight:400;" aria-current="page" routerLink="/"
-                            routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Admin</a>
+                            routerLinkActive="active" [routerLinkActiveOptions]={exact:true} *ngIf="email">Admin</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/about"
-                            routerLinkActive="active">About</a>
+                            routerLinkActive="active" *ngIf="email">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/albums"
-                            routerLinkActive="active">Albums</a>
+                            routerLinkActive="active" *ngIf="email">Albums</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/posts"
-                            routerLinkActive="active">Posts</a>
+                            routerLinkActive="active" *ngIf="email">Posts</a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <div>
-            <a class="navbar-brand header_logo" routerLink="" [routerLinkActiveOptions]={exact:true} routerLinkActive="active"
-                style="color: #012970;font-size:26px;font-weight:700;">Rolex<img
-                    src="../../../assets/roleximg-removebg-preview.png" alt="Rolex Img"
-                    style="vertical-align: bottom;margin-left: 5px;" width="27" height="24"></a>
+        <div [ngClass]="{'logoStyleChange': this.email == undefined }">
+            <a class="navbar-brand header_logo"
+                style="color: #fff;font-size:26px;font-weight:700;">Profile Scope
+                <img width="30" height="30" style="vertical-align:sub;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAE50lEQVRoge1Ya2yTVRh+3q+XrbsGNjcvYRcFBAkYVy7BCV23JlonsEsw0xjUZGKiJgv4SxPj4g/jH/jhr8JQk6mJQrgYuSisFIZLvM6ITsZcHFtwiXPr7FpX2n79Xn+4VtZ07ddzmhjDnqRJv3Pe532e9zvnO9/5DrCIRdzaoGwm27x5s8VisTQRUSszrwGwDEB+rF9RFHtPT8+FbGoas5XIbre3EtF+ABXMnDQmGo2+DiCrBWRlBBoaGt5g5td0hg8x8wlFUfa73e7fZbWlC7Db7a8Q0ZsCVD8zP+PxeI7J6EsVUF9fvxFAH8SnYpSInG63+5yoB0WUOIe3IPccGZj5kNVqNYkmEC7A4XA8AMCuJ7ayTMUuhx/v7JnALoc/sbuiuLi4SdSH8N3TNG1Hqv7KMhW2dUHUrQuiskyNt1eV+5FjYnSdKbo53AngiIgP4QKY2UY0/xGKmbatDaKqXF2ACbTZAghFCN09hQAAIlor6kNm/t4DLHyn0+Fpx78jwcy3iZoQLoCISgHg3b0ToinQZgvEppJwATKrkEWCm4g8UaLsMvqfQ6gA7/nVjfdXh25ky0TN8htBr3ulU4Qr9Awws+vVJ7y5H12YtxTC1RUAEfB8e0FSXrL+ltoA2ur8FiY6AKAiUy/CU0ghxkvbffPa/llVF96dJOt/cdsMCMl3r3ogtBfyulc6GcrBJQW4i0h6Q6h5A/wbNOwucVz9LFOylDh/vWoQwL0yOUB0hTZcuU+ULrkK8SU5PgCNe2XocgWQ8rEUHwDAh6UsSMt/s+o8WN+uNAku0sbBOhn9LLzItHYAkwJELwyGdll16QJow9CvALWCMJ0BzQtWmsg6MCytL5sgBv5y9YqIOjtkMqfeIkUiQZhyC1ZkwzyQ5XOhqZMmNpnzYM7Jh9FsgUIGAIDGUajhIMI3AohEgih5LJI13aydC8UQCc8iEp7NdtoF8b/fjUqPgL3ppJWJnmXgkbHbl4yvWea9U/X1Q/X1I+rrBwAYimtgnPsNjC0dt7V4f4GmnGED3us9+uj3MvrCc9G+49SmqIJ9BNTG2pZXF/Yd2rclfj3hcoFDIZR3dMR57S9f6hse8dfelOoSKdh74WjjtyI+Mh4Bp/N0zqwFb2vMz1HCDRge8df4ZsJTxUXmkgmXCxMuV7yvvKMDvpnQ9PCIvyYh5RbW8JWt6ZRr0vTXnoEjj4cz8ZPRM1C37dPS2Vw+C+bdSD56loMfXP0JACgnJ94Y+3+ge+gykn+KKiC8UBrN9zRs/6Q8E0+6C2hoPlbCRuULAFtTxX3uuV6tMUeXNjfH20ra2qAxa2cvXq9OKcJ4UDUYPQ81nlyi15fOApginPshdGyd1ShXnOsd7w+NjsbbQmNjONc7/p0aZT1fXKsVM72vz5fOAmwtp58i4of1Ju3qHsTNBYRHR9HVPaiXDgIat7acelJPbNoCdu48bACjU7c6gMnpkPXaDyN/xq5HLl+bmZwOWTPJQYxOdHam9Zc24A8tzw7g7kzEASgnfjbGX8fHf1QCerQSsMJ2eb0trVC6ANZoW4bCAIC+UFVBhIyIkBF94cpCkRzElPIAGdD1HqANEDg1UEFF/cvsATAoCkWoAA1Yny5GRwGceulLgdPmTf45J/lpQpOC5g6QU0HPm1j3mpyIKS3vDlGurPYiFnGr4G+Cs6EefV0t0AAAAABJRU5ErkJggg==">
+            </a>
         </div>
 
         <!-- Nav Item - User Information -->
         <div class="d-flex align-items-center">
             <span>
-                <mat-icon style="vertical-align:-webkit-baseline-middle;font-size: 19px;margin-right: 15px;cursor: pointer;" *ngIf="darkTheme else star" (click)="toggleTheme()">wb_sunny</mat-icon>
+                <mat-icon style="vertical-align:-webkit-baseline-middle;font-size: 19px;margin-right: 15px;cursor: pointer;color: #fff;" *ngIf="darkTheme else star" (click)="toggleTheme()">wb_sunny</mat-icon>
                 <ng-template #star>
                     <!-- <mat-icon style="vertical-align:-webkit-baseline-middle;margin-right: 10px;font-size: 19px;" (click)="toggleTheme()">star_half</mat-icon> -->
-                    <img src="../../../assets/half-moon.png" (click)="toggleTheme()" style="vertical-align:text-top;margin-right: 15px;font-size: 19px;cursor: pointer;" width="18" height="18" alt="Half Moon Icon">
+                    <img src="../../../assets/half-moon.png" (click)="toggleTheme()" style="vertical-align:text-top;margin-right: 15px;font-size: 19px;cursor: pointer;background-color: #fff;border-radius: 50%;" width="18" height="18" alt="Half Moon Icon">
                 </ng-template>
             </span>
-            <li class="nav-item dropdown no-arrow" style="list-style:none;position: relative;">
+            <ul class="menu">
+                    <li>
+                        <a>
+                            <span>
+                                <span *ngIf="!email else logout">Sign Up</span> 
+                                <ng-template #logout>Logout</ng-template> 
+                            </span>
+                        </a>                    
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <mat-icon>perm_identity</mat-icon>
+                                    Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/login" *ngIf="!email">
+                                    <mat-icon>settings</mat-icon>
+                                    LogIn
+                                </a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['register']" *ngIf="!email">
+                                    <mat-icon> local_activity</mat-icon>
+                                    Register
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="signOut()" *ngIf="email" data-toggle="modal" data-target="#logoutModal">
+                                    <mat-icon>lock</mat-icon>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+            </ul>
+            <!-- <li class="nav-item dropdown no-arrow" style="list-style:none;position: relative;">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{headerName}}</span>
+                    <span class="btn btn-primary mr-2 d-none d-lg-inline text-gray-600 small">
+                        <span *ngIf="!email else logout">Sign Up</span> 
+                        <ng-template #logout>Logout</ng-template> 
+                    </span>
                     <img class="img-profile rounded-circle" style="position:relative;left:16px;" height="30" width="30"
                         src="../../../assets/undraw_profile.svg">
                 </a>
-                <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">
                         <mat-icon>perm_identity</mat-icon>
                         Profile
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" routerLink="/login" *ngIf="!email">
                         <mat-icon>settings</mat-icon>
-                        Settings
+                        LogIn
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" [routerLink]="['register']" *ngIf="!email">
                         <mat-icon> local_activity</mat-icon>
-                        Activity Log
+                        Register
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" (click)="loginPage()" data-toggle="modal" data-target="#logoutModal">
+                    <a class="dropdown-item" (click)="signOut()" *ngIf="email" data-toggle="modal" data-target="#logoutModal">
                         <mat-icon>lock</mat-icon>
                         Logout
                     </a>
                 </div>
-            </li>
+            </li> -->
         </div>
     </div>
 </nav>

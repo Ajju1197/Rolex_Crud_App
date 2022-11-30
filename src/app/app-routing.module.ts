@@ -10,10 +10,24 @@ import { LoginComponent } from './Components/Logins/login/login.component';
 import { RegisterComponent } from './Components/Logins/register/register.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ViewComponent } from './Components/view/view.component';
+import { AngularFireAuthGuard,redirectUnauthorizedTo,redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInHome = () => redirectLoggedInTo(['']);
 
 const routes: Routes = [
-  { path: '', component: AdminComponent, data: { animation: 'HomePage' } },
-  { path: 'login', component: LoginComponent },
+  {
+    path: '',
+    component: AdminComponent,
+    data: { animation: 'HomePage',authGuardPipe: redirectUnauthorizedToLogin },
+    canActivate: [AngularFireAuthGuard],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInHome }
+  },
   { path: 'register', component: RegisterComponent },
   { path: 'admin/view/:userId', component: ViewComponent, data: { animation: 'AboutPage' } },
   { path: 'admin/about', component: AboutComponent, data: { animation: 'AboutPage' } },

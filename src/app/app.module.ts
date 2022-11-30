@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// firebase related modules
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+
+// Firebase services + environment module
+import { AngularFireModule } from '@angular/fire/compat';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +16,10 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http'
 import { UsersService } from './Services/users.service';
+// Toastrmodule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 import { MeterialModule } from './meterial/meterial.module';
 import { UserComponentComponent } from './Components/user-component/user-component.component';
 import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY } from '@angular/material/autocomplete';
@@ -39,6 +46,7 @@ import { FilterComponent } from './Components/filter/filter.component';
 import { ImageViewComponent } from './Components/image-view/image-view.component';
 import { environment } from 'src/environments/environment';
 import { RegisterComponent } from './Components/Logins/register/register.component';
+import { AuthService } from './Services/auth.service';
 
 
 // import { SearchComponent } from './Components/search/search.component';
@@ -70,10 +78,12 @@ import { RegisterComponent } from './Components/Logins/register/register.compone
     BrowserModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
-    provideAuth(()=>getAuth()),
+    provideAuth(() => getAuth()),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     MeterialModule,
     ReactiveFormsModule,
     FormsModule,
@@ -81,8 +91,7 @@ import { RegisterComponent } from './Components/Logins/register/register.compone
     NgOptimizedImage,
     MatIconModule,
   ],
-  providers: [UsersService,AlertService
-  ],
+  providers: [UsersService,AlertService,AuthService],
   exports: [AlertDirective,ReactiveFormsModule,FormsModule],
   bootstrap: [AppComponent]
 })

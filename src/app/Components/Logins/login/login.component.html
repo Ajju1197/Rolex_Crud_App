@@ -1,8 +1,8 @@
-<div class="container my-5">
-  <div class="bg-img"></div>
-  <div class="row justify-content-end">
-    <div class="col-lg-5">
-      <div class="card p-4">
+<div class="container" style="margin:50px 0px;">
+  <!-- <div class="bg-img"></div> -->
+  <div class="row justify-content-center">
+    <div class="col-lg-4">
+      <div class="card p-4" style="background-color:#081c6f;color:#fff;box-shadow:7px 7px 28px 0px rgba(0, 0, 0, 0.5)">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
@@ -13,7 +13,11 @@
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password">
           </div>
-          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+          <div style="display: flex;column-gap:10px;align-items:center">
+            <button type="submit" class="btn mt-3" style="background:#000;color:#fff">Submit</button>
+            <span style="margin-top:5px;">Or</span>
+            <button type="submit" routerLink="/register" class="btn mt-3" style="background:#000;color:#fff">Sign Up</button>
+          </div>
         </form>
       </div>
     </div>

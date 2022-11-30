@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword} from '@angular/fire/auth';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/Services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -9,28 +13,47 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm! :FormGroup
+  registerForm: FormGroup;
+
+  get emailControl() {
+      return this.registerForm.get('email') as FormControl;
+  }
   
-  constructor(private fb: FormBuilder, private auth:Auth) { 
+  get passwordControl() {
+    return this.registerForm.get('password') as FormControl;
+  }
+  
+  constructor(private fb: FormBuilder, private auth: Auth, private authService: AuthService,private toastr:ToastrService,private router:Router) { 
     this.registerForm = this.fb.group({
-      email: fb.control('',[Validators.required,Validators.minLength(5),Validators.email]),
-      password: fb.control('',[Validators.required,Validators.minLength(5)]),
+      email: fb.control('',[Validators.required,Validators.email]),
+      password: fb.control('', [Validators.required, Validators.minLength(6)]),
     })
   }
 
 
   public onSubmit() {
-    console.log(this.registerForm.value);
-    createUserWithEmailAndPassword(
-      this.auth,
-      this.registerForm.value.email,
-      this.registerForm.value.password,
-    ).then((res:any) => {
-      console.log(res);
+    this.authService.signUp(
+      this.emailControl.value,
+      this.passwordControl.value
+    ).then((res) => {
+      this.router.navigateByUrl('/login');
+      this.toastr.success('Registration successful');
     }).catch((err) => {
       console.log(err);
-      alert(err.message)
+      this.toastr.error('Registration Failed');
+      
     })
+    // console.log(this.registerForm.value);
+    // createUserWithEmailAndPassword(
+    //   this.auth,
+    //   this.registerForm.value.email,
+    //   this.registerForm.value.password,
+    // ).then((res:any) => {
+    //   console.log(res);
+    // }).catch((err) => {
+    //   console.log(err);
+    //   alert(err.message)
+    // })
   }
   ngOnInit(): void {
   }

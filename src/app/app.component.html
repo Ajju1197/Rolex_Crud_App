@@ -5,15 +5,12 @@
     </div>
     <div class="content" [@routeAnimations]="prepareRoute(outlet)">
         <app-alert></app-alert>
-        <!-- <button (click)="submitSuccess()">Click me</button> -->
         <router-outlet #outlet="outlet"></router-outlet>
     </div>
     <div class="footer">
         <app-footer></app-footer>
     </div>
 </div>
-<!-- <a href="#" style="position: fixed;bottom:20px;right:30px;z-index: 999;" class="btn btn-primary scrollUp">Go up</a> -->
-<!-- <button >👆</button> -->
 <button style="position: fixed;bottom:20px;right:30px;z-index: 99999;" *ngIf="isShow" class="btn scrollUp" mat-icon-button (click)="gotoTop()">
     <mat-icon>keyboard_arrow_up</mat-icon>
 </button>

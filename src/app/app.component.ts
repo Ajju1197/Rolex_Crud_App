@@ -4,6 +4,8 @@ import { slideInAnimation } from './Animations/animation';
 import { titleAnimation } from './CustomDirectives/alert/alert.component';
 import Swal from 'sweetalert2'
 import { CommonService } from './shared/sharedServices/common.service';
+import { AuthService } from './Services/auth.service';
+
 
 
 
@@ -24,7 +26,14 @@ export class AppComponent implements OnInit {
   @Input() loginFormShowHide: boolean = true;
 
 
-  constructor(public _commonService:CommonService){}    
+  constructor(public _commonService: CommonService, private authService: AuthService) {
+    authService.getUser().subscribe((user) => {
+      console.log(user);
+    }, (err) => {
+      console.log(err);
+      
+    })
+  }    
   @HostListener('window:scroll')
   
  checkScroll() {
