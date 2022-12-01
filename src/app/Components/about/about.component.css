@@ -19,6 +19,37 @@
   }
 }
 
+.about-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+}
+.about-section p{
+  text-align: justify;
+}
+@media (max-width:992px) {
+  .about-section{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    row-gap: 2em;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-content h1{
+    text-align: center !important;
+  }
+  
+}
+.about-info-img{
+  height: 500px;
+  width: 100%;
+}
+.about-info-img img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
 .rolexImgWatchMovingClass{
   background: aqua;
   background: -webkit-linear-gradient(0deg, #15442b 0%, aqua 100%);
@@ -26,4 +57,70 @@
   margin-bottom: 1rem;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
+}
+
+.about-content ul{
+  list-style: none;
+  padding: 0;
+}
+.about-content ul li{
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+.about-content ul li strong{
+  margin-right: 10px;
+}
+.about-content ul li mat-icon{
+  color: #13bfed;
+}
+
+.btn.focus,
+.btn:focus,
+.form-control:focus,
+.custom-select:focus,
+.custom-select:focus {
+  box-shadow: none;
+}
+
+.form-control:focus,
+.custom-select:focus {
+  border: 1px solid #0C1CFF;
+}
+.form-control {
+  height: auto;
+  padding: 8px;
+  font-size: 14px;
+  color: #222222;
+  border-radius: 0;
+  background: #FDFDFD;
+  border: 1px solid #312BC6;
+}
+.form-control:focus{
+  border:1px solid lime
+}
+
+.custom-select {
+  height: auto;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 400;
+  color: #222222;
+  background-color: #FDFDFD;
+  border: 1px solid #312BC6;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  border-color: #E91E63;
+  background-color: #E91E63;
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+  box-shadow: none;
+}
+
+.custom-control-label {
+  cursor: pointer;
 }

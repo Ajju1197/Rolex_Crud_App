@@ -48,6 +48,31 @@ app-spinner{
   align-items: center;
   background: rgba(0,0,0,0.9);
 }
-app-about,app-admin{
+app-about{
   margin: auto;
+}
+@media (min-width:768px) {
+  .active {
+    /* margin-left: 300px; */
+    color: #fff !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    transition: .5s all ease-in-out;
+    position: relative;
+  }
+  .active::after{
+    content: '';
+    position: absolute;
+    left: 8px;
+    bottom: -3px;
+    transition: all .5s ease-in-out;
+    width:20%;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+  .active:hover::after{
+    transition: all .5s ease-in-out;
+    width: 80%;
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
   selector: 'app-about',
@@ -7,7 +8,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(public commonService:CommonService) { }
 
   @ViewChild('dateInput') dateOfBirth:ElementRef;
   @ViewChild('age') age: ElementRef;
