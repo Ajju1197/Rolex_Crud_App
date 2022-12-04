@@ -76,3 +76,20 @@
     font-size: 1rem !important;
   }
 }
+
+.loginUsersProfile{
+  min-height: 100.3vh;
+    width: 354px;
+    overflow: auto;
+    transition: all 1s ease-in-out;
+    top: 50px;
+    padding-top: 50px !important;
+    /* overflow-y: scroll; */
+    position: fixed;
+    padding: 15px;
+    left: 0px;
+}
+.transitionClass{
+    min-height: 30vh;
+    transition: all 1s ease-in-out;
+}

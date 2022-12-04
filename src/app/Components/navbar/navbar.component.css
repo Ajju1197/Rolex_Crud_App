@@ -220,7 +220,11 @@ a {  text-decoration: none !important;}
   opacity: 1;
   transform: translateY(0);
 }
-
+span a{
+  color: #fff;
+  display: block;
+  padding: 5px 20px;
+}
 .menu ul a {
   color: #fff;
   display: block;
@@ -244,5 +248,17 @@ a {  text-decoration: none !important;}
   .logoutbtn{
     display: block;
     background-color: #ed1337;
+  }
+}
+.loginmail{
+  list-style: none;
+}
+.loginmail a {
+  color: #fff;
+  margin-right: 1rem;
+}
+@media (max-width:992px) {
+  .loginmail{
+    display: none!important;
   }
 }

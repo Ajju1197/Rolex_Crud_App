@@ -5,6 +5,8 @@ import { titleAnimation } from './CustomDirectives/alert/alert.component';
 import Swal from 'sweetalert2'
 import { CommonService } from './shared/sharedServices/common.service';
 import { AuthService } from './Services/auth.service';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -21,14 +23,19 @@ import { AuthService } from './Services/auth.service';
 export class AppComponent implements OnInit {
   title = 'Angular-Crud-With-Api-App';
   isShow: boolean;
+  public loginposts:any = [];
   topPosToStartShowing = 50;
   darkTheme: boolean = true;
   @Input() loginFormShowHide: boolean = true;
 
 
-  constructor(public _commonService: CommonService, private authService: AuthService) {
+  constructor(
+    public _commonService: CommonService,
+    private authService: AuthService,
+  ) {
+
     authService.getUser().subscribe((user) => {
-      console.log(user);
+      console.log('this is app componenet user :' + user);
     }, (err) => {
       console.log(err);
       

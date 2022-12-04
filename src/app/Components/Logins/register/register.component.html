@@ -1,21 +1,131 @@
+<!-- <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4">
+      <div class="card p-4" style="background-color:#081c6f;color:#fff;box-shadow:7px 7px 28px 0px rgba(0, 0, 0, 0.5)">
+        <div class="mb-3">
+          <div class="text-center text-white text-uppercase">Sign Up Please</div>
+        </div>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+          
+         Image Uploaded Code
+         <div class="form-group">
+          <div class="text-center mb-1">
+            <label for="imagePicker" class="" style="position:relative;">
+              <mat-icon style="position:absolute;right:2px;top:2px;background:#fff;color:#000;font-size:18px;border:2px solid lime;cursor:pointer;border-radius:50%;">edit</mat-icon>
+              <img [src]="picture" width="100" height="100" style="border-radius:50%" class="profile" alt="">
+            </label>
+            <input type="file" name="image" id="imagePicker" accept="image/*" multiple="{false}" class="hidden" hidden 
+              (change)="uploadImage($event)"> 
+          </div>
+          <div [hidden]="!uploadPercent || uploadPercent == 100" class="text-white text-center">uploading {{uploadPercent | number:'1.0-0'}} % of 100%</div>
+          <div *ngIf="uploadPercent == 100" class="text-success text-uppercase text-center mb-3">Upload finished</div>
+        </div>
+
+
+          
+          Username
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="name" class="form-control" ngModel required name="name" id="name"
+              placeholder="Enter Name">
+          </div>
+
+          Email Address
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" ngModel name="email" required id="email" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+
+          Password
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" ngModel required name="password" id="password"
+              placeholder="Password">
+          </div>
+
+          InstUserName
+          <div class="form-group">
+            <label for="instaUserName">Insta User Name</label>
+            <input type="text" class="form-control" ngModel required name="instaUserName" id="instaUserName"
+              placeholder="instaUserName">
+          </div>
+
+          Country
+          <div class="form-group">
+            <label for="Country">Country</label>
+            <input type="text" class="form-control" ngModel required name="Country" id="Country"
+              placeholder="country">
+          </div>
+          
+          Bio
+          <div class="form-group">
+            <label for="exampleInputbio1">Bio</label>
+            <textarea type="text" class="form-control" ngModel required name="exampleInputbio1" id="exampleInputbio1"
+              placeholder="bio"></textarea>
+          </div>
+          
+          <button type="submit" class="btn mt-3" style="background:#000;color:#fff">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
 <div class="container" style="margin:50px 0px;">
-  <!-- <div class="bg-img"></div> -->
   <div class="row justify-content-center">
     <div class="col-lg-4">
       <div class="card p-4" style="background-color:#081c6f;color:#fff;box-shadow:7px 7px 28px 0px rgba(0, 0, 0, 0.5)">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1"
-              aria-describedby="emailHelp" placeholder="Enter email">
+
+          <!-- Image Uploaded Code -->
+        <div class="form-group">
+          <div class="text-center mb-1">
+            <label for="imagePicker" class="" style="position:relative;">
+              <mat-icon style="position:absolute;right:2px;top:2px;background:#fff;color:#000;font-size:18px;border:2px solid lime;cursor:pointer;border-radius:50%;">edit</mat-icon>
+              <img [src]="picture" width="100" height="100" style="border-radius:50%" class="profile" alt="">
+            </label>
+            <input type="file" name="image" id="imagePicker" accept="image/*" multiple="{false}" class="hidden" hidden 
+              (change)="uploadImage($event)"> 
+          </div>
+          <div [hidden]="!uploadPercent || uploadPercent == 100" class="text-white text-center">uploading {{uploadPercent | number:'1.0-0'}} % of 100%</div>
+          <div *ngIf="uploadPercent == 100" class="text-success text-uppercase text-center mb-3">Upload finished</div>
+        </div>
+
+        <!-- Name -->
+        <div class="form-group my-3">
+          <label for="name">Name</label>
+          <input type="name" class="form-control" formControlName="name" id="name" placeholder="Enter name">
+        </div>
+
+        <!-- Email -->
+          <div class="form-group my-3">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" formControlName="email" id="email" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1"
-              placeholder="Password">
+
+          <!-- Password -->
+          <div class="form-group my-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
           </div>
-          <button type="submit" class="btn mt-3" style="background:#000;color:#fff">Submit</button>
+
+
+          <!-- insta User Name -->
+          <div class="form-group my-3">
+            <label for="instaUserName">Insta UserName</label>
+            <input type="instaUserName" class="form-control" formControlName="username" id="instaUserName" placeholder="instaUserName">
+          </div>
+          
+          <!-- Bio -->
+          <div class="form-group my-3">
+            <label for="bio">Bio</label>
+            <input type="bio" class="form-control" formControlName="bio" id="bio" placeholder="bio">
+          </div>
+
+          <div style="display: flex;column-gap:10px;align-items:center">
+            <button type="submit" class="btn mt-3" style="background:#000;color:#fff">Submit</button>
+          </div>
         </form>
       </div>
     </div>

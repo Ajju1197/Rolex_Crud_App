@@ -1,0 +1,72 @@
+<div class="jumbotron text-center">
+  <h1 class="display-5" style="color:#fff">Add Insta Post</h1>
+</div>
+
+<!-- Loading -->
+<div class="spinnerClass" *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="container">
+  <div class="row custom-wrapper justify-content-center" style="padding:10px;border-radius:5px;width: 500px;" [ngStyle]="{'background': this._commonService.darkTheme ? '#fff':'#e6e6e6'}">
+    <div class="col-md-12 col-sm-12">
+      <!-- Form starts -->
+      <form (ngSubmit)="onSubmit()">
+        <div class="group-gap">
+
+        <!-- Image Uploaded Code -->
+        <div class="form-group">
+          <div class="text-center mb-1">
+            <label for="imagePicker" class="" style="position:relative;">
+              <mat-icon style="position:absolute;right:2px;top:20px;background:#fff;color:#000;font-size:18px;border:2px solid lime;cursor:pointer;border-radius:50%;">edit</mat-icon>
+              <img [src]="picture" width="150" height="150" style="border-radius:50%" class="profile" alt="">
+            </label>
+            <input type="file" name="image" id="imagePicker" accept="image/*" multiple="{false}" class="hidden" hidden 
+              (change)="uploadImage($event)"> 
+          </div>
+          <div [hidden]="!uploadPercent || uploadPercent == 100" class="text-white text-center">uploading {{uploadPercent | number:'1.0-0'}} % of 100%</div>
+          <div *ngIf="uploadPercent == 100" class="text-success text-uppercase text-center mb-3">Upload finished</div>
+        </div>
+
+          <!-- name -->
+          <!-- <div>
+            <div class="mb-3">
+              <label>Name</label>
+              <input type="text" name="name" id="name" class="form-control" [(ngModel)]="name" required/>
+            </div>
+          </div> -->
+
+
+          <!-- Insta Id -->
+          <!-- <div>
+            <div class="mb-3">
+              <label>Insta Id</label>
+              <input type="text"  name="instaId" id="instaId" class="form-control" [(ngModel)]="instaId" required/>
+            </div>
+          </div> -->
+
+          <!-- Bio -->
+          <!-- <div class="mb-3">
+            <label>bio</label>
+            <input type="text"  name="bio" id="bio" class="form-control" [(ngModel)]="bio" />
+          </div> -->
+
+          <!-- Bio -->
+          <div class="mb-3">
+            <label>Location</label>
+            <input type="text"  name="location" id="location" class="form-control" [(ngModel)]="location" />
+          </div>
+
+          <!-- Description -->
+          <div class="mb-3">
+            <label>description</label>
+            <textarea class="form-control" name="description" id="description" cols="30" placeholder="Some description" rows="2" [(ngModel)]="description"></textarea>
+          </div>
+        </div>
+        <button type="submit" [disabled]="!picture" class="btn inverted-3">Submit</button>
+        <span class="btn ms-3 inverted-3" style="background-color: #012970;color:#fff;" onclick="history.go(-1)">GO Back</span>
+      </form>
+      <!-- Form ends -->
+    </div>
+  </div>
+</div>

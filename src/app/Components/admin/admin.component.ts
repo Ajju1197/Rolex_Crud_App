@@ -1,5 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin',
@@ -18,13 +20,33 @@ import { animate, style, transition, trigger } from '@angular/animations';
 })
 export class AdminComponent implements OnInit {
 
+  isActive: boolean = false;
+  title:string = 'Profiles of who logged in this Website'
 
-  constructor() { }
+  public loginposts: any = [];
+
+  constructor(
+    private _db: AngularFireDatabase,
+    private _toastr: ToastrService,
+  ) { 
+        // Getting all the loginposts from AngularFireDataBase
+        _db.object('/loginposts').valueChanges().subscribe((obj) => {
+          if (obj) {
+            this.loginposts = Object.values(obj);
+          } else {
+            this._toastr.error('No user Found')
+            this.loginposts = [];
+          }
+        })
+  }
 
   ngOnInit(): void {
 
   }
 
 
+  clickToShowLoginUsersProfiles() {
+    this.isActive =!this.isActive;
+  }
 
 }

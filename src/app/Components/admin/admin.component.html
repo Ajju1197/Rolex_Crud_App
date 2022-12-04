@@ -1,10 +1,30 @@
 <section class="d-flex flex-column align-items-center justify-content-center" id="hero">
-    <!-- <div color="#ffffff" id="text_982d9e3eb996f559e633f4d194def3761d909f5a3b647d1a851fead67c32c9d1" class="sc-fzomuh eyDhvh">
-        <div style="display:flex;justify-content:center;flex-direction: column;align-items: center;">
-            <h1 size="100" class="sc-fzqMAW idLvDf" style="background-color: #012970;">Rolex Watches</h1>
-            <h2 class="sc-fzpkqZ fOXUpi sc-fzoVTD Atfvz" style="background-color: #012970;">The Collection</h2>
+        <div class="loginUsersProfile" [ngStyle]="{'background': isActive === true ? 'rgba(0,0,0,0.47)':'transparent'}">
+            <div class="mb-3 text-center">
+                <label style="color:white;background:#012970;padding: 10px;cursor: pointer;" (click)="clickToShowLoginUsersProfiles()">{{title | uppercase}}</label>
+            </div>
+            <ng-container *ngFor="let loginpost of loginposts">
+                <div class="card mb-3 bg-dark text-white" *ngIf="isActive" [ngClass]="{'transitionClass': isActive === true }">
+                    <div class="card-header text-white">
+                        <div class="form-group mb-3 text-center">
+                            <img [src]="loginpost.picture" width="100" height="100" style="border-radius:50%;border:2px solid lime" [alt]="loginpost.name">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="form-control-label" [attr.for]="loginpost.id">Login User Name : {{loginpost.name | uppercase}}</label>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="form-control-label" [attr.for]="loginpost.id">Login User Email : {{loginpost.email}}</label>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="form-control-label" [attr.for]="loginpost.id">Login User Insta Id  : {{loginpost.username}}</label>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="form-control-label" [attr.for]="loginpost.id">Login User Bio  : {{loginpost.bio | titlecase}}</label>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
         </div>
-    </div> -->
     <h1 @slideAnimation>Hi, I'm Syed Ajmathulla!</h1>
     <h2>I am a Web Developer</h2>
 </section>

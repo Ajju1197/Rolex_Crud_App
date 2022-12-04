@@ -34,12 +34,30 @@ export class NavbarComponent implements OnInit {
   @Input() darkTheme;
   @Input() showHidePages: boolean = false;
 
-  constructor(private router: Router, public commonService: CommonService, public authService: AuthService, private toastrService: ToastrService) {
+  constructor(
+    private router: Router,
+    public commonService: CommonService,
+    public authService: AuthService,
+    private toastrService: ToastrService
+  ) {
     this.authService.getUser().subscribe((user) => {
+      console.log("this is navbar component User :" , user);
+      
       this.email = user?.email;
-      console.log('this is the email' + this.email);
+      console.log('this is the navbar component email ' + this.email);
       
     })
+  }
+
+  async signOut() {
+    try {
+      await this.authService.signOut();
+      this.router.navigateByUrl('/login');
+      this.toastrService.info('Logout Success')
+      this.email = null;
+    } catch (error) {
+      this.toastrService.error('something is wrong')
+    }
   }
 
 
@@ -60,14 +78,6 @@ export class NavbarComponent implements OnInit {
       }
     }
 
-    // window.addEventListener('click', function () {
-    //   if (window.innerWidth >= 800) {
-    //     this.showSideNavShow = false;
-    //   } else {
-    //     this.showSideNavShow = true;
-    //   }
-    // })
-
   }
   openNav() {
     this.isActive = !this.isActive
@@ -86,22 +96,6 @@ export class NavbarComponent implements OnInit {
     this.isDarkTheme.emit();
   }
 
-  loginPage() {
-    // this.router.navigate(['/login'])
-    // this.showHidePages = !this.showHidePages;
-    // this.commonService.showHidePages = this.showHidePages;
-    // window.location.reload()
-  }
-
-  async signOut() {
-    try {
-      await this.authService.signOut();
-      this.router.navigateByUrl('/login');
-      this.toastrService.info('Login Again to continue')
-    } catch (error) {
-      this.toastrService.error('something is wrong')
-    }
-  }
 
   isShowHide() {
     this.isShow = !this.isShow

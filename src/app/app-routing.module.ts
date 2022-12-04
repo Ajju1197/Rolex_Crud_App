@@ -10,7 +10,10 @@ import { LoginComponent } from './Components/Logins/login/login.component';
 import { RegisterComponent } from './Components/Logins/register/register.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ViewComponent } from './Components/view/view.component';
+// AngularFireAuthGuard
 import { AngularFireAuthGuard,redirectUnauthorizedTo,redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
+import { AddInstaPostComponent } from './Components/add-insta-post/add-insta-post.component';
+import { AllPostStoriesInOnePlaceComponent } from './Components/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInHome = () => redirectLoggedInTo(['']);
@@ -28,12 +31,34 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectLoggedInHome }
   },
-  { path: 'register', component: RegisterComponent },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe:redirectLoggedInHome }
+  },
   { path: 'admin/view/:userId', component: ViewComponent, data: { animation: 'AboutPage' } },
   { path: 'admin/about', component: AboutComponent, data: { animation: 'AboutPage' } },
   { path: 'admin/edit', component: EditComponent },
   { path: 'admin/edit/:userId', component: EditComponent },
-  { path: 'admin/add', component: AddComponent },
+  {
+    path: 'admin/add',
+    component: AddComponent,
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'admin/addInstaPost',
+    component: AddInstaPostComponent,
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'admin/allPostsInOnePlace',
+    component: AllPostStoriesInOnePlaceComponent,
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+  },
   { path: 'admin/albums', component: GalleryComponent },
   { path: 'admin/album/:albumId', component: ImageViewComponent },
   { path: 'admin/posts', loadChildren: () => import('./Components/posts/posts.module').then(m => m.PostsModule) },

@@ -1,0 +1,143 @@
+          <!-- PhoneNumber -->
+          <div>
+            <div class="mb-3">
+              <label [ngClass]="{error: submitted && myForm.phone.errors}">
+                Phone Number</label>
+              <input type="text" class="form-control" formControlName="phone" [ngClass]="{ error: submitted && myForm.phone.errors}" />
+              <!-- error block -->
+              <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.required">
+                <sup>*</sup>Enter your PhoneNumber
+              </div>
+              <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.minlength">
+                <sup>*</sup>Name must be 2 characters long
+              </div>
+              <div class="invalid-feedback" *ngIf="submitted && myForm.phone.errors?.pattern">
+                <sup>*</sup>special charcter Not allowed
+              </div>
+            </div>
+          </div>
+
+          <!-- Address -->
+        <div class="group-gap" formGroupName="address">
+          <h5 class="mb-3">Address</h5>
+          <div class="mb-3">
+            <label [ngClass]="{'error': submitted && myForm.address.controls.street.errors}">Street</label>
+            <input type="text" class="form-control" formControlName="street" [ngClass]="{'error': submitted && myForm.address.controls.street.errors}">
+
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.address.controls.street.errors?.required">
+              <sup>*</sup>Please enter your street
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label [ngClass]="{'error': submitted && myForm.address.controls.city.errors}">City</label>
+            <input type="text" class="form-control" formControlName="city" [ngClass]="{'error': submitted && myForm.address.controls.city.errors}">
+
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.address.controls.city.errors?.required">
+              <sup>*</sup>Please enter your city
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label [ngClass]="{'error': submitted && myForm.address.controls.zipcode.errors}">Zipcode</label>
+            <input type="text" class="form-control" formControlName="zipcode" [ngClass]="{'error': submitted && myForm.address.controls.zipcode.errors}">
+
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.address.controls.zipcode.errors?.required">
+              <sup>*</sup>Please enter your zipcode
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label [ngClass]="{'error': submitted && myForm.address.controls.state.errors}">State</label>
+            <select class="custom-select d-block w-100" (change)="changeState($event)" formControlName="state"
+              [ngClass]="{'error': submitted && myForm.address.controls.state.errors}">
+              <option value="">Choose...</option>
+              <option *ngFor="let state of States" [ngValue]="state">{{state}}</option>
+            </select>
+
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.address.controls.state.errors?.required">
+              <sup>*</sup>Please enter your state name
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+ 
+  // File Uploading
+
+  @ViewChild('fileInput') el: ElementRef;
+  imageUrl: any = 'https://images.unsplash.com/photo-1640437831350-cacb7fa66989?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvbGV4fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
+  editFile: boolean = true;
+  removeUpload: boolean = false;
+  uploadFile(event) {
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      reader.readAsDataURL(file)
+
+      When file uploads set it to file formcontrol
+      reader.onload = () => {
+        this.imageUrl = reader.result;
+        this.fb.patchValue({
+          file: reader.result
+        });
+        this.editFile = false;
+        this.removeUpload = true;
+      }
+      ChangeDetectorRef since file is loading outside the zone
+      this.cd.markForCheck();
+    }
+  }
+
+  removeUploadedFile() {
+    let newFileList = Array.from(this.el.nativeElement.files);
+    this.imageUrl = 'https://images.unsplash.com/photo-1640437831350-cacb7fa66989?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvbGV4fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60';
+    this.editFile = true;
+    this.removeUpload = false;
+    this.fb.patchValue({
+      file: [null]
+    });
+  }
+
+
+          <!-- Upload image -->
+          <div class="avatar-upload">
+            <div class="avatar-edit">
+              <input type='file' id="imageUpload" formControlName="file" value={this.state.image} accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+              <label for="imageUpload" *ngIf="editFile" [ngClass]="['custom-label', 'upload-image']"></label>
+              <label *ngIf="removeUpload" [ngClass]="['custom-label', 'remove-image']" (click)="removeUploadedFile()"></label>
+            </div>
+            <div class="avatar-preview">
+              <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+  
+    // Choose city using select dropdown
+    changeState(e) {
+      this.fb.get('address.state').setValue(e.target.value, {
+        onlySelf: true
+      })
+    }
+
+
+    phone:['',[Validators.required,Validators.maxLength(10),Validators.minLength(10), Validators.pattern('^[0-9]+$')]],
+    address: this.formBuilder.group({
+      street: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      zipcode: ['', [Validators.required]]
+    }),

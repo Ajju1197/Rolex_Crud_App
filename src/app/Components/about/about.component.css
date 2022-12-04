@@ -124,3 +124,40 @@
 .custom-control-label {
   cursor: pointer;
 }
+
+
+#hero{
+  width: 100% !important;
+  height: 100vh;
+  background-size: cover !important;
+  object-fit: cover;
+  background-attachment: fixed !important;
+  padding: 0 15px;
+  background: url(../../../assets/ajjulambo.webp) no-repeat top center;
+  /* background: url('/assets/ajju-old-bike.webp'); */
+}
+
+#hero h1{
+  margin: 0 0 10px 0;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 56px;
+  color: #ebed13;
+}
+#hero h2{
+  color: #fff;
+  padding: 5px;
+  margin-bottom: 10px;
+  background-color: #13bfed;
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+}
+@media (max-width:768px) {
+  #hero h1{
+    font-size: 1.6rem !important;
+  }
+  #hero h2{
+    font-size: 1rem !important;
+  }
+}

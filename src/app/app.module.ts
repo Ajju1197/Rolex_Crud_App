@@ -8,6 +8,9 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 
 // Firebase services + environment module
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,6 +50,10 @@ import { ImageViewComponent } from './Components/image-view/image-view.component
 import { environment } from 'src/environments/environment';
 import { RegisterComponent } from './Components/Logins/register/register.component';
 import { AuthService } from './Services/auth.service';
+import { AllPostStoriesInOnePlaceComponent } from './Components/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
+import { AddInstaPostComponent } from './Components/add-insta-post/add-insta-post.component';
+
+
 
 
 // import { SearchComponent } from './Components/search/search.component';
@@ -73,6 +80,8 @@ import { AuthService } from './Services/auth.service';
     FilterComponent,
     ImageViewComponent,
     RegisterComponent,
+    AllPostStoriesInOnePlaceComponent,
+    AddInstaPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +89,9 @@ import { AuthService } from './Services/auth.service';
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,

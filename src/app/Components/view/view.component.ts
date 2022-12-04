@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IUser } from 'src/app/Modals/IUser';
 import { UsersService } from 'src/app/Services/users.service';
+
 
 
 @Component({
@@ -15,7 +18,19 @@ export class ViewComponent implements OnInit {
   public userId: string;
   public errorMessage: string;
 
-  constructor(private _userService: UsersService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
+
+
+  constructor(
+    private _userService: UsersService,
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router,
+    private _db: AngularFireDatabase,
+    private _toastr:ToastrService,
+  ) { 
+    this.loading = true;
+  }
+
+
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((param) => {
       this.userId = param.get('userId')
@@ -25,6 +40,7 @@ export class ViewComponent implements OnInit {
       this.loading = true;
       this._userService.getUser(this.userId).subscribe((data) => {
         this.user = data;
+        this._toastr.success('User fetched Successfully!')
         console.log(this.user);
         this.loading = false;
       }, (err) => {

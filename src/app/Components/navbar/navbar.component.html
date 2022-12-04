@@ -32,15 +32,24 @@
 
         <!-- Nav Item - User Information -->
         <div class="d-flex align-items-center">
-            <span>
+            <li class="loginmail">
+                <a *ngIf="email">
+                    {{email}}
+                </a>
+            </li>
+            <!-- <span>
                 <mat-icon style="vertical-align:-webkit-baseline-middle;font-size: 19px;margin-right: 15px;cursor: pointer;color: #fff;" *ngIf="darkTheme else star" (click)="toggleTheme()">wb_sunny</mat-icon>
                 <ng-template #star>
-                    <!-- <mat-icon style="vertical-align:-webkit-baseline-middle;margin-right: 10px;font-size: 19px;" (click)="toggleTheme()">star_half</mat-icon> -->
                     <img src="../../../assets/half-moon.png" (click)="toggleTheme()" style="vertical-align:text-top;margin-right: 15px;font-size: 19px;cursor: pointer;background-color: #fff;border-radius: 50%;" width="18" height="18" alt="Half Moon Icon">
                 </ng-template>
-            </span>
-            <a class="btn logoutbtn" (click)="signOut()" *ngIf="email" style="cursor:pointer;" data-toggle="modal" data-target="#logoutModal">Logout</a>
-            <ul class="menu" *ngIf="!email">
+            </span> -->
+
+        <!-- Post Story -->
+        <div class="postStoryClass" *ngIf="email">
+            <a class="btn btn-success postStorylink" [routerLink]="['/admin/addInstaPost']">Post Your Story</a>
+        </div>
+
+            <ul class="menu">
                     <li>
                         <a>
                             <span>
@@ -49,12 +58,6 @@
                             </span>
                         </a>                    
                         <ul>
-                            <li>
-                                <a href="#">
-                                    <mat-icon>perm_identity</mat-icon>
-                                    Profile
-                                </a>
-                            </li>
                             <li>
                                 <a routerLink="/login" *ngIf="!email">
                                     <mat-icon>settings</mat-icon>
@@ -71,6 +74,15 @@
                                 <a (click)="signOut()" style="cursor:pointer;" *ngIf="email" data-toggle="modal" data-target="#logoutModal">
                                     <mat-icon>lock</mat-icon>
                                     Logout
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="toggleTheme()" style="cursor:pointer;" data-toggle="modal" data-target="#logoutModal">
+                                    <label *ngIf="darkTheme === false; else light"> Dark Mode </label>
+                                    <ng-template #light>
+                                        <label>Light Mode </label>
+                                    </ng-template>
+                                    
                                 </a>
                             </li>
                         </ul>
