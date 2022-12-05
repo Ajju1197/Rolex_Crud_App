@@ -78,7 +78,7 @@
 }
 
 .loginUsersProfile{
-  min-height: 100.3vh;
+    height: 100.3vh;
     width: 354px;
     overflow: auto;
     transition: all 1s ease-in-out;
@@ -92,4 +92,26 @@
 .transitionClass{
     min-height: 30vh;
     transition: all 1s ease-in-out;
+}
+
+@media (max-width:767px) {
+  .loginUsersProfile{
+    width: 65%;
+    padding-left: 50px;
+  }
+  .loggedInWebsiteProfilesbtnClass{
+    writing-mode: vertical-rl;
+    position: absolute;
+    top:45px;
+    left:5px;
+    z-index: 1;
+    text-orientation: upright;
+  }
+  
+}
+@media (max-width:568px) {
+  .loginUsersProfile{
+    width: 100%;
+    padding-left: 50px;
+  }
 }

@@ -33,7 +33,7 @@ export class AllPostStoriesInOnePlaceComponent implements OnInit,OnChanges {
     })
 
 
-    _db.object('/posts').valueChanges().subscribe((obj) => {
+    _db.object(`/posts`).valueChanges().subscribe((obj) => {
       if (obj) {
       this.posts = Object.values(obj).sort((a,b) => b.date - a.date)
       } else {
@@ -52,7 +52,7 @@ export class AllPostStoriesInOnePlaceComponent implements OnInit,OnChanges {
     if (this.posts.vote) {
       Object.values(this.posts.vote).map((val: any) => {
         if (val.upVote) {
-          this.upVote ++
+          this.upVote += 1
         }
         if (val.downVote) {
           this.downVote += 1

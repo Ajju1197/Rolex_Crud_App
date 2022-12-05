@@ -23,7 +23,7 @@
 }
 
 .header.small {
-  height: 50px;
+  height: 65px;
   position: fixed;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
@@ -248,6 +248,9 @@ span a{
   .logoutbtn{
     display: block;
     background-color: #ed1337;
+  }
+  .postStoryClass{
+    display: none;
   }
 }
 .loginmail{
