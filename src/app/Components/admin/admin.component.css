@@ -317,4 +317,5 @@
   text-decoration: none;
   bottom: 20px;
   right: 71px;
+  z-index: 99;
 }
