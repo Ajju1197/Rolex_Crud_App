@@ -12,8 +12,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ViewComponent } from './Components/view/view.component';
 // AngularFireAuthGuard
 import { AngularFireAuthGuard,redirectUnauthorizedTo,redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
-import { AddInstaPostComponent } from './Components/add-insta-post/add-insta-post.component';
-import { AllPostStoriesInOnePlaceComponent } from './Components/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
+import { AddInstaPostComponent } from './InstagramPosts/add-insta-post/add-insta-post.component';
+import { AllPostStoriesInOnePlaceComponent } from './InstagramPosts/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInHome = () => redirectLoggedInTo(['']);

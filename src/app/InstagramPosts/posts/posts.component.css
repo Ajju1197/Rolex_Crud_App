@@ -1,0 +1,13 @@
+.card .postImageHeightClass{
+  height: 250px !important;
+}
+.card .postImageHeightClass img{
+  height: 100% !important;
+  object-fit: cover;
+}
+.postDescription{
+  width: 80%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

@@ -21,7 +21,8 @@ import { ToastrService } from 'ngx-toastr';
 export class AdminComponent implements OnInit {
 
   isActive: boolean = false;
-  title:string = 'Profiles of who logged in this Website'
+  isAnimate: boolean;
+  title:string = 'Login Profiles'
 
   public loginposts: any = [];
 
@@ -42,6 +43,11 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
 
+    setInterval(() => {
+      console.log('ajju bhai animate');
+      this.isAnimate =! this.isAnimate
+    }, 3000)
+    
   }
 
 

@@ -50,8 +50,9 @@ import { ImageViewComponent } from './Components/image-view/image-view.component
 import { environment } from 'src/environments/environment';
 import { RegisterComponent } from './Components/Logins/register/register.component';
 import { AuthService } from './Services/auth.service';
-import { AllPostStoriesInOnePlaceComponent } from './Components/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
-import { AddInstaPostComponent } from './Components/add-insta-post/add-insta-post.component';
+import { AllPostStoriesInOnePlaceComponent } from './InstagramPosts/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
+import { AddInstaPostComponent } from './InstagramPosts/add-insta-post/add-insta-post.component';
+import { PostsComponent } from './InstagramPosts/posts/posts.component';
 
 
 
@@ -82,6 +83,7 @@ import { AddInstaPostComponent } from './Components/add-insta-post/add-insta-pos
     RegisterComponent,
     AllPostStoriesInOnePlaceComponent,
     AddInstaPostComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,

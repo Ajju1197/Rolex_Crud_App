@@ -265,3 +265,8 @@ span a{
     display: none!important;
   }
 }
+@media (max-width:1050px) and (min-width:1000px) {
+  .loginmail{
+    display: none ;
+  }
+}

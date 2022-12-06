@@ -1,9 +1,10 @@
 <section class="d-flex flex-column align-items-center justify-content-center" id="hero">
     <img src="../../../assets/Ajju-goa.webp" class="bg-img-goa kenburns-top img-fluid" alt="bg img">
+    <a class="allInstaPostsInOnePlaceClass" [ngClass]="{'shake-horizontal': isAnimate === true}" routerLink="/admin/allPostsInOnePlace">See All Posted Stories</a>
+    <a class="loggedInWebsiteProfilesbtnClass" [ngClass]="{'shake-horizontal': isAnimate === true}" (click)="clickToShowLoginUsersProfiles()">{{title | uppercase}}</a>
         <div class="loginUsersProfile" [ngStyle]="{'background': isActive === true ? 'rgba(0,0,0,0.47)':'transparent'}">
-            <div class="mb-3 text-center">
-                <label class="loggedInWebsiteProfilesbtnClass" style="color:white;background:#012970;padding: 10px;cursor: pointer;" (click)="clickToShowLoginUsersProfiles()">{{title | uppercase}}</label>
-            </div>
+            <!-- <div class="mb-3 text-center" >
+            </div> -->
             <ng-container *ngFor="let loginpost of loginposts">
                 <div class="card mb-3 bg-dark text-white" *ngIf="isActive" [ngClass]="{'transitionClass': isActive === true }">
                     <div class="card-header text-white">
@@ -11,16 +12,16 @@
                             <img [src]="loginpost.picture" width="100" height="100" style="border-radius:50%;border:2px solid lime" [alt]="loginpost.name">
                         </div>
                         <div class="form-group mb-2">
-                            <label class="form-control-label" [attr.for]="loginpost.id">Login User Name : {{loginpost.name | uppercase}}</label>
+                            <label class="form-control-label" [attr.for]="loginpost.id">Name : {{loginpost.name | uppercase}}</label>
                         </div>
                         <div class="form-group mb-2">
-                            <label class="form-control-label" [attr.for]="loginpost.id">Login User Email : {{loginpost.email}}</label>
+                            <label class="form-control-label" [attr.for]="loginpost.id">Email : {{loginpost.email}}</label>
                         </div>
                         <div class="form-group mb-2">
-                            <label class="form-control-label" [attr.for]="loginpost.id">Login User Insta Id  : {{loginpost.username}}</label>
+                            <label class="form-control-label" [attr.for]="loginpost.id">Insta Id  : {{loginpost.username}}</label>
                         </div>
                         <div class="form-group mb-2">
-                            <label class="form-control-label" [attr.for]="loginpost.id">Login User Bio  : {{loginpost.bio | titlecase}}</label>
+                            <label class="form-control-label" [attr.for]="loginpost.id">Bio  : {{loginpost.bio | titlecase}}</label>
                         </div>
                     </div>
                 </div>
