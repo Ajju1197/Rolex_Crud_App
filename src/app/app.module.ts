@@ -53,6 +53,7 @@ import { AuthService } from './Services/auth.service';
 import { AllPostStoriesInOnePlaceComponent } from './InstagramPosts/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
 import { AddInstaPostComponent } from './InstagramPosts/add-insta-post/add-insta-post.component';
 import { PostsComponent } from './InstagramPosts/posts/posts.component';
+import { EditpostComponent } from './InstagramPosts/editpost/editpost.component';
 
 
 
@@ -84,6 +85,7 @@ import { PostsComponent } from './InstagramPosts/posts/posts.component';
     AllPostStoriesInOnePlaceComponent,
     AddInstaPostComponent,
     PostsComponent,
+    EditpostComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 // npm install @fortawesome/free-regular-svg-icons
 import {
@@ -17,6 +17,9 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class PostsComponent implements OnInit {
   @Input()
   post;
+
+  @Output() notifyDelete: EventEmitter<any> = new EventEmitter<any>();
+
 
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
@@ -65,6 +68,13 @@ export class PostsComponent implements OnInit {
 
   getInstaUrl() {
     return `https://instagram.com/${this.post.instaId}`;
+  }
+
+
+  deletePost(id) {
+    console.log('ajju');
+    
+    this.notifyDelete.emit(id)
   }
 
 }

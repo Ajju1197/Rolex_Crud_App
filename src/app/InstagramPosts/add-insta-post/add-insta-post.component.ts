@@ -40,7 +40,7 @@ export class AddInstaPostComponent implements OnInit {
     private db: AngularFireDatabase,
     private strorage: AngularFireStorage,
     private toastr: ToastrService,
-    auth: AuthService,
+    private auth: AuthService,
     private router: Router,
   ) {
     auth.getUser().subscribe((user) => {

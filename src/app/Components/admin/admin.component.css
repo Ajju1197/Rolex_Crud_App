@@ -263,6 +263,7 @@
     transition: all 1s ease-in-out;
     top: 50px;
     padding-top: 50px !important;
+    padding-bottom: 50px !important;
     /* overflow-y: scroll; */
     position: fixed;
     padding: 15px;
@@ -277,23 +278,12 @@
 @media (max-width:767px) {
   .loginUsersProfile{
     width: 65%;
-    padding-left: 50px;
-  }
-  .loggedInWebsiteProfilesbtnClass{
-    /* writing-mode: vertical-rl; */
-    /* position: fixed;
-    top:40px;
-    left:5px;
-    padding: 0px !important;
-    z-index: 1; */
-    /* text-orientation: upright; */
   }
   
 }
 @media (max-width:568px) {
   .loginUsersProfile{
     width: 100%;
-    padding-left: 50px;
   }
 }
 

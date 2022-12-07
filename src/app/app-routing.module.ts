@@ -14,6 +14,7 @@ import { ViewComponent } from './Components/view/view.component';
 import { AngularFireAuthGuard,redirectUnauthorizedTo,redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
 import { AddInstaPostComponent } from './InstagramPosts/add-insta-post/add-insta-post.component';
 import { AllPostStoriesInOnePlaceComponent } from './InstagramPosts/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
+import { EditpostComponent } from './InstagramPosts/editpost/editpost.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInHome = () => redirectLoggedInTo(['']);
@@ -50,6 +51,12 @@ const routes: Routes = [
   {
     path: 'admin/addInstaPost',
     component: AddInstaPostComponent,
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'admin/editInstaPost',
+    component: EditpostComponent,
     canActivate: [AngularFireAuthGuard],
     data:{ authGuardPipe: redirectUnauthorizedToLogin }
   },

@@ -2,6 +2,8 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
+//uuid
+import { v4 as uuidv4 } from "uuid";
 
 @Component({
   selector: 'app-all-post-stories-in-one-place',
@@ -12,7 +14,6 @@ export class AllPostStoriesInOnePlaceComponent implements OnInit {
 
   public loading = false;
   posts = [];
-
 
   constructor(
     private db: AngularFireDatabase,
@@ -39,4 +40,8 @@ export class AllPostStoriesInOnePlaceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+  deletePost(event) {
+    // this.db.object(`/posts/${this.posts.}`);
+  }
 }
