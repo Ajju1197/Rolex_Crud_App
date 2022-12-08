@@ -13,7 +13,7 @@
   <ng-template #Content>
     <div class="row">
       <ng-container *ngFor="let post of posts">
-        <div class="col-md-6 col-lg-4 col-sm-12">
+        <div class="col-md-6 col-lg-4 col-sm-12 mt-3">
           <!-- will render list of post here -->
           <div>
             <app-posts [post]="post" (notifyDelete)="deletePost($event)"></app-posts>

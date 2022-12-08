@@ -1,11 +1,12 @@
 <section class="d-flex flex-column align-items-center justify-content-center" id="hero">
-    <img src="../../../assets/Ajju-goa.webp" class="bg-img-goa kenburns-top img-fluid" alt="bg img">
+    <img ngSrc="../../../assets/Ajju-goa.webp" width="1000" height="1000" class="bg-img-goa kenburns-top img-fluid" alt="bg img" priority fill>
     <a class="allInstaPostsInOnePlaceClass" [ngClass]="{'shake-horizontal': isAnimate === true}" routerLink="/admin/allPostsInOnePlace">See All Posted Stories</a>
     <a class="loggedInWebsiteProfilesbtnClass" [ngClass]="{'shake-horizontal': isAnimate === true}" (click)="clickToShowLoginUsersProfiles()">{{title | uppercase}}</a>
         <div class="loginUsersProfile" [ngStyle]="{'background': isActive === true ? 'rgba(0,0,0,0.47)':'transparent'}">
             <!-- <div class="mb-3 text-center" >
             </div> -->
             <ng-container *ngFor="let loginpost of loginposts">
+                <!-- <pre>{{loginpost | json}}</pre> -->
                 <div class="card mb-3 bg-dark text-white" *ngIf="isActive" [ngClass]="{'transitionClass': isActive === true }">
                     <div class="card-header text-white">
                         <div class="form-group mb-3 text-center">
@@ -18,7 +19,7 @@
                             <label class="form-control-label" [attr.for]="loginpost.id">Email : {{loginpost.email}}</label>
                         </div>
                         <div class="form-group mb-2">
-                            <label class="form-control-label" [attr.for]="loginpost.id">Insta Id  : {{loginpost.username}}</label>
+                            <label class="form-control-label" [attr.for]="loginpost.id">Insta Id  : {{loginpost.instaId}}</label>
                         </div>
                         <div class="form-group mb-2">
                             <label class="form-control-label" [attr.for]="loginpost.id">Bio  : {{loginpost.bio | titlecase}}</label>

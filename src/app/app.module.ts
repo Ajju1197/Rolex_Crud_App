@@ -38,7 +38,7 @@ import { EditComponent } from './Components/edit/edit.component';
 import { GalleryComponent } from './Components/gallery/gallery.component';
 import { AboutComponent } from './Components/about/about.component';
 import { PostsModule } from './Components/posts/posts.module';
-import { NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage, PRECONNECT_CHECK_BLOCKLIST } from '@angular/common';
 import { AlertDirective } from './CustomDirectives/alert.directive';
 import { AlertComponent } from './CustomDirectives/alert/alert.component';
 import { AlertService } from './Services/alert.service';
@@ -107,7 +107,7 @@ import { EditpostComponent } from './InstagramPosts/editpost/editpost.component'
     NgOptimizedImage,
     MatIconModule,
   ],
-  providers: [UsersService,AlertService,AuthService],
+  providers: [UsersService,AlertService,AuthService, {provide: PRECONNECT_CHECK_BLOCKLIST,multi: true, useValue: 'https://your-domain.com'}],
   exports: [AlertDirective,ReactiveFormsModule,FormsModule],
   bootstrap: [AppComponent]
 })

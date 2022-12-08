@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Inject, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './Animations/animation';
 import { titleAnimation } from './CustomDirectives/alert/alert.component';
@@ -7,6 +7,8 @@ import { CommonService } from './shared/sharedServices/common.service';
 import { AuthService } from './Services/auth.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
+import { DOCUMENT } from '@angular/common';
+
 
 
 
@@ -29,7 +31,10 @@ export class AppComponent implements OnInit {
   @Input() loginFormShowHide: boolean = true;
 
 
+
+
   constructor(
+    @Inject(DOCUMENT) private document: Document,
     public _commonService: CommonService,
     private authService: AuthService,
   ) {
@@ -40,7 +45,24 @@ export class AppComponent implements OnInit {
       console.log(err);
       
     })
-  }    
+  } 
+  
+
+  // Toglle Dark and Light theme
+  checkCheckBoxvalue(event: any ){
+    if(event.target.checked == true)
+    {
+      this.document.body.classList.add('test');
+    }
+    else
+    {
+      this.document.body.classList.remove('test');
+    }
+    
+  }
+
+
+
   @HostListener('window:scroll')
   
  checkScroll() {

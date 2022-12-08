@@ -25,6 +25,14 @@ export class UsersService {
     })
   }
 
+  // Upload File
+
+  public uploadfile(file: File) {
+    let formParams = new FormData();
+    formParams.append('file', file)
+    return this._httpClient.post('https://angularrolexapp-default-rtdb.firebaseio.com/users.json', formParams)
+  }
+
   getAllUsers(): Observable<IUser[]> {
     let dataUrl: string = `${this.serverUrl}/users.json`;
     return this._httpClient.get<IUser[]>('https://angularrolexapp-default-rtdb.firebaseio.com/users.json').pipe(map((res) => {
