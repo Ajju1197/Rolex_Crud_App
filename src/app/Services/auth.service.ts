@@ -44,5 +44,13 @@ export class AuthService {
       instaId: user.user.instaId,
       date: Date.now(),
       });
-    }
+  }
+  
+  //AngularFirebase image upload?
+  
+
+
+
+
+
 }
