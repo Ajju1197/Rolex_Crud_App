@@ -39,7 +39,7 @@
             </li>
         <!-- Post Story -->
             <div class="postStoryClass" *ngIf="email">
-                <a class="btn-success postStorylink" routerLinkActive="active" [routerLink]="['/admin/addInstaPost']">Post Your Story</a>
+                <a class="btn-success postStorylink" [routerLink]="['/admin/addInstaPost']">Post Your Story</a>
             </div>
             <button class="btn"><span *ngIf="!email else logout">Sign Up</span>    
                     <ng-template #logout>Logout</ng-template>
