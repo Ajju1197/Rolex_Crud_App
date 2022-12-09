@@ -2,7 +2,7 @@
     <img ngSrc="../../../assets/Ajju-goa.webp" width="1000" height="1000" class="bg-img-goa kenburns-top img-fluid" alt="bg img" priority fill>
     <a class="allInstaPostsInOnePlaceClass" [ngClass]="{'shake-horizontal': isAnimate === true}" routerLink="/admin/allPostsInOnePlace">See All Posted Stories</a>
     <a class="loggedInWebsiteProfilesbtnClass" [ngClass]="{'shake-horizontal': isAnimate === true}" (click)="clickToShowLoginUsersProfiles()">{{title | uppercase}}</a>
-        <div class="loginUsersProfile" [ngStyle]="{'background': isActive === true ? 'rgba(0,0,0,0.47)':'transparent'}">
+        <div class="loginUsersProfile" [ngStyle]="{'background': isActive === true ? 'rgba(0,0,0,0.47)':'transparent','display':isActive === true ? 'block':'none'}">
             <!-- <div class="mb-3 text-center" >
             </div> -->
             <ng-container *ngFor="let loginpost of loginposts">
