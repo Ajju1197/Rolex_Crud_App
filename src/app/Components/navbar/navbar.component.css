@@ -313,7 +313,7 @@ span a{
 .btn .dropdown {
   position: absolute;
   top: 74%;
-  right: 120px;
+  right: 0px;
   background: #000000;
   min-width: 300px;
   border-radius: 4px;

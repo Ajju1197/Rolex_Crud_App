@@ -9,7 +9,7 @@
   </a>
   <div class="card-body">
     <h5 class="card-title text-primary text-uppercase">
-      {{ post.locationName }}
+      {{ post.locationName }} <span class="text-dark ms-2">{{post.date | date:'medium'}}</span>
     </h5>
     <p class="card-text postDescription">{{ post.description }}</p>
     <p class="card-text">Insta Link : <a [href]="getInstaUrl()" target="_blank" style="text-decoration:none;">{{post.instaId}}</a></p>

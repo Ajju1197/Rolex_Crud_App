@@ -13,26 +13,31 @@ import { CommonService } from 'src/app/shared/sharedServices/common.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup
-  get emailControl() {
-    return this.loginForm.get('email') as FormControl;
-}
+//   loginForm!: FormGroup
+//   get emailControl() {
+//     return this.loginForm.get('email') as FormControl;
+// }
 
-get passwordControl() {
-  return this.loginForm.get('password') as FormControl;
-}
+// get passwordControl() {
+//   return this.loginForm.get('password') as FormControl;
+// }
   
-  constructor(private fb: FormBuilder, private auth:Auth,private router:Router,public _commonService:CommonService,private authService: AuthService,private toastr:ToastrService) { 
-    this.loginForm = this.fb.group({
-      email: fb.control('',[Validators.required,Validators.minLength(5),Validators.email]),
-      password: fb.control('',[Validators.required,Validators.minLength(5)]),
-    })
-  }
+constructor(private fb: FormBuilder, private auth:Auth,private router:Router,public _commonService:CommonService,private authService: AuthService,private toastr:ToastrService) { 
+}
 
+loginForm = this.fb.group({
+  email: this.fb.control('',[Validators.required,Validators.minLength(5),Validators.email]),
+  password: this.fb.control('',[Validators.required,Validators.minLength(5)]),
+})
+  
+  
+  get myForm() {
+    return this.loginForm.controls
+  }
   onSubmit() {
     this.authService.signIn(
-      this.emailControl.value,
-      this.passwordControl.value
+      this.myForm.email.value,
+      this.myForm.password.value
     ).then((res) => {
       this.router.navigateByUrl('');
       this.toastr.success('SignIn successful');

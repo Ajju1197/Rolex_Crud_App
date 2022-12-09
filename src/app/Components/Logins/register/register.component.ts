@@ -76,11 +76,6 @@ export class RegisterComponent implements OnInit {
 
 
 
-  picture:string = '../../../../assets/ajju-goa-2.jpeg';
-  uploadPercent: number = null;
-
-
-
   onSubmit() {
     this.authService.signUp(
       this.myForm.email.value,
@@ -110,6 +105,11 @@ export class RegisterComponent implements OnInit {
 
 
 
+
+  picture:string = '../../../../assets/ajju-goa-2.jpeg';
+  uploadPercent: number = null;
+
+  
   // File upload method
 
   async uploadImage(event) {
