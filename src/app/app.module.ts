@@ -54,6 +54,7 @@ import { AllPostStoriesInOnePlaceComponent } from './InstagramPosts/all-post-sto
 import { AddInstaPostComponent } from './InstagramPosts/add-insta-post/add-insta-post.component';
 import { PostsComponent } from './InstagramPosts/posts/posts.component';
 import { EditpostComponent } from './InstagramPosts/editpost/editpost.component';
+import { HoverCardComponent } from './Components/hover-card/hover-card.component';
 
 
 
@@ -86,6 +87,7 @@ import { EditpostComponent } from './InstagramPosts/editpost/editpost.component'
     AddInstaPostComponent,
     PostsComponent,
     EditpostComponent,
+    HoverCardComponent,
   ],
   imports: [
     BrowserModule,

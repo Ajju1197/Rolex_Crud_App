@@ -11,3 +11,48 @@
   white-space: nowrap;
   overflow: hidden;
 }
+.card-footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Crete css flip card code? */
+.card {
+  position: relative;
+  height: 17rem;
+  background-color: transparent;
+  perspective: 500px;
+  border: none !important;
+  /* margin:5vh auto; */
+}
+.front, .back {
+  position: absolute;
+  width: 100%; height: 100%;
+  transition: transform 1s;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+.front { 
+  background-color: #fff; 
+}
+.back { 
+  background-color: #f5f785; 
+  transform: rotateY(180deg); 
+}
+
+.flipFront{ transform: rotateY(180deg); }
+.flipBack { transform: rotateY(360deg); }
+
+.flip-icon{
+  position:absolute;
+  bottom: 40px;
+  right: 10px;
+  z-index: 9999;
+  background-color: #0b09be;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 10px;
+}
+/* //generate flip icon in svg? */
+

@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
   headerName = "Syed Ajmathulla"
   showSideNavShow: boolean = false;
   isActive: boolean = false;
+  isHomeburgerRotate: boolean;
   @Output()
   isDarkTheme: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() darkTheme;
@@ -99,6 +100,10 @@ export class NavbarComponent implements OnInit {
 
   isShowHide() {
     this.isShow = !this.isShow
+  }
+
+  homeburgerRotate() {
+    this.isHomeburgerRotate =! this.isHomeburgerRotate
   }
 
 }

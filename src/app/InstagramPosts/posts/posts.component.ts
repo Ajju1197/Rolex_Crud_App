@@ -15,6 +15,8 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+
+  isFlip: boolean;
   @Input()
   post;
 
@@ -76,5 +78,10 @@ export class PostsComponent implements OnInit {
     
     this.notifyDelete.emit(id)
   }
+
+  flipCard() {
+    this.isFlip =! this.isFlip
+  }
+  //create product addtocart html
 
 }
