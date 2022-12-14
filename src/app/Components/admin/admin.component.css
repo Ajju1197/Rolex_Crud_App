@@ -288,7 +288,7 @@
 }
 
 .loggedInWebsiteProfilesbtnClass{
-  color:white;
+  color:white !important;
   background:#012970;
   padding: 10px;
   cursor: pointer;
