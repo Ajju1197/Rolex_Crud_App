@@ -15,6 +15,9 @@ import { AngularFireAuthGuard,redirectUnauthorizedTo,redirectLoggedInTo } from '
 import { AddInstaPostComponent } from './InstagramPosts/add-insta-post/add-insta-post.component';
 import { AllPostStoriesInOnePlaceComponent } from './InstagramPosts/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
 import { EditpostComponent } from './InstagramPosts/editpost/editpost.component';
+import { PagenotfoundComponent } from './Components/pagenotfound/pagenotfound.component';
+import { ProductsComponent } from './Components/ShoppingCart/products/products.component';
+import { CartComponent } from './Components/ShoppingCart/cart/cart.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInHome = () => redirectLoggedInTo(['']);
@@ -70,6 +73,9 @@ const routes: Routes = [
   { path: 'admin/album/:albumId', component: ImageViewComponent },
   { path: 'admin/posts', loadChildren: () => import('./Components/posts/posts.module').then(m => m.PostsModule) },
   { path: 'lazyimages', loadChildren: () => import('./shared/images-lazyload/images-lazyload/images-lazyload.module').then(m => m.ImagesLazyloadModule) },
+  { path: 'admin/products', component: ProductsComponent },
+  { path: 'admin/cart', component: CartComponent },
+  { path: '**', component:PagenotfoundComponent },
 ];
 
 @NgModule({

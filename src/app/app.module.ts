@@ -55,6 +55,9 @@ import { AddInstaPostComponent } from './InstagramPosts/add-insta-post/add-insta
 import { PostsComponent } from './InstagramPosts/posts/posts.component';
 import { EditpostComponent } from './InstagramPosts/editpost/editpost.component';
 import { HoverCardComponent } from './Components/hover-card/hover-card.component';
+import { PagenotfoundComponent } from './Components/pagenotfound/pagenotfound.component';
+import { CartComponent } from './Components/ShoppingCart/cart/cart.component';
+import { ProductsComponent } from './Components/ShoppingCart/products/products.component';
 
 
 
@@ -88,6 +91,9 @@ import { HoverCardComponent } from './Components/hover-card/hover-card.component
     PostsComponent,
     EditpostComponent,
     HoverCardComponent,
+    PagenotfoundComponent,
+    CartComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

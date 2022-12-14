@@ -7,14 +7,22 @@
       </div>
   </div>
 </div> -->
-
-
-<div class="box" >
-  <img src="../../../assets/ajju-goa-2.webp" >
-    <div class="overbox">
-        <div class="title overtext"> CSS Script </div>
-        <div class="tagline overtext"> Animated Text Overlay On Hover </div>
-    </div>
+<div class="products">
+  <ng-container *ngFor="let item of products">
+    <div class="box" *ngIf="searchString === '' || item.title.toLowerCase().includes(searchString)">
+      <img [src]="item.image" [alt]="item.title">
+      <div class="overbox">
+        <p class="tagline overtext"> {{item.description}} </p>
+      </div>
+      <div class="box-price">
+        <h2 class="card-title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 225px;font-size: 17px;color:darkblue ;"> {{item.title}} </h2>
+        <span>
+          <p class=""> <strong>Price: </strong> <span class="badge badge-primary">${{item.price}}</span> </p>
+        </span>
+      </div>
+      <button class="btn btn-primary" (click)="addToCart(item)" style="width:100%">Add to Cart</button>
+  </div>
+  </ng-container>
 </div>
 
 

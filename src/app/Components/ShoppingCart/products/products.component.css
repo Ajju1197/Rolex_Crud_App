@@ -1,0 +1,11 @@
+.searchClass{
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  position: absolute;
+  right: 11px ;
+  top: 8px;
+}
+.formClass{
+  position: relative;
+}
