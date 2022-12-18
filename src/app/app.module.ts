@@ -24,7 +24,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { MeterialModule } from './meterial/meterial.module';
-import { UserComponentComponent } from './Components/user-component/user-component.component';
 import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY } from '@angular/material/autocomplete';
 import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER } from '@angular/material/select';
 import { MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER } from '@angular/material/tooltip';
@@ -58,6 +57,11 @@ import { HoverCardComponent } from './Components/hover-card/hover-card.component
 import { PagenotfoundComponent } from './Components/pagenotfound/pagenotfound.component';
 import { CartComponent } from './Components/ShoppingCart/cart/cart.component';
 import { ProductsComponent } from './Components/ShoppingCart/products/products.component';
+import { ProductViewComponent } from './Components/ShoppingCart/product-view/product-view.component';
+
+// Loading Bar
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 
 
@@ -71,7 +75,6 @@ import { ProductsComponent } from './Components/ShoppingCart/products/products.c
     AdminComponent,
     FooterComponent,
     NavbarComponent,
-    UserComponentComponent,
     LoginComponent,
     LogoutComponent,
     FilterUsersPipe,
@@ -94,12 +97,13 @@ import { ProductsComponent } from './Components/ShoppingCart/products/products.c
     PagenotfoundComponent,
     CartComponent,
     ProductsComponent,
+    ProductViewComponent,
   ],
   imports: [
     BrowserModule,
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
+    // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    // provideFirestore(() => getFirestore()),
+    // provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
@@ -110,10 +114,12 @@ import { ProductsComponent } from './Components/ShoppingCart/products/products.c
     ToastrModule.forRoot(),
     MeterialModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule, 
     PostsModule,
     NgOptimizedImage,
     MatIconModule,
+    LoadingBarRouterModule,
+    LoadingBarModule,
   ],
   providers: [UsersService,AlertService,AuthService, {provide: PRECONNECT_CHECK_BLOCKLIST,multi: true, useValue: 'https://your-domain.com'}],
   exports: [AlertDirective,ReactiveFormsModule,FormsModule],

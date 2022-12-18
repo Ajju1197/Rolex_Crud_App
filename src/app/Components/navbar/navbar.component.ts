@@ -25,11 +25,14 @@ import { CommonService } from 'src/app/shared/sharedServices/common.service';
 export class NavbarComponent implements OnInit {
 
   email = null;
+  loggedInUserName;
   isShow :boolean;
   headerName = "Syed Ajmathulla"
   showSideNavShow: boolean = false;
   isActive: boolean = false;
   isHomeburgerRotate: boolean;
+  gobackLink;
+  goToCart;
   @Output()
   isDarkTheme: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() darkTheme;
@@ -42,12 +45,23 @@ export class NavbarComponent implements OnInit {
     private toastrService: ToastrService
   ) {
     this.authService.getUser().subscribe((user) => {
-      console.log("this is navbar component User :" , user);
+      console.log("this is navbar component User :", user);
       
       this.email = user?.email;
       console.log('this is the navbar component email ' + this.email);
       
-    })
+    });
+
+    // For Goto Shopping
+    this.commonService.gobackLink.subscribe((res) => {
+      this.gobackLink = res;
+    });
+
+    // Fot Goto Cart
+    this.commonService.goToCart.subscribe((res) => {
+      this.goToCart = res;
+    });
+    
   }
 
   async signOut() {
@@ -80,6 +94,8 @@ export class NavbarComponent implements OnInit {
     }
 
   }
+
+
   openNav() {
     this.isActive = !this.isActive
     this.showSideNavShow = !this.showSideNavShow

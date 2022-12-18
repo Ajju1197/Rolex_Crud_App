@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,4 +16,14 @@ export class CommonService {
   getMessage() {
     return this.darkTheme;
   }
+
+  // LoggedIn User Name 
+  loggedInUserName = new BehaviorSubject('');
+
+
+  // For go back Link
+  gobackLink = new BehaviorSubject({ text: '', url: '' })
+  
+  // For go back Link
+  goToCart = new BehaviorSubject({text:'',url:''})
 }

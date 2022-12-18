@@ -18,6 +18,7 @@ import { EditpostComponent } from './InstagramPosts/editpost/editpost.component'
 import { PagenotfoundComponent } from './Components/pagenotfound/pagenotfound.component';
 import { ProductsComponent } from './Components/ShoppingCart/products/products.component';
 import { CartComponent } from './Components/ShoppingCart/cart/cart.component';
+import { ProductViewComponent } from './Components/ShoppingCart/product-view/product-view.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInHome = () => redirectLoggedInTo(['']);
@@ -73,7 +74,13 @@ const routes: Routes = [
   { path: 'admin/album/:albumId', component: ImageViewComponent },
   { path: 'admin/posts', loadChildren: () => import('./Components/posts/posts.module').then(m => m.PostsModule) },
   { path: 'lazyimages', loadChildren: () => import('./shared/images-lazyload/images-lazyload/images-lazyload.module').then(m => m.ImagesLazyloadModule) },
-  { path: 'admin/products', component: ProductsComponent },
+  {
+    path: 'admin/products',
+    component: ProductsComponent,
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  { path: 'admin/product/:productId', component: ProductViewComponent },
   { path: 'admin/cart', component: CartComponent },
   { path: '**', component:PagenotfoundComponent },
 ];

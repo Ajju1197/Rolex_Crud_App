@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
   selector: 'app-admin',
@@ -29,11 +30,13 @@ export class AdminComponent implements OnInit {
   constructor(
     private _db: AngularFireDatabase,
     private _toastr: ToastrService,
+    private commonService: CommonService,
   ) { 
         // Getting all the loginposts from AngularFireDataBase
         _db.object('/loginposts').valueChanges().subscribe((obj) => {
           if (obj) {
             this.loginposts = Object.values(obj);
+            console.log(JSON.stringify(this.loginposts[0])+ 'adminCompo');
           } else {
             this._toastr.error('No user Found')
             this.loginposts = [];

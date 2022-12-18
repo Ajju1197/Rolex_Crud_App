@@ -12,6 +12,7 @@ import { Auth, createUserWithEmailAndPassword} from '@angular/fire/auth';
 import { readAndCompressImage } from 'browser-image-resizer';
 import { imgConfig } from 'src/utils/config';
 import { finalize } from 'rxjs';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 
 
@@ -31,7 +32,8 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private storage: AngularFireStorage,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private commonService:CommonService,
   ) { 
     // this.registerForm = this.fb.group({
     //   email: fb.control('',[Validators.required,Validators.email]),

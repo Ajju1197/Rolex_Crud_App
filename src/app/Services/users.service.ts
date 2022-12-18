@@ -83,7 +83,7 @@ export class UsersService {
   }
   getAlbum(albumId:string):Observable<IAlbums>{
     let dataUrl: string = `${this.albumUrl}/`;
-    return this._httpClient.get<IAlbums>(dataUrl + albumId, this.httpOptions).pipe(catchError(this.handleError),delay(2000))
+    return this._httpClient.get<IAlbums>(`../../assets/Albums/album.json`, this.httpOptions).pipe(catchError(this.handleError),delay(2000))
   }
 
   // Error Handling
@@ -98,7 +98,6 @@ export class UsersService {
     }
     // window.alert(errorMessage);
     return throwError(errorMessage);
-
   }
 
 }

@@ -11,14 +11,13 @@ export class HoverCardComponent implements OnInit {
 
   @Input() products;
   @Input() searchString;
-  @Output() addCart: EventEmitter<any> = new EventEmitter<any>();
+  // @Output() addCart: EventEmitter<any> = new EventEmitter<any>();
   constructor(
     private toastr: ToastrService,
     private cartService:CartService,
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   addToCart(item:any) {
     this.cartService.addToCart(item);

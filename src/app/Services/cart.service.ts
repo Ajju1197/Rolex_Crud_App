@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from '@firebase/util';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, catchError, delay, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +21,14 @@ export class CartService {
     }))
   }
 
+
+  
+  // GET Single Contact
+  public getProduct(productId: any) {
+    return this.httpClient.get(`https://fakestoreapi.com/products/${productId}`).pipe(catchError(this.handleError), delay(1000))
+  }
+
+
   getProducts() {
     return this.productList.asObservable();
   }
@@ -30,7 +38,7 @@ export class CartService {
     this.productList.next(product);
   }
 
-  addToCart(product:any) {
+  addToCart(product) {
     this.cartItemList.push(product);
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
@@ -43,6 +51,7 @@ export class CartService {
     })
     return grandTotal;
   }
+
 
   removeCartItem(product:any) {
     this.cartItemList.map((a: any,index:any) => {
@@ -59,5 +68,18 @@ export class CartService {
   }
 
 
+  // Error Handling
+  public handleError(error: HttpErrorResponse) {
+    let errorMessage: any = 'error';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status} \nMessage: ${error.message}`;
+    }
+    // window.alert(errorMessage);
+    return throwError(errorMessage);
 
+  }
 }

@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/Services/cart.service';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit,OnDestroy {
 
   productList: any = [];
   public grandTotal: number = 0;
@@ -16,23 +17,25 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private toastr: ToastrService,
-    private router:Router,
+    private router: Router,
+    private commonService:CommonService,
   ) { }
 
   ngOnInit(): void {
     this.loading = true;
-    this.cartService.getProducts ().subscribe((data) => {
+    this.cartService.getProducts().subscribe((data) => {
       this.productList = data;
-      this.grandTotal = this.cartService.getTotalPrice();
       this.loading = false;
-    })
-  }
+    });
+    this.grandTotal = this.cartService.getTotalPrice();
 
+    this.commonService.gobackLink.next({ text: 'Back to Shopping', url: '/admin/products' })
+    this.commonService.goToCart.next({text:'',url:''})
+  }
+  
   removeItem(item: any) {
     this.loading = true;
-    setTimeout(() => {
-      this.cartService.removeCartItem(item);
-    }, 1000);
+    this.cartService.removeCartItem(item);
     this.loading = false;
     this.toastr.success(item.title + 'Was Successfully Deleted')
   }
@@ -46,5 +49,11 @@ export class CartComponent implements OnInit {
     this.loading = true;
     this.router.navigateByUrl('/admin/products');
     this.loading = false;
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.commonService.gobackLink.next({text:'',url:''})
   }
 }

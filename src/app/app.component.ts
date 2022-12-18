@@ -29,9 +29,7 @@ export class AppComponent implements OnInit {
   topPosToStartShowing = 50;
   darkTheme: boolean = true;
   @Input() loginFormShowHide: boolean = true;
-
-
-
+  
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -93,7 +91,6 @@ export class AppComponent implements OnInit {
     this.checkScroll();
     this.changeDarkTheme(DataTransfer)
     
-    
   }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
@@ -104,6 +101,4 @@ export class AppComponent implements OnInit {
     this.darkTheme = !this.darkTheme;
     this._commonService.darkTheme = this.darkTheme
   }
-
-
 }

@@ -12,5 +12,5 @@ input[type=radio]{
 @media (max-width:768px) {
   .filterCheckboxes{
     flex-direction: column;
-  };
+  }
 }
