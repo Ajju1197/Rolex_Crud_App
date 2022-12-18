@@ -101,9 +101,9 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
   ],
   imports: [
     BrowserModule,
-    // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    // provideFirestore(() => getFirestore()),
-    // provideAuth(() => getAuth()),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
