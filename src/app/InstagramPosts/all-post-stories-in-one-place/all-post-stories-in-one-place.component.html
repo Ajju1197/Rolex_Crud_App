@@ -12,14 +12,14 @@
 
   <ng-template #Content>
     <div class="row">
-      <ng-container *ngFor="let post of posts">
-        <div class="col-md-6 col-lg-4 col-sm-12 mt-3">
-          <!-- will render list of post here -->
-          <div>
-            <app-posts [post]="post" (notifyDelete)="deletePost($event)"></app-posts>
+      <div class="col-md-12 col-lg-12 col-sm-12 mt-3">
+          <div class="posts">
+            <ng-container *ngFor="let post of posts">
+              <!-- will render list of post here -->
+                <app-posts [post]="post" *ngIf="this.commonService.searchInputValue === '' || post.by.toLowerCase().includes(this.commonService.searchInputValue)" (notifyDelete)="deletePost($event)"></app-posts>
+              </ng-container>
           </div>
         </div>
-      </ng-container>
     </div>
   </ng-template>
 </div>

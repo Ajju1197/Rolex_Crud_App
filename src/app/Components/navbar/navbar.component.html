@@ -17,10 +17,16 @@
                 </svg>
                 <span class="text-white" style="vertical-align: bottom;" *ngIf="goToCart.text">{{goToCart.text}}</span>               
             </div>
+            <div class="ms-3" routerLink="{{goToAdmin.url}}" style="cursor: pointer;" *ngIf="goToAdmin.text">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" class="w-6 h-6" style="width:20px;height:20px">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+                <span class="text-white" style="vertical-align: bottom;" *ngIf="goToAdmin.text">{{goToAdmin.text}}</span>               
+            </div>
         </div>
         
 
-        <div style="display:flex;justify-content:center;align-items:center;coulumn-gap:10px;" *ngIf="!gobackLink.text && !goToCart.text">
+        <div style="display:flex;justify-content:center;align-items:center;coulumn-gap:10px;" *ngIf="!gobackLink.text && !goToCart.text && !goToAdmin.text">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 m-auto mb-lg-0">
                     <li class="nav-item">
@@ -54,6 +60,11 @@
 
         <!-- Nav Item - User Information -->
         <div class="d-flex align-items-center position-relative">
+            
+        <div class="searchBar me-3" *ngIf="goToAdmin.text">
+            <app-search (searchPosts)="searchPostsValue($event)"></app-search>
+        </div>
+
             <li class="loginmail">
                 <a *ngIf="email" class="badge badge-primary" style="font-size: 1em !important;">
                     {{email}}
@@ -62,14 +73,14 @@
             <button class="btn" style="min-width: auto !important;">
                 <ng-container *ngIf="!email else logout">
                     Sign Up
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5" style="width:20px;height:16px">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 material-icons" style="width:20px;height:16px">
                     <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z" clip-rule="evenodd" />
                     <path fill-rule="evenodd" d="M6 10a.75.75 0 01.75-.75h9.546l-1.048-.943a.75.75 0 111.004-1.114l2.5 2.25a.75.75 0 010 1.114l-2.5 2.25a.75.75 0 11-1.004-1.114l1.048-.943H6.75A.75.75 0 016 10z" clip-rule="evenodd" />
                 </svg>
                 </ng-container>    
                 <ng-template #logout>
                     Logout 
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5" style="width:20px;height:16px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 material-icons" style="width:20px;height:16px;">
                         <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z" clip-rule="evenodd" />
                         <path fill-rule="evenodd" d="M19 10a.75.75 0 00-.75-.75H8.704l1.048-.943a.75.75 0 10-1.004-1.114l-2.5 2.25a.75.75 0 000 1.114l2.5 2.25a.75.75 0 101.004-1.114l-1.048-.943h9.546A.75.75 0 0019 10z" clip-rule="evenodd" />
                     </svg>

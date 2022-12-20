@@ -1,6 +1,6 @@
 <div class="products">
   <ng-container *ngFor="let item of products">
-    <div class="box" *ngIf="searchString === '' || item.title.toLowerCase().includes(searchString)">
+    <div class="box" *ngIf="this.commonService.searchInputValue === '' || item.title.toLowerCase().includes(this.commonService.searchInputValue)">
       <div routerLink="/admin/product/{{item.id}}" >
         <img [src]="item.image" [alt]="item.title">
       <div class="overbox">

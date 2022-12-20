@@ -1,7 +1,8 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit,OnDestroy, SimpleChanges } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 //uuid
 import { v4 as uuidv4 } from "uuid";
 
@@ -10,7 +11,7 @@ import { v4 as uuidv4 } from "uuid";
   templateUrl: './all-post-stories-in-one-place.component.html',
   styleUrls: ['./all-post-stories-in-one-place.component.css']
 })
-export class AllPostStoriesInOnePlaceComponent implements OnInit {
+export class AllPostStoriesInOnePlaceComponent implements OnInit,OnDestroy {
 
   public loading = false;
   posts = [];
@@ -18,6 +19,7 @@ export class AllPostStoriesInOnePlaceComponent implements OnInit {
   constructor(
     private db: AngularFireDatabase,
     private toastr: ToastrService,
+    public commonService:CommonService,
   ) {
     this.loading = true;
 
@@ -38,6 +40,12 @@ export class AllPostStoriesInOnePlaceComponent implements OnInit {
       });
   }
   ngOnInit(): void {
+    this.commonService.goToAdmin.next({text:'Go To Insta',url:'/admin/addInstaPost'})
+  }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.commonService.goToAdmin.next({text:'',url:''})
   }
 
   

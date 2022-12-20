@@ -6,6 +6,7 @@ import { IUser } from 'src/app/Modals/IUser';
 import { AuthService } from 'src/app/Services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -33,6 +34,9 @@ export class NavbarComponent implements OnInit {
   isHomeburgerRotate: boolean;
   gobackLink;
   goToCart;
+  goToAdmin;
+  searchText = new BehaviorSubject('');
+  // searchValue = new BehaviorSubject('');
   @Output()
   isDarkTheme: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() darkTheme;
@@ -61,8 +65,14 @@ export class NavbarComponent implements OnInit {
     this.commonService.goToCart.subscribe((res) => {
       this.goToCart = res;
     });
+
+    // For go to admin
+    this.commonService.goToAdmin.subscribe((res) => {
+      this.goToAdmin = res;
+    })
     
   }
+
 
   async signOut() {
     try {
@@ -74,6 +84,8 @@ export class NavbarComponent implements OnInit {
       this.toastrService.error('something is wrong')
     }
   }
+
+
 
 
   ngOnInit(): void {
@@ -92,8 +104,17 @@ export class NavbarComponent implements OnInit {
         header.classList.remove('small');
       }
     }
-
   }
+
+  searchPostsValue(searchStringValue: string) {
+    console.log(searchStringValue);
+    this.commonService.searchInputValue = searchStringValue;
+    
+   console.log(  this.commonService.searchInputValue + ' Nav Bar compo');
+   
+  }
+
+
 
 
   openNav() {

@@ -25,5 +25,11 @@ export class CommonService {
   gobackLink = new BehaviorSubject({ text: '', url: '' })
   
   // For go back Link
-  goToCart = new BehaviorSubject({text:'',url:''})
+  goToCart = new BehaviorSubject({ text: '', url: '' })
+  
+  // For Search Input in Navbar
+  searchInputValue :string = '';
+
+  // For go back to Admin
+  goToAdmin = new BehaviorSubject({ text: '', url: '' })
 }

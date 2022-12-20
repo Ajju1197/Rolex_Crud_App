@@ -16,6 +16,15 @@
   bottom: 0;
   width: 100%;
 }
+.cardNameClass{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px;
+  text-align:center;
+  background-color: #ffffff;
+}
 
 /* Crete css flip card code? */
 .card {

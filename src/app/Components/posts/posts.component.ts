@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/Modals/IUser';
 import { AlertService } from 'src/app/Services/alert.service';
 import { UsersService } from 'src/app/Services/users.service';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit,OnDestroy {
 
   public users: IUser[] = [];
   public errorMessage: string | undefined;
@@ -27,10 +28,11 @@ export class PostsComponent implements OnInit {
     return this.users.filter((user) => user.username.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)
   }
 
-  constructor(private alertService:AlertService,private _userService: UsersService, private _router: Router) { }
+  constructor(private alertService:AlertService,private _userService: UsersService, private _router: Router,public commonService:CommonService) { }
 
   ngOnInit(): void {
     this.getAllUsers();
+    this.commonService.goToAdmin.next({ text: 'Go To Admin', url: '' })
   }
 
   getAllUsers() {
@@ -47,16 +49,9 @@ export class PostsComponent implements OnInit {
     )
   }
   
-  // deleteUser(userId: any) {
 
-  //   this.users = userId;
-  //   // this.loading = true;
-  //   // this._userService.deleteUser(userId).subscribe((data) => { 
-  //   //   this.users = this.users.filter(item => item.id !== userId)
-  //   //   console.log('Post deleted successfully!');
-  //   //   this.loading = false;
-  //   // })
-  // }
-
+  ngOnDestroy(): void {
+    this.commonService.goToAdmin.next({ text: '', url: '' })
+  }
 
 }

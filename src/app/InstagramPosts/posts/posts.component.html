@@ -1,5 +1,5 @@
-<div class="card mb-3 border-secondary">
-  <div class="front" [ngClass]="{'flipFront': isFlip === true}">
+<div class="card posts mb-3 border-secondary">
+  <div class="front" [ngClass]="{'flipFront': isFlip === true}" >
     <a [href]="getInstaUrl()" class="postImageHeightClass" target="_blank">
       <img
         [src]="post.picture"
@@ -8,6 +8,9 @@
         class="card-img-top img-fluid"
       />
     </a>
+    <div class="cardNameClass">
+      <h3 class="card-text text-primary"><span class="text-dark">Name</span>: {{ post.by }}</h3>
+    </div>
   </div>
   <div class="back" [ngClass]="{'flipBack': isFlip === true}">
     <div class="card-body">

@@ -13,7 +13,6 @@ import Swal from 'sweetalert2';
 })
 export class UserComponent implements OnInit {
 
-  searchValue: string = '';
   userId: any;
   users: IUser[] = [];
 
@@ -23,28 +22,20 @@ export class UserComponent implements OnInit {
   @Input()
   loading;
   @Output() notifyDeleteUser:EventEmitter<any> = new EventEmitter<any>();
-  searchText = "";
     
-  constructor(public _commonService:CommonService,private alertService:AlertService,private _userService:UsersService) { }
+  constructor(public _commonService: CommonService, private alertService: AlertService, private _userService: UsersService) {
 
-  @Input() bgColor = false;
-
-  chBackcolor() {
-  this.bgColor !== this.bgColor;
   }
-
+  
+  @Input() bgColor = false;
+  
+  chBackcolor() {
+    this.bgColor !== this.bgColor;
+  }
+  
+  
   ngOnInit(): void {
     
-  }
-
-
-
-
-
-
-
-  searchPostsValue(searchStringValue: string) {
-    this.searchValue = searchStringValue;
   }
 
 

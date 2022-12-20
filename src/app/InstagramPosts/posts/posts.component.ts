@@ -9,6 +9,7 @@ import {
 
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AuthService } from 'src/app/Services/auth.service';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -32,13 +33,14 @@ export class PostsComponent implements OnInit {
   upvote = 0;
   downvote = 0;
 
-  constructor(private db: AngularFireDatabase, private auth: AuthService) {
+  constructor(private db: AngularFireDatabase, private auth: AuthService,public commonService:CommonService) {
     this.auth.getUser().subscribe((user) => {
       this.uid = user?.uid;
     });
   }
-
-  ngOnInit(): void {}
+  
+  ngOnInit(): void {
+  }
 
   //TODO: bug in updating the changes
   ngOnChanges(): void {

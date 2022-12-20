@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-sm-12 text-end mb-3 m-auto" appCardHighlight
-            [ngClass]="{'changeBgColor': searchValue !== '','cardBgClass':this._commonService.darkTheme === true}">
+            [ngClass]="{'changeBgColor': this._commonService.searchInputValue !== '','cardBgClass':this._commonService.darkTheme === true}">
             <div style="display: flex" class="formClass">
-                <app-search (searchPosts)="searchPostsValue($event)"></app-search>
+                <!-- <app-search (searchPosts)="searchPostsValue($event)"></app-search> -->
                 <button class="btn btn-success ms-2" routerLink="/admin/add" mat-button>
                     Add User
                 </button>
@@ -13,9 +13,9 @@
             <span class="text-danger">No Users are Available</span>
         </div>
         <ng-container *ngFor="let user of filterUsers; even as isEven; odd as isOdd">
-            <div class="col-lg-4 col-sm-12 col-xs-6 my-4 py-4" *ngIf="searchValue === '' 
-                || user.username.toLowerCase().includes(searchValue)      || 
-                user.email.toLowerCase().includes(searchValue) ||  user.name.toLowerCase().includes(searchValue)">
+            <div class="col-lg-4 col-sm-12 col-xs-6 my-4 py-4" *ngIf="this._commonService.searchInputValue === '' 
+                || user.username.toLowerCase().includes(this._commonService.searchInputValue) || 
+                user.email.toLowerCase().includes(this._commonService.searchInputValue) ||  user.name.toLowerCase().includes(this._commonService.searchInputValue)">
                 <mat-card class="example-card">
                     <div class="d-flex w-100 justify-content-between">
                         <div>
