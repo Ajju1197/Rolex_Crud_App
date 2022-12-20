@@ -19,6 +19,8 @@ import { PagenotfoundComponent } from './Components/pagenotfound/pagenotfound.co
 import { ProductsComponent } from './Components/ShoppingCart/products/products.component';
 import { CartComponent } from './Components/ShoppingCart/cart/cart.component';
 import { ProductViewComponent } from './Components/ShoppingCart/product-view/product-view.component';
+import { AuthenticationComponent } from './Authentications/authentication/authentication.component';
+import { SignInsignUpauthComponent } from './Authentications/sign-insign-upauth/sign-insign-upauth.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInHome = () => redirectLoggedInTo(['']);
@@ -35,6 +37,10 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectLoggedInHome }
+  },
+  {
+    path: 'signIn',
+    component: SignInsignUpauthComponent,
   },
   {
     path: 'register',

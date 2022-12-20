@@ -24,6 +24,7 @@ import { CommonService } from 'src/app/shared/sharedServices/common.service';
 export class RegisterComponent implements OnInit {
   // registerForm: FormGroup;
   editFile: boolean;
+  userData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -82,17 +83,19 @@ export class RegisterComponent implements OnInit {
     this.authService.signUp(
       this.myForm.email.value,
       this.myForm.password.value,
-    ).then((res) => {
-      const {uid} = res.user
-      this.db.object(`/loginposts/${uid}`)
-        .set({
-          instaId: this.myForm.username.value,
-          name: this.myForm.name.value,
-          email: this.myForm.email.value,
-          bio: this.myForm.bio.value,
-          password:this.myForm.password.value,
-          picture:this.picture,
-        })
+    ).then((res:any) => {
+      const { uid } = res.user;
+      localStorage.setItem('user', JSON.stringify(
+        this.db.object(`/loginposts/${uid}`)
+          .set({
+            instaId: this.myForm.username.value,
+            name: this.myForm.name.value,
+            email: this.myForm.email.value,
+            bio: this.myForm.bio.value,
+            password: this.myForm.password.value,
+            picture: this.picture,
+          })
+      ))
     }).then((res) => {
         this.router.navigate(['/login'])
         this.toastr.success('Registration successful');
@@ -103,6 +106,8 @@ export class RegisterComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    this.userData = localStorage.getItem('user')
+    console.log(this.userData + ' local storage');
   }
 
 

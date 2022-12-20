@@ -13,7 +13,15 @@
           <p class=""> <strong>Price: </strong> <span class="badge badge-primary">${{item.price}}</span> </p>
         </span>
       </div>
-      <button class="btn btn-primary" (click)="addToCart(item)" style="width:100%">Add to Cart</button>
+      <hr class="m-0">
+      <div class="box-category">
+        <h2 class="card-title"> {{item.category}} </h2>
+        <span class="card-title badge badge-danger" *ngIf="item.rating.rate == '2.9' || item.rating.rate == '3.6' || item.rating.rate == '4.1'">Sold Out</span>
+        <span>
+          <p class=""> <strong>Rating: </strong> <span class="badge badge-warning">{{item.rating.rate}}</span> </p>
+        </span>
+      </div>
+      <button class="btn btn-primary" [disabled]="item.rating.rate == '2.9' || item.rating.rate == '3.6' || item.rating.rate == '4.1'" (click)="addToCart(item)" style="width:100%">Add to Cart</button>
   </div>
   </ng-container>
 </div>

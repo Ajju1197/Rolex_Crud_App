@@ -62,6 +62,8 @@ import { ProductViewComponent } from './Components/ShoppingCart/product-view/pro
 // Loading Bar
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { AuthenticationComponent } from './Authentications/authentication/authentication.component';
+import { SignInsignUpauthComponent } from './Authentications/sign-insign-upauth/sign-insign-upauth.component';
 
 
 
@@ -98,6 +100,8 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     CartComponent,
     ProductsComponent,
     ProductViewComponent,
+    AuthenticationComponent,
+    SignInsignUpauthComponent,
   ],
   imports: [
     BrowserModule,

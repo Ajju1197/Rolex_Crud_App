@@ -36,13 +36,6 @@ export class AppComponent implements OnInit {
     public _commonService: CommonService,
     private authService: AuthService,
   ) {
-
-    authService.getUser().subscribe((user) => {
-      console.log('this is app componenet user :' + user);
-    }, (err) => {
-      console.log(err);
-      
-    })
   } 
   
 

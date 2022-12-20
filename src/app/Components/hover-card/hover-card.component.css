@@ -94,7 +94,7 @@
 }
 .box {
   cursor: pointer;
-  height: 400px;
+  /* height: 400px; */
   position: relative;
   background-color: #ffffff;
   overflow: hidden;
@@ -120,11 +120,21 @@
   align-items: center;
   padding: 8px 30px;
 }
+.box .box-category{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 30px;
+}
+
 .box h2,p{
   margin-bottom: 0px !important;
 }
 .box-price h2{
   white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 225px;font-size: 17px;color:darkblue ;
+}
+.box-category h2{
+  font-size: 17px;color:darkblue ;
 }
 .box .overbox {
   background-color: rgba(0,0,0,0.5);

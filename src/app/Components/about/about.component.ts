@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CommonService } from 'src/app/shared/sharedServices/common.service';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(public commonService:CommonService) { }
+  constructor(public commonService:CommonService,private route:ActivatedRoute) { }
 
   @ViewChild('dateInput') dateOfBirth:ElementRef;
   @ViewChild('age') age: ElementRef;
@@ -22,6 +23,15 @@ export class AboutComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.route.fragment.subscribe(res => {
+      this.jumpTo(res)
+    })
+  }
+
+  jumpTo(section) {
+    setTimeout(() => {
+      document.getElementById(section).scrollIntoView({behavior:'smooth'})
+    }, 1000);
   }
 
 }

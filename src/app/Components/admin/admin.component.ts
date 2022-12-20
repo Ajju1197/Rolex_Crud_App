@@ -3,6 +3,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -26,11 +27,13 @@ export class AdminComponent implements OnInit {
   title:string = 'Login Profiles'
 
   public loginposts: any = [];
+  userData: any;
 
   constructor(
     private _db: AngularFireDatabase,
     private _toastr: ToastrService,
     private commonService: CommonService,
+    private route:ActivatedRoute,
   ) { 
         // Getting all the loginposts from AngularFireDataBase
         _db.object('/loginposts').valueChanges().subscribe((obj) => {
@@ -50,7 +53,6 @@ export class AdminComponent implements OnInit {
       console.log('ajju bhai animate');
       this.isAnimate =! this.isAnimate
     }, 3000)
-    
   }
 
 

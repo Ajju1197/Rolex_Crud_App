@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import { Observable } from '@firebase/util';
+import { Auth } from "../Modals/auth";
 
 
 
@@ -10,10 +13,21 @@ import { AngularFireList, AngularFireObject } from '@angular/fire/compat/databas
   providedIn: 'root',
 })
 export class AuthService {
-  instaPostsRef: AngularFireList<any>;
-  instaPostRef: AngularFireObject<any>;
+  userData: any;
 
-  constructor(private auth: AngularFireAuth) { }
+
+  constructor(private auth: AngularFireAuth) { 
+    this.auth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user',JSON.stringify(this.userData))
+        JSON.parse(localStorage.getItem('user'))
+      } else {
+        localStorage.setItem('user',null)
+        JSON.parse(localStorage.getItem('user'))
+      }
+    })
+  }
 
   signUp(email:string,password:string) {
     return this.auth.createUserWithEmailAndPassword(email,password)
@@ -33,21 +47,6 @@ export class AuthService {
     return this.auth.signOut();
   }
 
-    // Update Student Object
-    UpdateStudent(user: any) {
-      this.instaPostRef.update({
-      id: user.id,
-      locationName: user.locationName,
-      description: user.description,
-      picture: user.picture,
-      by: user.user.name,
-      instaId: user.user.instaId,
-      date: Date.now(),
-      });
-  }
-  
-  //AngularFirebase image upload?
-  
 
 
 
