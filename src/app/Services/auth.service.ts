@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 // import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable } from '@firebase/util';
 import { Auth } from "../Modals/auth";
 
@@ -16,7 +17,7 @@ export class AuthService {
   userData: any;
 
 
-  constructor(private auth: AngularFireAuth,private db: AngularFireDatabase) { 
+  constructor(private auth: AngularFireAuth,private db: AngularFireDatabase,private storage:AngularFireStorage) { 
     this.auth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -45,6 +46,10 @@ export class AuthService {
   
   signOut() {
     return this.auth.signOut();
+  }
+
+  getImageUrl(path: string) {
+    return this.storage.ref(path).getDownloadURL()
   }
 
 

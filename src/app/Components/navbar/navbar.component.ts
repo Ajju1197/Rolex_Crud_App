@@ -7,7 +7,9 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 import { BehaviorSubject } from 'rxjs';
-
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -35,24 +37,36 @@ export class NavbarComponent implements OnInit {
   gobackLink;
   goToCart;
   goToAdmin;
-  searchText = new BehaviorSubject('');
+  // searchText = new BehaviorSubject('');
   // searchValue = new BehaviorSubject('');
   @Output()
   isDarkTheme: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() darkTheme;
   @Input() showHidePages: boolean = false;
+  userData: any;
+  imageUrl: any;
 
   constructor(
     private router: Router,
     public commonService: CommonService,
     public authService: AuthService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    public storage: AngularFireStorage,
+    private afs: AngularFirestore,
+    private afdb:AngularFireDatabase
   ) {
     this.authService.getUser().subscribe((user) => {
       console.log("this is navbar component User :", user);
-      
       this.email = user?.email;
       console.log('this is the navbar component email ' + this.email);
+
+      if (user) {
+        this.afdb.object(`loginposts/${user.uid}`).valueChanges().subscribe(userData => {
+          this.userData = userData
+          console.log(this.userData + '......................................');
+          
+        })
+      }
       
     });
 

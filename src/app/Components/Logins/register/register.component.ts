@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   // registerForm: FormGroup;
   editFile: boolean;
   userData: any;
+  users: any;
 
   constructor(
     private fb: FormBuilder,
@@ -85,8 +86,7 @@ export class RegisterComponent implements OnInit {
       this.myForm.password.value,
     ).then((res:any) => {
       const { uid } = res.user;
-      localStorage.setItem('user', JSON.stringify(
-        this.db.object(`/loginposts/${uid}`)
+      this.db.object(`/loginposts/${uid}`)
           .set({
             instaId: this.myForm.username.value,
             name: this.myForm.name.value,
@@ -95,19 +95,16 @@ export class RegisterComponent implements OnInit {
             password: this.myForm.password.value,
             picture: this.picture,
           })
-      ))
-    }).then((res) => {
-        this.router.navigate(['/login'])
-        this.toastr.success('Registration successful');
-      })
-      .catch((err) => {
-      console.log(err);
-      this.toastr.error(err.message);
-    })
+        }).then((res) => {
+          this.router.navigate(['/login'])
+          this.toastr.success('Registration successful');
+        })
+        .catch((err) => {
+          console.log(err);
+          this.toastr.error(err.message);
+        })
   }
   ngOnInit(): void {
-    this.userData = localStorage.getItem('user')
-    console.log(this.userData + ' local storage');
   }
 
 

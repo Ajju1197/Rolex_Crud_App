@@ -79,12 +79,12 @@
 }
 
 .sidebar-content {
-  display: flex;
+  /* display: flex; */
   background-color: #fff;
   flex-direction: column;
   row-gap: 2px;
   height: 100%;
-  margin-top: 2px;
+  /* margin-top: 2px; */
 }
 .accordion-button{
   padding: 10px !important;
@@ -381,4 +381,18 @@ span a{
   color: inherit;
   font-size: 10px;
   text-decoration: none;
+}
+
+.userData{
+  width: 100%;
+  background-color: #081c6f;
+}
+.profile {
+  border: 2px solid lime;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  margin: auto;
+  overflow: hidden;
 }

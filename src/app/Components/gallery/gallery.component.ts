@@ -1,6 +1,6 @@
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { delay, Observable } from 'rxjs';
 import { IAlbums } from 'src/app/Modals/IUser';
@@ -13,7 +13,7 @@ import { CommonService } from 'src/app/shared/sharedServices/common.service';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css'],
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit,OnDestroy {
 
   albums: IAlbums[]=[];
   public loading: boolean;
@@ -73,36 +73,9 @@ export class GalleryComponent implements OnInit {
     console.log(data);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.commonService.goToAdmin.next({ text: '', url: '' })
+  }
 }

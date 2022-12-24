@@ -11,7 +11,7 @@
 
     <div class="content" [@routeAnimations]="prepareRoute(outlet)">
         <app-alert></app-alert>
-        <div *ngIf="email" class="py-2" style="background-image: linear-gradient(to left, #7ff4fb, #00bae0, #007fc1, #004496, #09045b);">
+        <div *ngIf="email" class="py-2 navbaronadmin" style="background-image: linear-gradient(to left, #7ff4fb, #00bae0, #007fc1, #004496, #09045b);">
             <div class="container">
                 <div class="navlinks d-flex" style="column-gap: 1em;flex-wrap: wrap;row-gap: 1em;">
                     <ng-container *ngFor="let item of navLinks">
