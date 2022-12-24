@@ -63,5 +63,8 @@
   cursor: pointer;
   padding: 10px;
 }
+a{
+  cursor: pointer;
+}
 /* //generate flip icon in svg? */
 

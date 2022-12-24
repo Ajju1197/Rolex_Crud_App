@@ -29,6 +29,46 @@ export class AppComponent implements OnInit {
   topPosToStartShowing = 50;
   darkTheme: boolean = true;
   @Input() loginFormShowHide: boolean = true;
+
+  public navLinks = [
+    {
+    id: 1,
+    name: 'Admin',
+    url: '',
+    routerLink:'active',
+    },
+    {
+    id: 2,
+    name: 'About',
+    url: 'admin/about',
+    routerLink:'active',
+    },
+    {
+    id: 3,
+    name: 'Albums',
+    url: 'admin/albums',
+    routerLink:'active',
+    },
+    {
+    id: 4,
+    name: 'Posts',
+    url: 'admin/posts',
+    routerLink:'active',
+    },
+    {
+    id: 5,
+    name: 'Shopping',
+    url: 'admin/products',
+    routerLink:'active',
+    },
+    {
+    id: 6,
+    name: 'Insta Post',
+    url: 'admin/addInstaPost',
+    routerLink:'active',
+    },
+  ]
+  email: string;
   
 
   constructor(
@@ -36,6 +76,13 @@ export class AppComponent implements OnInit {
     public _commonService: CommonService,
     private authService: AuthService,
   ) {
+    this.authService.getUser().subscribe((user) => {
+      console.log("this is App component User :", user);
+      
+      this.email = user?.email;
+      console.log('this is the App component email ' + this.email);
+      
+    });
   } 
   
 

@@ -6,9 +6,9 @@
     <div class="row" style="row-gap: 2em;">
         <div class="col-lg-12 col-sm-12 text-end mb-3">
             <div class="searchAndFilterClass">
-                <div>
+                <!-- <div>
                     <app-search (searchPosts)="searchAlbumValue($event)"></app-search>
-                </div>
+                </div> -->
                 <div class="text-start">
                 <app-filter
                     [all]="getAllAlbums()" 
@@ -24,7 +24,7 @@
         </div>
         <ng-container *ngFor="let album of albums">
             <div class="col-lg-4 col-md-6 col-sm-12" *ngIf="albumCountRadioButtonSelected === 'All' || albumCountRadioButtonSelected === album.type">
-                <div class="card" *ngIf="searchStringAlbum === '' || album.type.toLowerCase().includes(searchStringAlbum)">
+                <div class="card" *ngIf="this.commonService.searchInputValue === '' || album.type.toLowerCase().includes(this.commonService.searchInputValue)">
                     <div class="card p-2" style="height: 300px;">
                         <img ngSrc="{{album.img}}" width="400" height="200" ngSrcset="100w, 200w, 300w" class="lazy-bg-image"
                             loading="lazy" alt="{{album.title}}">

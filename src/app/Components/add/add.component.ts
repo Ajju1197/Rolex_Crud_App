@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, ElementRef, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormGroup, FormControl } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
@@ -16,7 +16,7 @@ import { CommonService } from 'src/app/shared/sharedServices/common.service';
   styleUrls: ['./add.component.css']
 })
 
-export class AddComponent implements OnInit {
+export class AddComponent implements OnInit,OnDestroy {
   public submitted:boolean= false;
   public loading: boolean = false;
   public customer: IUser[];
@@ -65,7 +65,14 @@ export class AddComponent implements OnInit {
     //         zipcode: new FormControl('', [Validators.required, Validators.minLength(2)])
     //       })
     // })
+      
+    this._commonService.goToAdmin.next({text:'Go to Posts',url:'admin/posts'})
 
+  }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this._commonService.goToAdmin.next({text:'',url:''})
   }
 
 

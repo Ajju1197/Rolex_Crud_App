@@ -41,9 +41,11 @@ loginForm = this.fb.group({
     ).then((res) => {
       this.router.navigateByUrl('');
       this.toastr.success('SignIn successful');
+      this._commonService.pressMe('Ohh great SignIn successful');
     }).catch((err) => {
       console.log(err);
       this.toastr.error('SignIn Failed');
+      this._commonService.pressMe('SignIn Failed Please SignUp');
       
     })
     // console.log(this.loginForm.value);

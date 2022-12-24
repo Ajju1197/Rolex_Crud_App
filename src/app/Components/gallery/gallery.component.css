@@ -67,7 +67,9 @@ span {
 .grid .img:nth-child(16){
   grid-column: span 2;
 }
-
+.form-group{
+  margin-bottom: 0px !important;
+}
 
 @media (max-width:768px) {
   .albumflexClass {

@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2'
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit {
+export class EditComponent implements OnInit,OnDestroy {
 
   public id: any;
   public submitted: boolean = false;
@@ -43,6 +43,8 @@ export class EditComponent implements OnInit {
       email: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
     });
+
+    this._commonService.goToAdmin.next({text:'Go to Posts',url:'admin/posts'})
     
   }
 
@@ -107,6 +109,12 @@ export class EditComponent implements OnInit {
         this._router.navigate(['admin/edit'])
       })
     }
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this._commonService.goToAdmin.next({text:'',url:''})
   }
 }
 

@@ -10,6 +10,16 @@ export class CommonService {
   public showHidePages: boolean= false;
   constructor() { }
 
+
+pressMe(data) {
+  const text = data;
+
+  const uttrence = new SpeechSynthesisUtterance(text);
+
+  uttrence.pitch = 1;
+  window.speechSynthesis.speak(uttrence);
+}
+
   setMessage(data) {
     this.darkTheme = data;
   }

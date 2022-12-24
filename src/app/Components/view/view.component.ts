@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IUser } from 'src/app/Modals/IUser';
 import { UsersService } from 'src/app/Services/users.service';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 
 
@@ -12,7 +13,7 @@ import { UsersService } from 'src/app/Services/users.service';
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent implements OnInit,OnDestroy {
   public loading: boolean = false;
   public user: IUser = {} as IUser;
   public userId: string;
@@ -25,7 +26,8 @@ export class ViewComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
     private _db: AngularFireDatabase,
-    private _toastr:ToastrService,
+    private _toastr: ToastrService,
+    public _commonService:CommonService
   ) { 
     this.loading = true;
   }
@@ -47,5 +49,13 @@ export class ViewComponent implements OnInit {
         this.errorMessage = err;
       })
     }
+
+    this._commonService.goToAdmin.next({text:'Go to Posts',url:'admin/posts'})
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this._commonService.goToAdmin.next({text:'',url:''})
   }
 }

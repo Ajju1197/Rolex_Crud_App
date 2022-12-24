@@ -32,6 +32,7 @@ export class PostsComponent implements OnInit {
 
   upvote = 0;
   downvote = 0;
+  postView: any;
 
   constructor(private db: AngularFireDatabase, private auth: AuthService,public commonService:CommonService) {
     this.auth.getUser().subscribe((user) => {
@@ -76,9 +77,7 @@ export class PostsComponent implements OnInit {
 
 
   deletePost(id) {
-    console.log('ajju');
-    
-    this.notifyDelete.emit(id)
+    this.db.object('/posts/' + id).remove();
   }
 
   flipCard() {
@@ -86,4 +85,11 @@ export class PostsComponent implements OnInit {
   }
   //create product addtocart html
 
+  getSinglePost(itemId) {
+    return this.db.object('/posts/' + itemId).valueChanges().subscribe((res) => {
+      this.postView = res;
+    }, (err) => {
+      this.commonService.pressMe(err.message)
+    })
+  }
 }

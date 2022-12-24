@@ -27,7 +27,7 @@
   color: #fff !important;
 }
 .changeBgColor{
-  background-color: #48e6a8 !important;
+  background-color: #0d1473 !important;
   border-radius: 20px;
   transition: background-color 2s ease-in-out;
 }
@@ -57,8 +57,9 @@
   }
 }
 .cardBgClass{
-  background-color: #000 !important;
+  background-color: #0d1473 !important;
   color: #fff !important;
+  padding: 10px 0;
 }
 
 .user-image{

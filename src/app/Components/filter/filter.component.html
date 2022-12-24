@@ -1,16 +1,16 @@
 <div class="filterCheckboxes">
-  <div class="form-group">
+  <div class="">
     <label style="color:#97cef8;font-size:1rem;">Filter {{posts}} :</label>
   </div>
-  <div class="form-group">
+  <div class="">
     <input type="radio" id="filterAll" name="filterAllPremiumNormal" value="All" [(ngModel)]="selectedRadioButtonValue" (change)="onFilterRadioButtonSelectionChanging()">
     <label style="color:#f897a0;font-size:.8rem;" for="filterAll">All ({{all}})</label>
   </div>
-  <div class="form-group" style="padding-right: 0px;">
+  <div class="" style="padding-right: 0px;">
     <input type="radio" id="filterPremium" name="filterAllPremiumNormal" value="Premium" [(ngModel)]="selectedRadioButtonValue" (change)="onFilterRadioButtonSelectionChanging()">
     <label style="color:#97f7f8;font-size:.8rem;" for="filterPremium">{{premium}} ({{premiumCount}})</label>
   </div>
-  <div class="form-group">
+  <div class="">
     <input type="radio" id="filterNormal" name="filterAllPremiumNormal" value="Normal" [(ngModel)]="selectedRadioButtonValue" (change)="onFilterRadioButtonSelectionChanging()">
     <label style="color:#97f8b8;font-size:.8rem;" for="filterNormal">{{normal}} ({{normalCount}})</label>
   </div>

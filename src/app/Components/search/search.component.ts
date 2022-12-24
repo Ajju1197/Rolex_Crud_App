@@ -7,7 +7,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  searchString:string = '';
+  searchString: string = '';
+  isSearch: boolean = true;
   constructor() { }
 
   @Output()
@@ -18,6 +19,10 @@ export class SearchComponent implements OnInit {
 
   onSearch() { 
     this.searchPosts.emit(this.searchString)
+  }
+
+  onSearchPost() {
+    this.isSearch = !this.isSearch
   }
 
 }

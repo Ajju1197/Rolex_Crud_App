@@ -1,10 +1,12 @@
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { delay, Observable } from 'rxjs';
 import { IAlbums } from 'src/app/Modals/IUser';
 import { AlertService } from 'src/app/Services/alert.service';
 import { UsersService } from 'src/app/Services/users.service';
+import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
   selector: 'app-gallery',
@@ -23,23 +25,36 @@ export class GalleryComponent implements OnInit {
   public normal = "Normal"
   public images = "Images"
   public albumCountRadioButtonSelected = 'All'
-  constructor(private alertServices:AlertService,private _userService: UsersService, private _httpClient: HttpClient) { }
+  constructor(
+    private alertServices: AlertService,
+    private _userService: UsersService,
+    private _httpClient: HttpClient,
+    public commonService: CommonService,
+    private toastr: ToastrService,
+  ) { }
 
   ngOnInit(): void {
     this.loading = true;
     this._userService.getAllAlbums().subscribe((img) => {
-      this.alertServices.success('Watches fetched successfully');
+      // this.alertServices.success('Watches fetched successfully');
+      this.toastr.success('Watches fetched successfully')
       this.showNotifications = true;
       this.albums = img
       this.loading = false;
       setTimeout(() => {
         this.showNotifications = false;
       }, 4000)
-    }, (err) => this.alertServices.error(err));
+    }, (err) => 
+    {
+      // this.alertServices.error(err)
+      this.toastr.error(err.message)
+    });
+
+    this.commonService.goToAdmin.next({ text: 'Go To Admin', url: '' })
   }
-  searchAlbumValue(stringValue: string) {
-    this.searchStringAlbum = stringValue;
-  }
+  // searchAlbumValue(stringValue: string) {
+  //   this.searchStringAlbum = stringValue;
+  // }
   deleteNotification(value: string) {
     this.showNotifications = false;
   }
@@ -57,5 +72,37 @@ export class GalleryComponent implements OnInit {
     this.albumCountRadioButtonSelected = data;
     console.log(data);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

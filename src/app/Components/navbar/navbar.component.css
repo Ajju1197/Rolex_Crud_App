@@ -131,6 +131,19 @@
   font-weight: 400;
 }
 
+.searchBar{
+  position: relative;
+  width:200px;
+  height: 34px;
+}
+
+@media (max-width:500px) {
+  .searchBar{
+    position: absolute !important;
+    right: 104px;
+  }
+}
+
 /* .sideNavHeightClass {
   top: 52px;
 } */
@@ -159,13 +172,16 @@ mat-icon{
     left: -100px;
   }
 }
-@media (max-width:767px) {
+@media (max-width:768px) {
   .dropdown-menu{
     position: absolute;
     right: -3px;
   }
   .navbar{
     padding: 20px 20px;
+  }
+  .mobileScreen{
+    display: none;
   }
 }
 
@@ -309,7 +325,7 @@ span a{
   position: absolute;
   top: 74%;
   right: 0px;
-  background: #000000;
+  background:#081c6f !important;
   min-width: 300px;
   border-radius: 4px;
   padding-left: 0px !important;

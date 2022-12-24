@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 import { Observable } from '@firebase/util';
 import { Auth } from "../Modals/auth";
 
@@ -16,7 +16,7 @@ export class AuthService {
   userData: any;
 
 
-  constructor(private auth: AngularFireAuth) { 
+  constructor(private auth: AngularFireAuth,private db: AngularFireDatabase) { 
     this.auth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;

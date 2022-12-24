@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 col-sm-12 text-end mb-3 m-auto" appCardHighlight
-            [ngClass]="{'changeBgColor': this._commonService.searchInputValue !== '','cardBgClass':this._commonService.darkTheme === true}">
+        <div class="col-lg-12 col-sm-12 text-end mb-3 m-auto cardBgClass"
+            [ngClass]="{'cardBgClass':this._commonService.darkTheme === false}">
             <div style="display: flex" class="formClass">
                 <!-- <app-search (searchPosts)="searchPostsValue($event)"></app-search> -->
                 <button class="btn btn-success ms-2" routerLink="/admin/add" mat-button>

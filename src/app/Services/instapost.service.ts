@@ -19,4 +19,7 @@ export class InstapostService {
   getPost() {
     return this.auth.authState;
   }
+
+  
+
 }
