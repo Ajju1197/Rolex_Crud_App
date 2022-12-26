@@ -279,7 +279,7 @@
     position: fixed;
     padding: 15px;
     left: 0px;
-    z-index: 2;
+    z-index: 3;
 }
 .transitionClass{
     min-height: 30vh;

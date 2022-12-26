@@ -7,12 +7,12 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 export class FirebaseService {
   constructor(private db: AngularFireDatabase) { }
 
-  create(data) {
-    return this.db.list('/items').push(data);
+  createPhotos(data) {
+    return this.db.list('/photos').push(data);
   }
 
   getAll() {
-    return this.db.list('/items').snapshotChanges();
+    return this.db.list('/photos').snapshotChanges();
   }
 
   get(itemId) {

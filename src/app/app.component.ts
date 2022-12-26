@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
   title = 'Angular-Crud-With-Api-App';
   isShow: boolean;
   public loginposts:any = [];
-  topPosToStartShowing = 50;
   darkTheme: boolean = true;
   @Input() loginFormShowHide: boolean = true;
 
@@ -67,6 +66,12 @@ export class AppComponent implements OnInit {
     url: 'admin/addInstaPost',
     routerLink:'active',
     },
+    {
+    id: 7,
+    name: 'Photos',
+    url: 'admin/all-photos',
+    routerLink:'active',
+    },
   ]
   email: string;
   
@@ -100,7 +105,7 @@ export class AppComponent implements OnInit {
   }
 
 
-
+  topPosToStartShowing = 50;
   @HostListener('window:scroll')
   
  checkScroll() {
@@ -126,6 +131,9 @@ export class AppComponent implements OnInit {
       behavior:'smooth'
     })
   }
+  // scrollToTop() {
+  //   window.scrollTo(0, 0);
+  // }
 
   ngOnInit(): void {
     this.checkScroll();

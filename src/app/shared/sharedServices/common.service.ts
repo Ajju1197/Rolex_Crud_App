@@ -42,4 +42,7 @@ pressMe(data) {
 
   // For go back to Admin
   goToAdmin = new BehaviorSubject({ text: '', url: '' })
+
+  // For Add Photos 
+  goToAddPhotos = new BehaviorSubject({ text: '', url: '' })
 }

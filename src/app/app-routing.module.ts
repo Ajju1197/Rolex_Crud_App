@@ -21,6 +21,8 @@ import { CartComponent } from './Components/ShoppingCart/cart/cart.component';
 import { ProductViewComponent } from './Components/ShoppingCart/product-view/product-view.component';
 import { AuthenticationComponent } from './Authentications/authentication/authentication.component';
 import { SignInsignUpauthComponent } from './Authentications/sign-insign-upauth/sign-insign-upauth.component';
+import { AddPhotosComponent } from './Pages/Photos/add-photos/add-photos.component';
+import { PhotosComponent } from './Pages/Photos/photos/photos.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInHome = () => redirectLoggedInTo(['']);
@@ -58,6 +60,21 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data:{ authGuardPipe: redirectUnauthorizedToLogin }
   },
+  // ============Photos Routing============== //
+  {
+    path: 'admin/all-photos',
+    component: PhotosComponent,
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'admin/add-photos',
+    component: AddPhotosComponent,
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  // =========Photo Routing End============== //
+
   {
     path: 'admin/addInstaPost',
     component: AddInstaPostComponent,

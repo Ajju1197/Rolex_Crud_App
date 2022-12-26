@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
@@ -59,5 +59,5 @@ export class AdminComponent implements OnInit {
   clickToShowLoginUsersProfiles() {
     this.isActive =!this.isActive;
   }
-
+  
 }

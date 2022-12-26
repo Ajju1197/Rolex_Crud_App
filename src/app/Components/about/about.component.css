@@ -169,3 +169,33 @@ z-index: 1;
     font-size: 1rem !important;
   }
 }
+::ng-deep .mat-tab-label-active{
+  background-color: #081c6f !important;
+}
+
+
+.menu-line {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  margin: 6px 0;
+  transition: all 0.3s;
+}
+
+.menu-line-open {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-content {
+  display: none;
+}
+
+.menu-content-open {
+  display: block;
+}
+
+.menu-content a.mat-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+}

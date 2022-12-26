@@ -1,0 +1,29 @@
+<section class="d-flex">
+  <form [formGroup]="form" (ngSubmit)="addPhotos()">
+    <input type="file" class="form-control mb-3" formControlName="file" #fileInput (change)="upLoadfile($event)">
+    <!-- <input type="text" class="form-control" formControlName="firstName">
+    <input type="text" class="form-control" formControlName="lastName">
+    <input type="text" class="form-control" formControlName="email">
+    <input type="text" class="form-control" formControlName="phone"> -->
+  <button type="submit" class="btn btn-primary me-3">Submit</button>
+  <button class="btn btn-danger" (click)="removeFile()">remove</button>
+</form>
+<div class="card" style="width:450px;height:300px;">
+  <div class="text-info text-center"
+      [hidden]="!uploadPercent || uploadPercent == 100"
+    >
+      uploading {{ uploadPercent | number: "1.0-0" }} % of 100% <br />
+      Please wait a little...
+    </div>
+    <div class="text-uppercase text-center py-2 bg-dark" style="color: lime !important;"
+      *ngIf="uploadPercent == 100"
+    >
+      Upload finished
+    </div>
+  <img [src]="picture" alt="">
+</div>
+</section>
+<!-- Loading -->
+<div class="spinnerClass" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>

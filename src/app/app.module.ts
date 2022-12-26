@@ -64,6 +64,8 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { AuthenticationComponent } from './Authentications/authentication/authentication.component';
 import { SignInsignUpauthComponent } from './Authentications/sign-insign-upauth/sign-insign-upauth.component';
+import { PhotosComponent } from './Pages/Photos/photos/photos.component';
+import { AddPhotosComponent } from './Pages/Photos/add-photos/add-photos.component';
 
 
 
@@ -102,6 +104,8 @@ import { SignInsignUpauthComponent } from './Authentications/sign-insign-upauth/
     ProductViewComponent,
     AuthenticationComponent,
     SignInsignUpauthComponent,
+    PhotosComponent,
+    AddPhotosComponent,
   ],
   imports: [
     BrowserModule,

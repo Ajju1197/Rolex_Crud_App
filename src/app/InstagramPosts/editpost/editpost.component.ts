@@ -20,6 +20,8 @@ import { imgConfig } from "src/utils/config";
 
 //uuid
 import { v4 as uuidv4 } from "uuid";
+import { CommonService } from "src/app/shared/sharedServices/common.service";
+import { InstapostService } from "src/app/Services/instapost.service";
 
 @Component({
   selector: 'app-editpost',
@@ -35,6 +37,7 @@ export class EditpostComponent implements OnInit {
 
   user = null;
   uploadPercent: number = null;
+  postView: unknown;
 
   constructor(
     private db: AngularFireDatabase,
@@ -42,12 +45,9 @@ export class EditpostComponent implements OnInit {
     private toastr: ToastrService,
     private auth: AuthService,
     private router: Router,
+    private commonService: CommonService,
+    private instaService:InstapostService
   ) { 
-    auth.getUser().subscribe((user) => {
-      this.db.object(`/loginposts/${user.uid}`).valueChanges().subscribe((user) => {
-        this.user = user;
-      })
-    })
   }
 
   ngOnInit(): void {
@@ -71,6 +71,14 @@ export class EditpostComponent implements OnInit {
       })
       .catch((err) => {
       this.toastr.error(err.message)
+    })
+  }
+
+  getSinglePost(itemId,data) {
+    return this.instaService.updateSinglePost(itemId,data).then((res) => {
+      this.postView = res;
+    }, (err) => {
+      this.commonService.pressMe(err.message)
     })
   }
 

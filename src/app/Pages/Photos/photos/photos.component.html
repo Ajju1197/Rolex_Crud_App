@@ -1,0 +1,15 @@
+<section class="photos">
+  <div class="grid">
+  <ng-container *ngFor="let item of allPhotos | async">
+        <!-- <h1>email is : {{item.payload.val().email}}</h1> -->
+        <img [src]="item.payload.val().file" (click)="openDialog(item.payload.val().file)" alt="">
+    </ng-container>
+  </div>
+</section>
+<ng-template #dialogTemplate let-modal>
+  <div [@dialogAnimation]="'open'">
+    <div class="modal-body">
+      <img [src]="fullUrl">
+    </div>
+  </div>
+</ng-template>

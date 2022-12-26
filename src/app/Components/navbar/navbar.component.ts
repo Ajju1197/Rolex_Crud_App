@@ -45,6 +45,7 @@ export class NavbarComponent implements OnInit {
   @Input() showHidePages: boolean = false;
   userData: any;
   imageUrl: any;
+  goToAddPhotos: any;
 
   constructor(
     private router: Router,
@@ -62,9 +63,7 @@ export class NavbarComponent implements OnInit {
 
       if (user) {
         this.afdb.object(`loginposts/${user.uid}`).valueChanges().subscribe(userData => {
-          this.userData = userData
-          console.log(this.userData + '......................................');
-          
+          this.userData = userData    
         })
       }
       
@@ -83,6 +82,11 @@ export class NavbarComponent implements OnInit {
     // For go to admin
     this.commonService.goToAdmin.subscribe((res) => {
       this.goToAdmin = res;
+    })
+
+    // For go to add photos
+    this.commonService.goToAddPhotos.subscribe((res) => {
+      this.goToAddPhotos = res;
     })
     
   }

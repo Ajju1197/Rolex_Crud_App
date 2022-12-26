@@ -84,12 +84,4 @@ export class PostsComponent implements OnInit {
     this.isFlip =! this.isFlip
   }
   //create product addtocart html
-
-  getSinglePost(itemId) {
-    return this.db.object('/posts/' + itemId).valueChanges().subscribe((res) => {
-      this.postView = res;
-    }, (err) => {
-      this.commonService.pressMe(err.message)
-    })
-  }
 }
