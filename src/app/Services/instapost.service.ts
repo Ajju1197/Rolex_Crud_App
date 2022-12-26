@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstapostService {
 
-  constructor(private auth: AngularFireAuth) { }
+  constructor(private auth: AngularFireAuth,private afdb:AngularFireDatabase) { }
   
   createPost(email: string, name: string) {
     return this.auth.createUserWithEmailAndPassword(email, name)
@@ -20,6 +21,9 @@ export class InstapostService {
     return this.auth.authState;
   }
 
-  
+  updateSinglePost(itemId, data) {
+    return this.afdb.object('/post/' + itemId).update(data);
+  }
+
 
 }
