@@ -97,6 +97,7 @@ export class RegisterComponent implements OnInit {
           })
         }).then((res) => {
           this.router.navigate(['/login'])
+          this.commonService.pressMe( this.myForm.username.value + 'SignUp Successfull')
           this.toastr.success('Registration successful');
         })
         .catch((err) => {

@@ -48,19 +48,6 @@ loginForm = this.fb.group({
       this._commonService.pressMe('SignIn Failed Please SignUp');
       
     })
-    // console.log(this.loginForm.value);
-    // signInWithEmailAndPassword(
-    //   this.auth,
-    //   this.loginForm.value.email,
-    //   this.loginForm.value.password,
-    // ).then((res: any) => {
-    //   this.router.navigate(['/'])
-    //   this._commonService.showHidePages = true;
-    //   console.log(res);
-    // }).catch((err) => {
-    //   console.log(err);
-    //   alert(err.message)
-    // })
   }
 
   ngOnInit(): void {
