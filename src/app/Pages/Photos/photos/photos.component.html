@@ -1,8 +1,11 @@
 <section class="photos">
+  <!-- <button routerLink="/admin/add-photos" class="btn btn-success">Add Photos</button> -->
   <div class="grid">
   <ng-container *ngFor="let item of allPhotos | async">
         <!-- <h1>email is : {{item.payload.val().email}}</h1> -->
-        <img [src]="item.payload.val().file" (click)="openDialog(item.payload.val().file)" alt="">
+        <div class="image-container">
+          <img [src]="item.payload.val().file" (click)="openDialog(item.payload.val().file)" alt="">
+        </div>
     </ng-container>
   </div>
 </section>

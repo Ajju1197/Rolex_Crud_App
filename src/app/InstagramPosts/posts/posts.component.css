@@ -68,3 +68,17 @@ a{
 }
 /* //generate flip icon in svg? */
 
+.modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body img {
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+::ng-deep .mat-dialog-container {
+  padding: 0px !important;
+}

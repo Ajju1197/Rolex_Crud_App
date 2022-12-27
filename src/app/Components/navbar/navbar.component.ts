@@ -104,6 +104,7 @@ export class NavbarComponent implements OnInit {
   }
 
 
+  gotoPhotos = window.innerWidth < 767;
 
 
   ngOnInit(): void {
@@ -122,6 +123,8 @@ export class NavbarComponent implements OnInit {
         header.classList.remove('small');
       }
     }
+
+    this.gotoPhotos = !this.goToAddPhotos.text
   }
 
   searchPostsValue(searchStringValue: string) {

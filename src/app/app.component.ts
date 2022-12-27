@@ -28,6 +28,9 @@ export class AppComponent implements OnInit {
   public loginposts:any = [];
   darkTheme: boolean = true;
   @Input() loginFormShowHide: boolean = true;
+  @ViewChild('cursor',{ static: true }) cursor: ElementRef;
+  @ViewChild('cursor2',{ static: true }) cursor2: ElementRef;
+
 
   public navLinks = [
     {
@@ -138,7 +141,12 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.checkScroll();
     this.changeDarkTheme(DataTransfer)
-    
+    document.addEventListener('mousemove', (e) => {
+      var x = e.clientX;
+      var y = e.clientY;
+      this.cursor.nativeElement.style.top = this.cursor2.nativeElement.style.top = y + 'px';
+      this.cursor.nativeElement.style.left = this.cursor2.nativeElement.style.left = x + 'px';
+    })
   }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];

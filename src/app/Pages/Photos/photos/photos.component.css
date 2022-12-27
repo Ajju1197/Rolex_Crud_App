@@ -24,14 +24,11 @@
   }
 }
 
-.grid img {
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+/* .grid img {
   height: 62vh;
   object-fit: fill;
   width: 100%;
-  cursor: pointer;
-}
+} */
 
 /* .grid img:nth-child(2) {
     grid-column: span 3;
@@ -51,4 +48,21 @@
 
 ::ng-deep .mat-dialog-container {
   padding: 0px !important;
+}
+
+.image-container{
+  position: relative;
+  overflow: hidden;
+  padding-top: 100%;
+}
+.image-container img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: fill;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
 }

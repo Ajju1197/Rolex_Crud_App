@@ -28,17 +28,17 @@ export class AdminComponent implements OnInit {
 
   public loginposts: any = [];
   userData: any;
-
+  
   constructor(
     private _db: AngularFireDatabase,
     private _toastr: ToastrService,
     private commonService: CommonService,
     private route:ActivatedRoute,
   ) { 
-        // Getting all the loginposts from AngularFireDataBase
-        _db.object('/loginposts').valueChanges().subscribe((obj) => {
-          if (obj) {
-            this.loginposts = Object.values(obj);
+    // Getting all the loginposts from AngularFireDataBase
+    _db.object('/loginposts').valueChanges().subscribe((obj) => {
+      if (obj) {
+        this.loginposts = Object.values(obj);
             console.log(JSON.stringify(this.loginposts[0])+ 'adminCompo');
           } else {
             this._toastr.error('No user Found')
@@ -48,7 +48,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     setInterval(() => {
       console.log('ajju bhai animate');
       this.isAnimate =! this.isAnimate
@@ -59,5 +58,6 @@ export class AdminComponent implements OnInit {
   clickToShowLoginUsersProfiles() {
     this.isActive =!this.isActive;
   }
-  
+
+
 }

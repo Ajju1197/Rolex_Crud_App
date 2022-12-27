@@ -1,4 +1,4 @@
-<section class="d-flex">
+<section class="addPhotos">
   <form [formGroup]="form" (ngSubmit)="addPhotos()">
     <input type="file" class="form-control mb-3" formControlName="file" #fileInput (change)="upLoadfile($event)">
     <!-- <input type="text" class="form-control" formControlName="firstName">
@@ -8,7 +8,7 @@
   <button type="submit" class="btn btn-primary me-3">Submit</button>
   <button class="btn btn-danger" (click)="removeFile()">remove</button>
 </form>
-<div class="card" style="width:450px;height:300px;">
+<div class="card" style="height:300px;">
   <div class="text-info text-center"
       [hidden]="!uploadPercent || uploadPercent == 100"
     >

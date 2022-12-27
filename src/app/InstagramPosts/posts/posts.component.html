@@ -1,7 +1,8 @@
 <div class="card posts mb-3 border-secondary">
   <div class="front" [ngClass]="{'flipFront': isFlip === true}" >
-    <a data-toggle="modal" data-target="#exampleModalCenter"  class="postImageHeightClass" target="_blank">
+    <a class="postImageHeightClass" target="_blank">
       <img
+      (click)="openDialog(post.picture)"
         [src]="post.picture"
         height="500"
         width="auto"
@@ -52,25 +53,10 @@
   </div>
 </div>
 
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button> -->
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <img src="{{post.image}}" alt="">
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<ng-template #dialogTemplate let-modal>
+  <div [@dialogAnimation]="'open'">
+    <div class="modal-body">
+      <img [src]="fullUrl" alt="">
     </div>
   </div>
-</div>
+</ng-template>

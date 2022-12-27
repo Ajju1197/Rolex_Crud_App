@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, TemplateRef, ViewChild } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 // npm install @fortawesome/free-regular-svg-icons
 import {
@@ -10,10 +11,22 @@ import {
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AuthService } from 'src/app/Services/auth.service';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
+  animations: [
+    trigger('dialogAnimation', [
+      transition('void => *', [
+        style({ transform: 'scale(0.3)', opacity: 0 }),
+        animate('.5s cubic-bezier(.35,0,.25,1)', style({ transform: 'scale(1)', opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate('.5s cubic-bezier(.35,0,.25,1)', style({ transform: 'scale(0.3)', opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class PostsComponent implements OnInit {
 
@@ -33,8 +46,10 @@ export class PostsComponent implements OnInit {
   upvote = 0;
   downvote = 0;
   postView: any;
+  fullUrl: string;
+  @ViewChild('dialogTemplate') dialogTemplate: TemplateRef<any>;
 
-  constructor(private db: AngularFireDatabase, private auth: AuthService,public commonService:CommonService) {
+  constructor(private db: AngularFireDatabase, private auth: AuthService,public commonService:CommonService,private dialog:MatDialog) {
     this.auth.getUser().subscribe((user) => {
       this.uid = user?.uid;
     });
@@ -83,5 +98,9 @@ export class PostsComponent implements OnInit {
   flipCard() {
     this.isFlip =! this.isFlip
   }
-  //create product addtocart html
+
+  openDialog(fullUrl:string) {
+    this.fullUrl = fullUrl;
+    this.dialog.open(this.dialogTemplate)
+  }
 }

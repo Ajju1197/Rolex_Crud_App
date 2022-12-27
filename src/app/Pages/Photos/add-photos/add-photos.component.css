@@ -3,9 +3,19 @@
   width: 100%;
   object-fit: cover;
 }
+.addPhotos{
+  display: flex;
+}
 section{
   padding: 97px 0px;
   align-items: center;
   justify-content: center;
   column-gap: 2em;
+}
+
+@media (max-width:767px) {
+  .addPhotos{
+    flex-direction: column-reverse;
+    row-gap: 2em;
+  }
 }
