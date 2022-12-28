@@ -4,18 +4,23 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~ngx-toastr/toastr";
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Work+Sans:wght@100;200;300&display=swap');
-html,
+
 /* Side Bar Style Code */
 * {
   font-family: 'Quicksand', sans-serif;
   box-sizing: border-box;
   font-size: 16px;
 }
+html{
+  font-family: 'Quicksand', sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+  height: 100% !important;
+}
 
 body {
   position: relative;
-  min-width: 100%;
-  min-height: 100vh;
+  height: 100%;
   background-color: #f6f9ff !important;
   margin: 0;
   font-family: 'Work Sans', sans-serif;

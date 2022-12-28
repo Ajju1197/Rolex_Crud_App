@@ -21,7 +21,7 @@ export const titleAnimation = trigger("titleAnimation", [
   ])
 ]);
 
-const listAnimation = trigger("listAnimation", [
+export const listAnimation = trigger("listAnimation", [
   transition("* <=> *", [
     query(
       ":enter",

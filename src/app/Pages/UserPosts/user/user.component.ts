@@ -4,12 +4,17 @@ import { AlertService } from 'src/app/appServices/alert.service';
 import { UsersService } from 'src/app/appServices/users.service';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 import Swal from 'sweetalert2';
+import { fade } from 'src/app/Animations/animation';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { animate, group, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
+  animations: [fade
+  ]
 })
 export class UserComponent implements OnInit {
 
@@ -23,7 +28,7 @@ export class UserComponent implements OnInit {
   loading;
   @Output() notifyDeleteUser:EventEmitter<any> = new EventEmitter<any>();
     
-  constructor(public _commonService: CommonService, private alertService: AlertService, private _userService: UsersService) {
+  constructor(public _commonService: CommonService, private alertService: AlertService, private _userService: UsersService,private afdb:AngularFireDatabase) {
 
   }
   
@@ -40,16 +45,18 @@ export class UserComponent implements OnInit {
 
 
   deleteUser(userId) {
-    // this._userService.deleteUser(this.user)
-    this.loading = true;
-    this._userService.deleteUser(userId).subscribe((data) => {
-      // this.users = this.users.filter(item => item.id !== this.userId)
-      this.alertService.success('Post deleted successfully!', true)
-      window.location.reload();
-      console.log('Post deleted successfully!');
-      this.loading = false;
-    })
-    this.notifyDeleteUser.emit(userId);
+    // this.loading = true;
+    // this.filterUsers.splice(i,1)
+    // this.filterUsers.splice(i, 1)
+    this.afdb.object('/users/' + userId).remove();
+    // this.alertService.success('Post deleted successfully!', true)
+    window.location.reload();
+    console.log('Post deleted successfully!');  
+    // this.loading = false;
+    // this._userService.deleteUser(i).subscribe((data) => {
+
+    // })
+    // this.notifyDeleteUser.emit(userId);
   }
 
 }

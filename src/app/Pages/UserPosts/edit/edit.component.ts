@@ -99,14 +99,14 @@ export class EditComponent implements OnInit,OnDestroy {
             text: 'Post Can be Updated Successfully',
             confirmButtonText: 'Cool',
           })
-        this._router.navigateByUrl('admin/posts');
+        this._router.navigateByUrl('/posts');
         setTimeout(() => {
           this.alertService.success('Post updated successfully!',true)
         }, 1100);
       }, (error) => {
         this.alertService.error(error)
         this.errorMessage = error;
-        this._router.navigate(['admin/edit'])
+        this._router.navigate(['/posts/edit'])
       })
     }
   }

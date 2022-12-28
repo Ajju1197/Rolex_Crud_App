@@ -7,10 +7,6 @@
             <input type="checkbox" (change)="checkCheckBoxvalue($event)">
             <span class="slider round"></span>
         </label> -->
-    </div>
-
-    <div class="content" [@routeAnimations]="prepareRoute(outlet)">
-        <app-alert></app-alert>
         <div *ngIf="email" class="py-2 navbaronadmin" style="background-image: linear-gradient(to left, #7ff4fb, #00bae0, #007fc1, #004496, #09045b);">
             <div class="container">
                 <div class="navlinks d-flex" style="column-gap: 1em;flex-wrap: wrap;row-gap: 1em;">
@@ -20,7 +16,18 @@
                     </div>
                 </div>
         </div>
+    </div>
+
+    <!-- This is this 1st method for animation for routes -->
+    <!-- <div class="content" [@routeAnimations]="prepareRoute(outlet)">
+        <app-alert></app-alert>
         <router-outlet #outlet="outlet"></router-outlet>
+    </div> -->
+
+    <!-- This is Second method for animation routes -->
+    <div class="content" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+        <app-alert></app-alert>
+        <router-outlet #o="outlet"></router-outlet>
     </div>
     <div class="footer">
         <app-footer></app-footer>

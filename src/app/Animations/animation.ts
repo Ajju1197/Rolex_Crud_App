@@ -1,6 +1,6 @@
 import {
   animation, trigger, animateChild, group,
-  transition, animate, style, query
+  transition, animate, style, query, state
 } from '@angular/animations';
 
 export const transAnimation = animation([
@@ -31,10 +31,10 @@ export const slideInAnimation =
       query(':leave', animateChild()),
       group([
         query(':leave', [
-          animate('300ms ease-out', style({ left: '100%' }))
+          animate('600ms ease-out', style({ left: '100%' }))
         ]),
         query(':enter', [
-          animate('300ms ease-out', style({ left: '0%' }))
+          animate('600ms ease-out', style({ left: '0%' }))
         ])
       ]),
       query(':enter', animateChild()),
@@ -55,15 +55,84 @@ export const slideInAnimation =
       query(':leave', animateChild()),
       group([
         query(':leave', [
-          animate('200ms ease-out', style({ left: '100%' }))
+          animate('600ms ease-out', style({ left: '100%' }))
         ]),
         query(':enter', [
-          animate('500ms ease-out', style({ left: '0%' }))
+          animate('600ms ease-out', style({ left: '0%' }))
         ])
       ]),
       query(':enter', animateChild()),
     ])
   ]);
+
+export const fade = 
+  trigger('fadeIn', [
+    state('void', style({ opacity: 0 })),
+    
+    transition('void => *,* => void', [
+      animate('600ms ease-out')
+    ]),
+  ])
+
+
+  export const slideInAnimations = trigger('slideInAnimation', [
+    // Transition between any two states
+    transition('* <=> *', [
+      // Events to apply
+      // Defined style and animation function to apply
+      // Config object with optional set to true to handle when element not yet added to the DOM
+      query(':enter, :leave', style({ position: 'fixed', width: '100%', zIndex: 2 }), { optional: true }),
+      // group block executes in parallel
+      group([
+        query(':enter', [
+          style({ transform: 'translateX(100%)' }),
+          animate('600ms ease-out', style({ transform: 'translateX(0%)' }))
+        ], { optional: true }),
+        query(':leave', [
+          style({ transform: 'translateX(0%)' }),
+          animate('600ms ease-out', style({ transform: 'translateX(-100%)' }))
+        ], { optional: true })
+      ])
+    ])
+  ]);
+
+export const slidesTwoWay =
+trigger('fadeSlide', [
+  transition(':enter', [
+    group([
+      query('.item:nth-child(odd)', [
+        style({ opacity: 0, transform: 'translateX(-250px)' }),
+        animate(
+          1000,
+          style({ opacity: 1, transform: 'translateX(0)' })
+        )
+      ]),
+      query('.item:nth-child(even)', [
+        style({ opacity: 0, transform: 'translateX(250px)' }),
+        animate(
+          1000,
+          style({ opacity: 1, transform: 'translateX(0)' })
+        )
+      ])
+    ])
+  ]),
+  transition(':leave', [
+    group([
+      query('.item:nth-child(odd)', [
+        animate(
+          1000,
+          style({ opacity: 0, transform: 'translateX(-250px)' })
+        )
+      ]),
+      query('.item:nth-child(even)', [
+        animate(
+          1000,
+          style({ opacity: 0, transform: 'translateX(250px)' })
+        ),
+      ])
+    ])
+  ])
+])
 
 
 /*

@@ -135,7 +135,7 @@ export class AddComponent implements OnInit,OnDestroy {
       console.log(this.fb.value)
       this._userService.createUser(this.fb.value).subscribe((res) => {
         Swal.fire('Post Can be Added Successfully')
-        this._router.navigateByUrl('admin/posts');
+        this._router.navigateByUrl('/posts');
         setTimeout(() => {
           this.alertService.success('Post created successfully!', true);
         }, 1100)
@@ -146,7 +146,7 @@ export class AddComponent implements OnInit,OnDestroy {
           icon: 'error',
           confirmButtonText: 'Cool'
         })
-        this._router.navigate(['/admin/add'])
+        this._router.navigate(['/posts/add'])
         this.alertService.error(error);
         this.errorMessage = error;
       })

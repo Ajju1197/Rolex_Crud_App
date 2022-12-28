@@ -24,12 +24,12 @@ const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
-    data: { animation: 'HomePage',authGuardPipe: redirectUnauthorizedToLogin },
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
     canActivate: [AngularFireAuthGuard],
   },
   {
     path: 'about', component: AboutComponent,
-    data: { animation: 'AboutPage', authGuardPipe: redirectUnauthorizedToLogin },
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
     canActivate: [AngularFireAuthGuard],},
   {
     path: 'login',

@@ -1,23 +1,17 @@
 import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 import { ActivatedRoute } from '@angular/router';
+import { fade, slidesTwoWay } from 'src/app/Animations/animation';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
   animations: [
-    trigger('slideAnimation', [
-      transition(':enter', [style({
-        opacity: 0,
-        transform: 'translateX(-100%)'
-      }),
-      animate(400)
-      ])
-    ])
+    fade,slidesTwoWay
   ]
 })
 export class AdminComponent implements OnInit {

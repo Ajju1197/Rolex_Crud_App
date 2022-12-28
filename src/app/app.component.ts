@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostBinding, HostListener, Inject, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { slideInAnimation } from './Animations/animation';
+import { slideInAnimation, slideInAnimations } from './Animations/animation';
 import { titleAnimation } from './CustomDirectives/alert/alert.component';
 import Swal from 'sweetalert2'
 import { CommonService } from './shared/sharedServices/common.service';
@@ -18,7 +18,7 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    slideInAnimation,titleAnimation
+    titleAnimation,slideInAnimations
     // animation triggers go here
   ]
 })
