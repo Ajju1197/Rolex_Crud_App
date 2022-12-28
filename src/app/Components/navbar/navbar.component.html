@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div style="display:flex;justify-content:center;align-items:center;coulumn-gap:10px;" *ngIf="!gobackLink.text && !goToCart.text && !goToAdmin.text && !goToAddPhotos.text">
+        <!-- <div style="display:flex;justify-content:center;align-items:center;coulumn-gap:10px;" *ngIf="!gobackLink.text && !goToCart.text && !goToAdmin.text && !goToAddPhotos.text">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 m-auto mb-lg-0">
                     <li class="nav-item">
@@ -39,29 +39,28 @@
                             routerLinkActive="active" [routerLinkActiveOptions]={exact:true} *ngIf="email">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/about"
+                        <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/about"
                             routerLinkActive="active" *ngIf="email">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/albums"
+                        <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/albums"
                             routerLinkActive="active" *ngIf="email">Albums</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/posts"
+                        <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/posts"
                             routerLinkActive="active" *ngIf="email">Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/admin/products"
+                        <a class="nav-link" style="font-size:20px;font-weight:400;" routerLink="/products"
                             routerLinkActive="active" *ngIf="email">Shopping</a>
                     </li>
-                    <!-- Post Story -->
                     <li class="nav-item">
-                        <a class="nav-link" style="font-size:20px;font-weight:400;" [routerLink]="['/admin/addInstaPost']"
+                        <a class="nav-link" style="font-size:20px;font-weight:400;" [routerLink]="['/allPostsInOnePlace']"
                             routerLinkActive="active" *ngIf="email">Insta</a>
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
         <!-- Nav Item - User Information -->
         <div class="d-flex align-items-center position-relative">
@@ -158,7 +157,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header sidebarContentDiv" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            <a routerLink="/admin/about" (click)="showSideNavOf()" type="button">About</a>
+                            <a routerLink="/about" (click)="showSideNavOf()" type="button">About</a>
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -168,7 +167,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header sidebarContentDiv" id="flush-headingTheree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTheree" aria-expanded="false" aria-controls="flush-collapseTheree">
-                            <a routerLink="/admin/albums" (click)="showSideNavOf()" type="button">Albums</a>
+                            <a routerLink="/albums" (click)="showSideNavOf()" type="button">Albums</a>
                         </button>
                     </h2>
                     <div id="flush-collapseTheree" class="accordion-collapse collapse" aria-labelledby="flush-headingTheree" data-bs-parent="#accordionFlushExample">
@@ -176,29 +175,29 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingTheree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTheree" aria-expanded="false" aria-controls="flush-collapseTheree">
-                            <a routerLink="/admin/products" (click)="showSideNavOf()" type="button">Shopping Cart</a>
+                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingTheree1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTheree1" aria-expanded="false" aria-controls="flush-collapseTheree">
+                            <a routerLink="/products" (click)="showSideNavOf()" type="button">Shopping Cart</a>
                         </button>
                     </h2>
-                    <div id="flush-collapseTheree" class="accordion-collapse collapse" aria-labelledby="flush-headingTheree" data-bs-parent="#accordionFlushExample">
+                    <div id="flush-collapseTheree1" class="accordion-collapse collapse" aria-labelledby="flush-headingTheree1" data-bs-parent="#accordionFlushExample">
                         <!-- <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div> -->
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header sidebarContentDiv" id="flush-headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                            <a routerLink="/admin/posts" (click)="showSideNavOf()" type="button">Posts</a>
+                            <a routerLink="/posts" (click)="showSideNavOf()" type="button">Posts</a>
                         </button>
                     </h2>
                     <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body sidebarContentDiv">
-                            <a routerLink="/admin/add" (click)="showSideNavOf()" type="button">Add User</a>
+                            <a routerLink="posts/add" (click)="showSideNavOf()" type="button">Add User</a>
                         </div>
                     </div>
                     <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body sidebarContentDiv">
-                            <a [routerLink]="['/admin/addInstaPost']" (click)="showSideNavOf()" type="button">Post Your Story</a>
+                            <a [routerLink]="['/addInstaPost']" (click)="showSideNavOf()" type="button">Post Your Story</a>
                         </div>
                     </div>
                 </div>

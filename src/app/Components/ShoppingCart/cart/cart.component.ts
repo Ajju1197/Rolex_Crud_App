@@ -29,7 +29,7 @@ export class CartComponent implements OnInit,OnDestroy {
     });
     this.grandTotal = this.cartService.getTotalPrice();
 
-    this.commonService.gobackLink.next({ text: 'Back to Shopping', url: '/admin/products' })
+    this.commonService.gobackLink.next({ text: 'Back to Shopping', url: '/products' })
     this.commonService.goToCart.next({text:'',url:''})
   }
   

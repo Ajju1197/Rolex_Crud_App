@@ -50,7 +50,7 @@ export class ViewComponent implements OnInit,OnDestroy {
       })
     }
 
-    this._commonService.goToAdmin.next({text:'Go to Posts',url:'admin/posts'})
+    this._commonService.goToAdmin.next({text:'Go to Posts',url:'posts'})
   }
 
   ngOnDestroy(): void {

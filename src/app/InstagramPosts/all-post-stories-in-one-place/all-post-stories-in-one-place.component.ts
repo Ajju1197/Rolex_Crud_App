@@ -40,7 +40,7 @@ export class AllPostStoriesInOnePlaceComponent implements OnInit,OnDestroy {
       });
   }
   ngOnInit(): void {
-    this.commonService.goToAdmin.next({text:'Go To Insta',url:'/admin/addInstaPost'})
+    this.commonService.goToAdmin.next({text:'Go To Insta',url:'/addInstaPost'})
   }
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.

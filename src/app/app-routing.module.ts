@@ -35,6 +35,10 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
   },
   {
+    path: 'about', component: AboutComponent,
+    data: { animation: 'AboutPage', authGuardPipe: redirectUnauthorizedToLogin },
+    canActivate: [AngularFireAuthGuard],},
+  {
     path: 'login',
     component: LoginComponent,
     canActivate: [AngularFireAuthGuard],
@@ -50,61 +54,97 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],
     data:{ authGuardPipe:redirectLoggedInHome }
   },
-  { path: 'admin/view/:userId', component: ViewComponent, data: { animation: 'AboutPage' } },
-  { path: 'admin/about', component: AboutComponent, data: { animation: 'AboutPage' } },
-  { path: 'admin/edit', component: EditComponent },
-  { path: 'admin/edit/:userId', component: EditComponent },
-  {
-    path: 'admin/add',
-    component: AddComponent,
-    canActivate: [AngularFireAuthGuard],
-    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+
+
+  //====================== Posts Routing ===================//
+  { path: 'posts', loadChildren: () => import('./Components/posts/posts.module').then(m => m.PostsModule),canActivate: [AngularFireAuthGuard],
+  data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
+  {
+    path: 'posts', children: [
+      { path: 'add', component: AddComponent },
+      { path: 'view/:userId', component: ViewComponent, data: { animation: 'AboutPage' } },
+      { path: 'edit/:userId', component: EditComponent },
+    ],canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  // ====================== Posts Routing End===================//
+
+
   // ============Photos Routing============== //
   {
-    path: 'admin/all-photos',
-    component: PhotosComponent,
+    path: 'photos', children: [
+      {
+        path: 'all-photos',
+        component: PhotosComponent,
+      },
+      {
+        path: 'add-photos',
+        component: AddPhotosComponent,
+      },
+    ],
     canActivate: [AngularFireAuthGuard],
     data:{ authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
-    path: 'admin/add-photos',
-    component: AddPhotosComponent,
-    canActivate: [AngularFireAuthGuard],
-    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+    path: '', children: [
+      { path: 'albums', component: GalleryComponent },
+      { path: 'album/:albumId', component: ImageViewComponent },
+    ],canActivate: [AngularFireAuthGuard], data:{ authGuardPipe: redirectUnauthorizedToLogin }
   },
-  // =========Photo Routing End============== //
-
-  {
-    path: 'admin/addInstaPost',
-    component: AddInstaPostComponent,
-    canActivate: [AngularFireAuthGuard],
-    data:{ authGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: 'admin/editInstaPost',
-    component: EditpostComponent,
-    canActivate: [AngularFireAuthGuard],
-    data:{ authGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: 'admin/allPostsInOnePlace',
-    component: AllPostStoriesInOnePlaceComponent,
-    canActivate: [AngularFireAuthGuard],
-    data:{ authGuardPipe: redirectUnauthorizedToLogin }
-  },
-  { path: 'admin/albums', component: GalleryComponent },
-  { path: 'admin/album/:albumId', component: ImageViewComponent },
-  { path: 'admin/posts', loadChildren: () => import('./Components/posts/posts.module').then(m => m.PostsModule) },
   { path: 'lazyimages', loadChildren: () => import('./shared/images-lazyload/images-lazyload/images-lazyload.module').then(m => m.ImagesLazyloadModule) },
+// =========Photo Routing End============== //
+
+
+// ===========InSta Posts Routing==================== //
+{
+  path: 'allPostsInOnePlace',component: AllPostStoriesInOnePlaceComponent,
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+  },
   {
-    path: 'admin/products',
+    path: '', children: [
+      {
+        path: 'addInstaPost', component: AddInstaPostComponent,
+      },
+      {
+        path: 'editInstaPost', component: EditpostComponent,
+      },
+    ],
+    canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  // =========== InSta Posts Routing End ==================== //
+
+
+ // ============= Shopping Routing ================//
+  {
+    path: 'products',
     component: ProductsComponent,
     canActivate: [AngularFireAuthGuard],
     data:{ authGuardPipe: redirectUnauthorizedToLogin }
   },
-  { path: 'admin/product/:productId', component: ProductViewComponent },
-  { path: 'admin/cart', component: CartComponent },
+  {
+    path: '', children: [
+      { path: 'cart', component: CartComponent,canActivate: [AngularFireAuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToLogin }}
+    ]
+  },
+// ============= Shopping Routing End ================//
+  
+
+//======================== Child Routes====================//
+{
+  path: '', children: [
+    { path: 'product/:productId', component: ProductViewComponent },
+    { path: 'editInstaPost/:instaId',component:EditpostComponent},
+  ],canActivate: [AngularFireAuthGuard],
+  data:{ authGuardPipe: redirectUnauthorizedToLogin }
+},
+//======================== Child Routes End ====================//
+
+
+// =========== Page Not Found ================//
   { path: '**', component:PagenotfoundComponent },
 ];
 

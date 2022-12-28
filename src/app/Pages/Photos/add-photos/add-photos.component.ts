@@ -58,7 +58,7 @@ export class AddPhotosComponent implements OnInit {
     })
     .then(() => {
       this.toastr.success("Photo added successfully");
-      this.router.navigateByUrl("/admin/all-photos");
+      this.router.navigateByUrl("photos/all-photos");
     })
     .catch((err) => {
       this.toastr.error("Oopsss");

@@ -30,7 +30,7 @@ export class PhotosComponent implements OnInit {
 
   ngOnInit(): void {
     this.allPhotos = this._fbService.getAll();
-    this._commonService.goToAddPhotos.next({text:'Go to Add Photos',url:'admin/add-photos'})
+    this._commonService.goToAddPhotos.next({text:'Go to Add Photos',url:'photos/add-photos'})
   }
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.

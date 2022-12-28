@@ -44,8 +44,8 @@ export class ProductViewComponent implements OnInit,OnDestroy {
       this.totalItem = data.length;
     })
 
-    this.commonService.goToCart.next({ text: 'Go To Cart', url: '/admin/cart' })
-    this.commonService.gobackLink.next({ text: 'Go To Shopping', url: '/admin/products' })
+    this.commonService.goToCart.next({ text: 'Go To Cart', url: '/cart' })
+    this.commonService.gobackLink.next({ text: 'Go To Shopping', url: '/products' })
     
     this.darkTheme = this.commonService.darkTheme;
   }

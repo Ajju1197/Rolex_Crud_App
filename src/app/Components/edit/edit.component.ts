@@ -44,7 +44,7 @@ export class EditComponent implements OnInit,OnDestroy {
       phone: new FormControl('', [Validators.required]),
     });
 
-    this._commonService.goToAdmin.next({text:'Go to Posts',url:'admin/posts'})
+    this._commonService.goToAdmin.next({text:'Go to Posts',url:'/posts'})
     
   }
 
