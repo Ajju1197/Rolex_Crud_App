@@ -14,50 +14,38 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './Components/admin/admin.component';
+import { AdminComponent } from './Pages/admin/admin.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http'
-import { UsersService } from './Services/users.service';
+import { UsersService } from './appServices/users.service';
 // Toastrmodule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
-import { MeterialModule } from './meterial/meterial.module';
+import { MeterialModule } from './shared/sharedModules/meterial/meterial.module';
 import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY } from '@angular/material/autocomplete';
 import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER } from '@angular/material/select';
 import { MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER } from '@angular/material/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './Components/Logins/login/login.component';
-import { LogoutComponent } from './Components/Logins/logout/logout.component';
+import { LoginComponent } from './Pages/Logins/login/login.component';
+import { LogoutComponent } from './Pages/Logins/logout/logout.component';
 import { FilterUsersPipe } from './Pipes/filter-users.pipe';
-import { ViewComponent } from './Components/view/view.component';
-import { AddComponent } from './Components/add/add.component';
-import { EditComponent } from './Components/edit/edit.component';
-import { GalleryComponent } from './Components/gallery/gallery.component';
-import { AboutComponent } from './Components/about/about.component';
-import { PostsModule } from './Components/posts/posts.module';
+import { GalleryComponent } from './Pages/gallery/gallery.component';
+import { AboutComponent } from './Pages/about/about.component';
 import { NgOptimizedImage, PRECONNECT_CHECK_BLOCKLIST } from '@angular/common';
 import { AlertDirective } from './CustomDirectives/alert.directive';
 import { AlertComponent } from './CustomDirectives/alert/alert.component';
-import { AlertService } from './Services/alert.service';
+import { AlertService } from './appServices/alert.service';
 import { CardHighlightDirective } from './CustomDirectives/card-highlight.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { AlertDirectiveComponent } from './CustomDirectives/alert-directive/alert-directive.component';
 import { FilterComponent } from './Components/filter/filter.component';
 import { ImageViewComponent } from './Components/image-view/image-view.component';
 import { environment } from 'src/environments/environment';
-import { RegisterComponent } from './Components/Logins/register/register.component';
-import { AuthService } from './Services/auth.service';
-import { AllPostStoriesInOnePlaceComponent } from './InstagramPosts/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
-import { AddInstaPostComponent } from './InstagramPosts/add-insta-post/add-insta-post.component';
-import { PostsComponent } from './InstagramPosts/posts/posts.component';
-import { EditpostComponent } from './InstagramPosts/editpost/editpost.component';
-import { HoverCardComponent } from './Components/hover-card/hover-card.component';
+import { RegisterComponent } from './Pages/Logins/register/register.component';
+import { AuthService } from './appServices/auth.service';
 import { PagenotfoundComponent } from './Components/pagenotfound/pagenotfound.component';
-import { CartComponent } from './Components/ShoppingCart/cart/cart.component';
-import { ProductsComponent } from './Components/ShoppingCart/products/products.component';
-import { ProductViewComponent } from './Components/ShoppingCart/product-view/product-view.component';
 
 // Loading Bar
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
@@ -66,6 +54,8 @@ import { AuthenticationComponent } from './Authentications/authentication/authen
 import { SignInsignUpauthComponent } from './Authentications/sign-insign-upauth/sign-insign-upauth.component';
 import { PhotosComponent } from './Pages/Photos/photos/photos.component';
 import { AddPhotosComponent } from './Pages/Photos/add-photos/add-photos.component';
+import { SearchComponent } from './Components/search/search.component';
+import { AppModulesModule } from './shared/sharedModules/app-modules/app-modules.module';
 
 
 
@@ -82,9 +72,6 @@ import { AddPhotosComponent } from './Pages/Photos/add-photos/add-photos.compone
     LoginComponent,
     LogoutComponent,
     FilterUsersPipe,
-    ViewComponent,
-    AddComponent,
-    EditComponent,
     GalleryComponent,
     AboutComponent,
     AlertDirective,
@@ -93,19 +80,12 @@ import { AddPhotosComponent } from './Pages/Photos/add-photos/add-photos.compone
     FilterComponent,
     ImageViewComponent,
     RegisterComponent,
-    AllPostStoriesInOnePlaceComponent,
-    AddInstaPostComponent,
-    PostsComponent,
-    EditpostComponent,
-    HoverCardComponent,
     PagenotfoundComponent,
-    CartComponent,
-    ProductsComponent,
-    ProductViewComponent,
     AuthenticationComponent,
     SignInsignUpauthComponent,
     PhotosComponent,
     AddPhotosComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,14 +103,19 @@ import { AddPhotosComponent } from './Pages/Photos/add-photos/add-photos.compone
     MeterialModule,
     ReactiveFormsModule,
     FormsModule, 
-    PostsModule,
     NgOptimizedImage,
     MatIconModule,
     LoadingBarRouterModule,
     LoadingBarModule,
+    AppModulesModule,
   ],
   providers: [UsersService,AlertService,AuthService, {provide: PRECONNECT_CHECK_BLOCKLIST,multi: true, useValue: 'https://your-domain.com'}],
-  exports: [AlertDirective,ReactiveFormsModule,FormsModule],
+  exports: [AlertDirective,SearchComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor() {
+    console.log('App Modules Loaded');
+    
+  }
+}

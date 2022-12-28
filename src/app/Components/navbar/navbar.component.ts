@@ -3,7 +3,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { IUser } from 'src/app/Modals/IUser';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from 'src/app/appServices/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 import { BehaviorSubject } from 'rxjs';

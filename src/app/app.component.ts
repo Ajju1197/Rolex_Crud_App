@@ -4,7 +4,7 @@ import { slideInAnimation } from './Animations/animation';
 import { titleAnimation } from './CustomDirectives/alert/alert.component';
 import Swal from 'sweetalert2'
 import { CommonService } from './shared/sharedServices/common.service';
-import { AuthService } from './Services/auth.service';
+import { AuthService } from './appServices/auth.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
 import { DOCUMENT } from '@angular/common';
@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
     },
     {
     id: 4,
-    name: 'Posts',
+    name: 'User Posts',
     url: '/posts',
     routerLink:'active',
     },
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
     {
     id: 6,
     name: 'Insta Posts',
-    url: 'allPostsInOnePlace',
+    url: 'instagram',
     routerLink:'active',
     },
     {

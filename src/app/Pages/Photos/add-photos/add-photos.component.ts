@@ -5,7 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { finalize } from 'rxjs';
-import { FirebaseService } from 'src/app/Services/firebase.service';
+import { FirebaseService } from 'src/app/appServices/firebase.service';
 //uuid
 import { v4 as uuidv4 } from "uuid";
 

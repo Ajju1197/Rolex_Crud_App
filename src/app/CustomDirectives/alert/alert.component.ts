@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AlertService } from 'src/app/Services/alert.service';
+import { AlertService } from 'src/app/appServices/alert.service';
 import {
   trigger,
   transition,

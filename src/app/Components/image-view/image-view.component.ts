@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlertService } from 'src/app/Services/alert.service';
-import { UsersService } from 'src/app/Services/users.service';
+import { AlertService } from 'src/app/appServices/alert.service';
+import { UsersService } from 'src/app/appServices/users.service';
 import { IAlbums } from 'src/app/Modals/IUser';
 
 

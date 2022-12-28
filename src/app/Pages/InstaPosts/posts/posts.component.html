@@ -1,0 +1,62 @@
+<div class="card posts mb-3 border-secondary">
+  <div class="front" [ngClass]="{'flipFront': isFlip === true}" >
+    <a class="postImageHeightClass" target="_blank">
+      <img
+      (click)="openDialog(post.picture)"
+        [src]="post.picture"
+        height="500"
+        width="auto"
+        class="card-img-top img-fluid"
+      />
+    </a>
+    <div class="cardNameClass">
+      <h3 class="card-text text-primary"><span class="text-dark">Name</span>: {{ post.by }}</h3>
+    </div>
+  </div>
+  <div class="back" [ngClass]="{'flipBack': isFlip === true}">
+    <div class="card-body">
+      <h5 class="card-title text-primary text-uppercase">
+        {{ post.locationName }} <span class="text-dark ms-2">{{post.date | date:'medium'}}</span>
+      </h5>
+      <p class="card-text postDescription">{{ post.description }}</p>
+      <p class="card-text">Insta Link : <a [href]="getInstaUrl()" target="_blank" style="text-decoration:none;">{{post.instaId}}</a></p>
+      <p class="card-text">
+        <small class="card-text">by:- {{ post.by }}</small>
+      </p>
+    </div>
+    <div
+      class="card-footer bg-transparent border-secondary d-flex justify-content-around align-content-center"
+    >
+      <div (click)="upvotePost()" class="text-primary">
+        <mat-icon>thumb_up</mat-icon>
+        {{ upvote }}
+      </div>
+      <div (click)="downvotePost()" class="text-secondary">
+        <mat-icon>thumb_down</mat-icon>
+        {{ downvote }}
+      </div>
+      <a [href]="getInstaUrl()" target="_blank" class="text-primary">
+        <mat-icon>share</mat-icon>  
+      </a>
+      <a routerLink="editInstaPost/{{post.id}}" class="text-primary">
+        <mat-icon>edit</mat-icon>  
+      </a>
+      <a (click)="deletePost(post.id)" target="_blank" class="text-primary">
+        <mat-icon>delete</mat-icon>
+      </a>
+    </div>
+  </div>
+  <div class="flip-icon" (click)="flipCard()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" style="width:20px;height:20px" stroke="#ffffff" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3"  />
+    </svg>  
+  </div>
+</div>
+
+<ng-template #dialogTemplate let-modal>
+  <div [@dialogAnimation]="'open'">
+    <div class="modal-body">
+      <img [src]="fullUrl" alt="">
+    </div>
+  </div>
+</ng-template>

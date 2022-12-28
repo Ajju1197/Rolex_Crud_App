@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FirebaseService } from 'src/app/Services/firebase.service';
+import { FirebaseService } from 'src/app/appServices/firebase.service';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 import { animate, style, transition, trigger } from '@angular/animations';
 

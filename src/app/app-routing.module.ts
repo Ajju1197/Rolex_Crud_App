@@ -1,25 +1,18 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './Components/about/about.component';
-import { AddComponent } from './Components/add/add.component';
-import { AdminComponent } from './Components/admin/admin.component';
-import { EditComponent } from './Components/edit/edit.component';
-import { GalleryComponent } from './Components/gallery/gallery.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './Pages/about/about.component';
+import { AddComponent } from './Pages/UserPosts/add/add.component';
+import { AdminComponent } from './Pages/admin/admin.component';
+import { EditComponent } from './Pages/UserPosts/edit/edit.component';
+import { GalleryComponent } from './Pages/gallery/gallery.component';
 import { ImageViewComponent } from './Components/image-view/image-view.component';
-import { LoginComponent } from './Components/Logins/login/login.component';
-import { RegisterComponent } from './Components/Logins/register/register.component';
+import { LoginComponent } from './Pages/Logins/login/login.component';
+import { RegisterComponent } from './Pages/Logins/register/register.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
-import { ViewComponent } from './Components/view/view.component';
+import { ViewComponent } from './Pages/UserPosts/view/view.component';
 // AngularFireAuthGuard
 import { AngularFireAuthGuard,redirectUnauthorizedTo,redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
-import { AddInstaPostComponent } from './InstagramPosts/add-insta-post/add-insta-post.component';
-import { AllPostStoriesInOnePlaceComponent } from './InstagramPosts/all-post-stories-in-one-place/all-post-stories-in-one-place.component';
-import { EditpostComponent } from './InstagramPosts/editpost/editpost.component';
 import { PagenotfoundComponent } from './Components/pagenotfound/pagenotfound.component';
-import { ProductsComponent } from './Components/ShoppingCart/products/products.component';
-import { CartComponent } from './Components/ShoppingCart/cart/cart.component';
-import { ProductViewComponent } from './Components/ShoppingCart/product-view/product-view.component';
-import { AuthenticationComponent } from './Authentications/authentication/authentication.component';
 import { SignInsignUpauthComponent } from './Authentications/sign-insign-upauth/sign-insign-upauth.component';
 import { AddPhotosComponent } from './Pages/Photos/add-photos/add-photos.component';
 import { PhotosComponent } from './Pages/Photos/photos/photos.component';
@@ -57,18 +50,16 @@ const routes: Routes = [
 
 
   //====================== Posts Routing ===================//
-  { path: 'posts', loadChildren: () => import('./Components/posts/posts.module').then(m => m.PostsModule),canActivate: [AngularFireAuthGuard],
-  data: { authGuardPipe: redirectUnauthorizedToLogin },
-  },
-  {
-    path: 'posts', children: [
-      { path: 'add', component: AddComponent },
-      { path: 'view/:userId', component: ViewComponent, data: { animation: 'AboutPage' } },
-      { path: 'edit/:userId', component: EditComponent },
-    ],canActivate: [AngularFireAuthGuard],
+  { path: 'posts', loadChildren: () => import('./Pages/UserPosts/posts.module').then(m => m.PostsModule),canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   // ====================== Posts Routing End===================//
+
+
+   // ============= Shopping Routing ================//
+   { path: 'products', loadChildren: () => import('./Pages/ShoppingCart/shopping.module').then(m => m.ShoppingModule),canActivate: [AngularFireAuthGuard],
+   data:{ authGuardPipe: redirectUnauthorizedToLogin } },
+ // ============= Shopping Routing End ================ //
 
 
   // ============Photos Routing============== //
@@ -97,59 +88,17 @@ const routes: Routes = [
 
 
 // ===========InSta Posts Routing==================== //
-{
-  path: 'allPostsInOnePlace',component: AllPostStoriesInOnePlaceComponent,
-    canActivate: [AngularFireAuthGuard],
-    data:{ authGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: '', children: [
-      {
-        path: 'addInstaPost', component: AddInstaPostComponent,
-      },
-      {
-        path: 'editInstaPost', component: EditpostComponent,
-      },
-    ],
-    canActivate: [AngularFireAuthGuard],
-    data:{ authGuardPipe: redirectUnauthorizedToLogin }
-  },
-  // =========== InSta Posts Routing End ==================== //
-
-
- // ============= Shopping Routing ================//
-  {
-    path: 'products',
-    component: ProductsComponent,
-    canActivate: [AngularFireAuthGuard],
-    data:{ authGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: '', children: [
-      { path: 'cart', component: CartComponent,canActivate: [AngularFireAuthGuard],
-      data: { authGuardPipe: redirectUnauthorizedToLogin }}
-    ]
-  },
-// ============= Shopping Routing End ================//
+  { path: 'instagram', loadChildren: () => import('./Pages/InstaPosts/instaposts.module').then(m => m.InstapostsModule), canActivate: [AngularFireAuthGuard],
+    data:{ authGuardPipe: redirectUnauthorizedToLogin } },
+// =========== InSta Posts Routing End ==================== //
   
-
-//======================== Child Routes====================//
-{
-  path: '', children: [
-    { path: 'product/:productId', component: ProductViewComponent },
-    { path: 'editInstaPost/:instaId',component:EditpostComponent},
-  ],canActivate: [AngularFireAuthGuard],
-  data:{ authGuardPipe: redirectUnauthorizedToLogin }
-},
-//======================== Child Routes End ====================//
-
 
 // =========== Page Not Found ================//
   { path: '**', component:PagenotfoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{preloadingStrategy:PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
