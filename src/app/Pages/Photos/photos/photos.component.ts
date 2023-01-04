@@ -3,12 +3,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { FirebaseService } from 'src/app/appServices/firebase.service';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { slideBottomElementAnimation } from 'src/app/Animations/animation';
 
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.component.html',
   styleUrls: ['./photos.component.css'],
-  animations: [
+  animations: [ slideBottomElementAnimation,
     trigger('dialogAnimation', [
       transition('void => *', [
         style({ transform: 'scale(0.3)', opacity: 0 }),

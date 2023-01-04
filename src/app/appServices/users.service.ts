@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, delay, map, Observable, throwError } from 'rxjs';
+import { catchError, delay, forkJoin, map, Observable, shareReplay, throwError } from 'rxjs';
 import { IAlbums, IComments, IUser } from '../Modals/IUser';
 
 @Injectable({
@@ -37,7 +37,7 @@ export class UsersService {
 
   getAllUsers(): Observable<IUser[]> {
     let dataUrl: string = `${this.serverUrl}/users.json`;
-    return this._httpClient.get<IUser[]>('https://angularrolexapp-default-rtdb.firebaseio.com/users.json').pipe(map((res) => {
+    return this._httpClient.get<IUser[]>('https://angularrolexapp-default-rtdb.firebaseio.com/users.json').pipe(shareReplay(),map((res) => {
       const users = [];
       for (const key in res) {
         if (res.hasOwnProperty(key)) {

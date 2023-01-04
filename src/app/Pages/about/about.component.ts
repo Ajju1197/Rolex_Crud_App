@@ -1,11 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { slideBottomElementAnimation, slideElementAnimation, slideLeftElementAnimation, slideTopElementAnimation } from 'src/app/Animations/animation';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  styleUrls: ['./about.component.css'],
+  animations:[slideElementAnimation,slideLeftElementAnimation,slideBottomElementAnimation,slideTopElementAnimation]
 })
 export class AboutComponent implements OnInit {
 

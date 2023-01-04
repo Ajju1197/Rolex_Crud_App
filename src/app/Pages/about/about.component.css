@@ -27,29 +27,12 @@
 .about-section p{
   text-align: justify;
 }
-@media (max-width:992px) {
-  .about-section{
-    display: flex;
-    flex-direction:column;
-    flex-wrap: wrap;
-    row-gap: 2em;
-    justify-content: center;
-    align-items: center;
-  }
-  .about-content h1{
-    text-align: center !important;
-  }
-  
+.about-info{
+  width: 80%;
+  height: 525px;
+  overflow: hidden;
 }
-.about-info-img{
-  height: 500px;
-  width: 100%;
-}
-.about-info-img img{
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-}
+
 .rolexImgWatchMovingClass{
   background: aqua;
   background: -webkit-linear-gradient(0deg, #15442b 0%, aqua 100%);
@@ -198,4 +181,97 @@ z-index: 1;
   display: block;
   width: 100%;
   text-align: center;
+}
+section{
+  background: url(../../../assets/Wave-10s-1536px.svg) no-repeat;
+  background-size:cover;
+  background-position: right top
+}
+.about-info-img{
+  background: url(../../../assets/ajju-goa-2.webp) no-repeat top center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+#certification-block{
+  display: flex;
+}
+#certification-block .image-block{
+  /* height: 456px; */
+  width: 50%;
+}
+#certification-block .image-block img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+#certification-block .certification-content{
+  width:50%;
+  /* height:100%; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+}
+.about-certification2{
+  width: 100%;
+}
+.certification-content .heading{
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.certification-content p{
+  text-align: justify !important;
+}
+.heading h1{
+  color: #b5faef !important;
+}
+.heading {
+  /* margin-left: 300px; */
+  color: #b5faef !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  transition: .5s all ease-in-out;
+  position: relative;
+  margin-bottom: 2em;
+}
+.heading::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  transition: all .5s ease-in-out;
+  width:20%;
+  height: 2px;
+  background-color: #b5faef;
+  border-radius: 2px;
+}
+.heading:hover::after{
+  transition: all .5s ease-in-out;
+  width: 100%;
+}
+@media (max-width:992px) {
+  .about-section{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    row-gap: 2em;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-content h1{
+    text-align: center !important;
+  }
+
+  #certification-block{
+    flex-direction:column;
+  }
+
+  #certification-block .image-block,.certification-content{
+    width:100% !important;
+  }
+  
 }

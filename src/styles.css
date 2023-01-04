@@ -38,8 +38,8 @@ body {
   background-repeat: no-repeat;
 }
 .backColor{
-  background-color: #000 !important;
-  transition: background-color 1s ease-out;
+  background-image: linear-gradient(to right top, #0c0c0d, #090a0c, #06090a, #040708, #010505) !important;
+  transition: all 1s ease-out;
 }
 .spinnerClass{
   position: absolute;
@@ -175,6 +175,50 @@ input:checked + .slider:before {
     box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
   }
 }
+
+/* Bg IMAGE KEN BURNS VEDIO ANIMATION */
+
+.kenburns-top {
+	-webkit-animation: kenburns-top 5s ease-in-out infinite alternate both;
+	        animation: kenburns-top 5s ease-in-out infinite alternate both;
+}
+
+
+/**
+ * ----------------------------------------
+ * animation kenburns-top
+ * ----------------------------------------
+ */
+ @-webkit-keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+            transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1.15) translateY(-15px);
+            transform: scale(1.15) translateY(-15px);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+}
+@keyframes kenburns-top {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 16%;
+            transform-origin: 50% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1.15) translateY(-15px);
+            transform: scale(1.15) translateY(-15px);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+}
+
+/* Bg IMAGE KEN BURNS VEDIO ANIMATION */
 
 
 ::-webkit-scrollbar{

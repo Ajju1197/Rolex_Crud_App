@@ -64,10 +64,10 @@
 
         <!-- Nav Item - User Information -->
         <div class="d-flex align-items-center position-relative">
-            
-        <div class="searchBar me-3" *ngIf="goToAdmin.text">
-            <app-search (searchPosts)="searchPostsValue($event)"></app-search>
-        </div>
+                
+            <div class="searchBar me-3" *ngIf="goToAdmin.text">
+                <app-search (searchPosts)="searchPostsValue($event)"></app-search>
+            </div>
 
             <li class="loginmail">
                 <a *ngIf="email" class="badge badge-primary" style="font-size: 1em !important;">
@@ -144,6 +144,28 @@
             </div>
         </ng-container>
             <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="dropdownSideNav" *ngIf="userData">
+                    <div class="title-block w-100 h-100 py-2 bg-success" appDropdown>
+                        <h3 class="dropdown-title w-100 m-0 text-white" style="pointer-events: none;">Profile details</h3>
+                    </div>
+                    <div class="dropdown-content dropdown-text">
+                        <div class="profile-icon d-flex justify-content-start w-100 p-2 align-items-center" style="background-color: rgba(0,0,0,0.7);">
+                            <img src="{{userData.picture}}" alt="{{userData.name}}" style="width:30px;height:30px;border-radius:50%">
+                            <span class="text-white ms-2 bg-primary p-1">{{userData.name}}</span>
+                        </div>
+                        <hr class="m-0"/>
+                        <div class="lastActive px-2">
+                            <span class="text-secondary">{{userData.lastActive}}</span>
+                        </div>
+                        <div class="details p-2" style="background-color: #ccc;">
+                            <div class="roll">
+                                <h4 class="text-dark m-0">Bio: {{userData.bio}}</h4>
+                                <h4 class="text-dark m-0">Mail: {{userData.email}}</h4>
+                                <h4 class="text-dark m-0">InstaId: {{userData.instaId}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header sidebarContentDiv" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">

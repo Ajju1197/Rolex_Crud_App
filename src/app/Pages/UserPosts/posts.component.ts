@@ -13,6 +13,7 @@ import { CommonService } from 'src/app/shared/sharedServices/common.service';
 export class PostsComponent implements OnInit,OnDestroy {
 
   public users: IUser[] = [];
+  isSuccess: string = ''
   public errorMessage: string | undefined;
   public loading: boolean = false;
   public filterUsers: IUser[];
@@ -34,7 +35,7 @@ export class PostsComponent implements OnInit,OnDestroy {
     this.getAllUsers();
     this.commonService.goToAdmin.next({ text: 'Go To Admin', url: '' })
   }
-
+  
   getAllUsers() {
     this.loading = true;
     this._userService.getAllUsers().subscribe((data) => {
@@ -45,7 +46,9 @@ export class PostsComponent implements OnInit,OnDestroy {
       this.loading = false
     },
       
-      (err) => { this.alertService.error(err),this.errorMessage = err }
+      (err) => {
+        this.alertService.error(err), this.errorMessage = err
+      }
     )
   }
   

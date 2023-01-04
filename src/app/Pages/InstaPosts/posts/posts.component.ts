@@ -31,8 +31,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class PostsComponent implements OnInit {
 
   isFlip: boolean;
-  @Input()
-  post;
+  @Input() post;
 
   @Output() notifyDelete: EventEmitter<any> = new EventEmitter<any>();
 

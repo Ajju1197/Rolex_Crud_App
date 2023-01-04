@@ -1,12 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
-import { IUser } from 'src/app/Modals/IUser';
 import { AuthService } from 'src/app/appServices/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
-import { BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
@@ -63,7 +60,9 @@ export class NavbarComponent implements OnInit {
 
       if (user) {
         this.afdb.object(`loginposts/${user.uid}`).valueChanges().subscribe(userData => {
-          this.userData = userData    
+          this.userData = userData;
+          console.log(this.userData);
+          
         })
       }
       
@@ -107,7 +106,7 @@ export class NavbarComponent implements OnInit {
   gotoPhotos = window.innerWidth < 767;
 
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     window.addEventListener('scroll', function () {
       navbarScroll();
     });

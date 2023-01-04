@@ -1,10 +1,11 @@
 <section class="d-flex flex-column align-items-center justify-content-center">
   <div class="container">
     <div class="about-section py-5">
-      <div class="about-info-img justify-content-center">
-        <img src="../../../assets/ajju-goa-2.webp" alt="">
+      <div @slideElement class="about-info justify-content-center">
+        <!-- <img src="../../../assets/ajju-goa-2.webp" alt=""> -->
+        <div class="about-info-img kenburns-top"></div>
       </div>
-      <div class="about-content" [ngStyle]="{'color': this.commonService.darkTheme === true ? '#fff' : '#000'}">
+      <div @slideLeftElement class="about-content" [ngStyle]="{'color': this.commonService.darkTheme === true ? '#fff' : '#000'}">
         <h1 style="color: #0f16be;">UI/UX Designer & Web Developer.</h1>
         <p>A Front End Developer is responsible for designing and implementing UI components for
           JavaScript-based web applications and mobile applications with the use of open-source
@@ -21,34 +22,34 @@
           <div class="col-lg-6">
             <ul>
               <li>
-                <mat-icon>keyboard_arrow_right</mat-icon><strong>Birthday:</strong> <span>2 Oct 1997</span>
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Birthday:</strong> <span>2 Oct 1997</span>
               </li>
               <li>
-                <mat-icon>keyboard_arrow_right</mat-icon><strong>Website:</strong> <span><a
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Website:</strong> <span><a
                     href="https://angularrolexapp.web.app/" target="_blank">ProfileScope.com</a></span>
               </li>
               <li>
-                <mat-icon>keyboard_arrow_right</mat-icon><strong>Phone:</strong> <span>8328044343</span>
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Phone:</strong> <span>8328044343</span>
               </li>
               <li>
-                <mat-icon>keyboard_arrow_right</mat-icon><strong>City:</strong> <span>Andhra Pradesh, IND</span>
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>City:</strong> <span>Andhra Pradesh, IND</span>
               </li>
             </ul>
           </div>
           <div class="col-lg-6">
             <ul>
               <li>
-                <mat-icon>keyboard_arrow_right</mat-icon><strong>Age:</strong> <span>25</span>
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Age:</strong> <span>25</span>
               </li>
               <li>
-                <mat-icon>keyboard_arrow_right</mat-icon><strong>Degree:</strong> <span>Bsc(Mpc)</span>
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Degree:</strong> <span>Bsc(Mpc)</span>
               </li>
               <li>
-                <mat-icon>keyboard_arrow_right</mat-icon><strong>Email:</strong>
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Email:</strong>
                 <span>sdajmathulla@gmail.com</span>
               </li>
               <li>
-                <mat-icon>keyboard_arrow_right</mat-icon><strong>Freelance:</strong> <span>Available</span>
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Freelance:</strong> <span>Available</span>
               </li>
             </ul>
           </div>
@@ -74,10 +75,43 @@
     </div>
   </div>
 </section>
+<section id="certification-block">
+  <div class="certification-content">
+    <div class="heading">
+      <h1 class="text-white">Angular Certification</h1>
+    </div>
+    <div class="about-certification">
+      <p class="text-white">Angular is a popular open-source web application framework developed and maintained by Google. It is based on TypeScript, and allows developers to create dynamic and interactive single-page applications (SPAs).</p>
+      <p class="text-white">Obtaining an Angular certification can be a valuable addition to a developer's resume, as it demonstrates a strong understanding of the framework and the ability to build high-quality SPAs. There are several options for obtaining an Angular certification, including the following:</p>
+    </div>
+    <div class="about-certification2">
+      <mat-tab-group>
+        <mat-tab label="Angular Developer Certificate">
+          <p class="text-white">
+            This certification, offered by Learn Code Online, is designed for developers who have a strong understanding of Angular and want to demonstrate their skills to potential employers. It consists of a multiple-choice exam that covers a variety of topics, including components, templates, services, and more.
+          </p>
+        </mat-tab>
+        <mat-tab label="AngularJS Developer Certificate">
+          <p class="text-white">
+            This certification, offered by the International Organization for Standardization (ISO), is designed for developers who have a strong understanding of AngularJS (an older version of Angular). It consists of a multiple-choice exam that covers topics such as controllers, services, and directives.
+          </p>
+        </mat-tab>
+        <mat-tab label="Angular Bootcamp Certification">
+          <p class="text-white">
+            This certification, offered by Angular Bootcamp, is designed for developers who have completed an intensive Angular training program. It covers a wide range of topics, including components, services, pipes, and more.
+          </p>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <div class="image-block">    
+    <img src="../../../assets/Angular_learncodeonline_certification.png" class="img-fluid" alt="Angular Certification">
+  </div>
+</section>
 <section class="d-flex flex-column align-items-center justify-content-center" id="hero">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 col-sm-12" style="z-index: 2;">
+      <div class="col-lg-12 col-sm-12" style="z-index: 2;" @slideLeftElement>
         <mat-tab-group>
           <mat-tab label="ROLLS AND RESPONSIBILITIES">
             <p class="text-white">

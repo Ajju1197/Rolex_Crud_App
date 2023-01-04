@@ -5,11 +5,12 @@
 .main {
   width: 100%;
   min-height: 100%;
-  background-color: #ecfdfe;
+  background-image: linear-gradient(to right top, #2335fb, #0079ff, #00a4ff, #00c7ff, #6ae4ef);
+  background-attachment: fixed;
   display: flex;
   align-items: stretch;
   flex-direction: column;
-  transition: background-color 1s ease-out;
+  transition: all 1s ease-out;
 }
 
 .content {
@@ -91,7 +92,7 @@
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%,-50%);
-  transition: .2s ease-in-out;
+  transition: .0s ease-in-out;
 }
 
 

@@ -1,6 +1,6 @@
-import { Component, ElementRef, HostBinding, HostListener, Inject, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostBinding, HostListener, Inject, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { slideInAnimation, slideInAnimations } from './Animations/animation';
+import { fade, fadePages, slideElementAnimation, slideInAnimations } from './Animations/animation';
 import { titleAnimation } from './CustomDirectives/alert/alert.component';
 import Swal from 'sweetalert2'
 import { CommonService } from './shared/sharedServices/common.service';
@@ -8,6 +8,7 @@ import { AuthService } from './appServices/auth.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
 import { DOCUMENT } from '@angular/common';
+import { fromEvent } from 'rxjs';
 
 
 
@@ -18,18 +19,19 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    titleAnimation,slideInAnimations
+    titleAnimation,slideInAnimations,fadePages,fade,slideElementAnimation
     // animation triggers go here
   ]
 })
 export class AppComponent implements OnInit {
   title = 'Angular-Crud-With-Api-App';
   isShow: boolean;
-  public loginposts:any = [];
+  public loginposts: any = [];
   darkTheme: boolean = true;
   @Input() loginFormShowHide: boolean = true;
   @ViewChild('cursor',{ static: true }) cursor: ElementRef;
-  @ViewChild('cursor2',{ static: true }) cursor2: ElementRef;
+  @ViewChild('cursor2', { static: true }) cursor2: ElementRef;
+
 
 
   public navLinks = [
@@ -92,7 +94,7 @@ export class AppComponent implements OnInit {
       
     });
   } 
-  
+
 
   // Toglle Dark and Light theme
   checkCheckBoxvalue(event: any ){
@@ -140,20 +142,33 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkScroll();
-    this.changeDarkTheme(DataTransfer)
-    document.addEventListener('mousemove', (e) => {
-      var x = e.clientX;
-      var y = e.clientY;
-      this.cursor.nativeElement.style.top = this.cursor2.nativeElement.style.top = y + 'px';
+    this.changeDarkTheme()
+    
+    // This is with javascript method cursor move function
+    // document.addEventListener('mousemove', (e) => {
+    //   var x = e.clientX;
+    //   var y = e.clientY;
+    //   this.cursor.nativeElement.style.top = this.cursor2.nativeElement.style.top = y + 'px';
+    //   this.cursor.nativeElement.style.left = this.cursor2.nativeElement.style.left = x + 'px';
+    // })
+
+    //This With RXjs Observable FromEvent Operator for Cursor move function
+    const cursorSubscription$ = fromEvent(this.document, 'mousemove')
+    .subscribe((res:MouseEvent) => {
+      // console.log(res)
+      let x = res.clientX
+      let y = res.clientY
       this.cursor.nativeElement.style.left = this.cursor2.nativeElement.style.left = x + 'px';
+      this.cursor.nativeElement.style.top = this.cursor2.nativeElement.style.top = y + 'px';
     })
   }
+
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
   
-  changeDarkTheme(data) {
+  changeDarkTheme() {
     this.darkTheme = !this.darkTheme;
     this._commonService.darkTheme = this.darkTheme
   }

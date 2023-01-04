@@ -1,13 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { slideElementAnimation, slideLeftElementAnimation } from 'src/app/Animations/animation';
 import { CartService } from 'src/app/appServices/cart.service';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
-  styleUrls: ['./product-view.component.css']
+  styleUrls: ['./product-view.component.css'],
+  animations:[slideLeftElementAnimation,slideElementAnimation]
 })
 export class ProductViewComponent implements OnInit,OnDestroy {
 

@@ -7,6 +7,10 @@
   font-size: calc(0.75rem + 0.5 * ((100vw - 20rem) / 100));
   line-height: 1.3;
 }
+.transitionClass{
+  transition: all 0.5s ease-in-out;
+  padding: 20px;
+}
 /* 
 @media (min-width:768px) {
   .rolexVedioHightClass {
@@ -41,49 +45,6 @@
 }
 
 
-/* Bg IMAGE KEN BURNS VEDIO ANIMATION */
-
-.kenburns-top {
-	-webkit-animation: kenburns-top 5s ease-in-out infinite alternate both;
-	        animation: kenburns-top 5s ease-in-out infinite alternate both;
-}
-
-
-/**
- * ----------------------------------------
- * animation kenburns-top
- * ----------------------------------------
- */
- @-webkit-keyframes kenburns-top {
-  0% {
-    -webkit-transform: scale(1) translateY(0);
-            transform: scale(1) translateY(0);
-    -webkit-transform-origin: 50% 16%;
-            transform-origin: 50% 16%;
-  }
-  100% {
-    -webkit-transform: scale(1.15) translateY(-15px);
-            transform: scale(1.15) translateY(-15px);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-  }
-}
-@keyframes kenburns-top {
-  0% {
-    -webkit-transform: scale(1) translateY(0);
-            transform: scale(1) translateY(0);
-    -webkit-transform-origin: 50% 16%;
-            transform-origin: 50% 16%;
-  }
-  100% {
-    -webkit-transform: scale(1.15) translateY(-15px);
-            transform: scale(1.15) translateY(-15px);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-  }
-}
-
-/* Bg IMAGE KEN BURNS VEDIO ANIMATION */
 
 
 /* PING ANIMATION */

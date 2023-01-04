@@ -271,3 +271,9 @@ body .btn-danger:hover {
 .color{
   color: #fff;
 }
+section{
+  background: url(../../../../assets/layered-waves-haikei.svg) no-repeat ;
+  background-size: cover;
+  background-position-y: bottom;
+  background-attachment: fixed;
+}

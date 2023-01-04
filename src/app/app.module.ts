@@ -56,6 +56,8 @@ import { PhotosComponent } from './Pages/Photos/photos/photos.component';
 import { AddPhotosComponent } from './Pages/Photos/add-photos/add-photos.component';
 import { SearchComponent } from './Components/search/search.component';
 import { AppModulesModule } from './shared/sharedModules/app-modules/app-modules.module';
+import { DropdownDirective } from './CustomDirectives/dropdown.directive';
+import { ChangeBgColorDirective } from './CustomDirectives/change-bg-color.directive';
 
 
 
@@ -86,6 +88,8 @@ import { AppModulesModule } from './shared/sharedModules/app-modules/app-modules
     PhotosComponent,
     AddPhotosComponent,
     SearchComponent,
+    DropdownDirective,
+    ChangeBgColorDirective,
   ],
   imports: [
     BrowserModule,

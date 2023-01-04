@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from '@firebase/util';
-import { BehaviorSubject, catchError, delay, map, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, delay, map, retryWhen, scan, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,20 @@ export class CartService {
   
   // GET Single Contact
   public getProduct(productId: any) {
-    return this.httpClient.get(`https://fakestoreapi.com/products/${productId}`).pipe(catchError(this.handleError), delay(1000))
+    return this.httpClient.get(`https://fakestoreapi.com/products/${productId}`).pipe(catchError(this.handleError), delay(1000), retryWhen(
+      (e) => {
+        return e.pipe(delay(1000),
+          scan(count => {
+          if (count >= 5) {
+            throw console.error();
+          } else {
+            count = count + 1
+          }
+          return count;
+        },0)
+        );
+      }
+    ))
   }
 
 

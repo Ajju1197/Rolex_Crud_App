@@ -1,3 +1,8 @@
+    <!-- <div class="changebgcolor" #bgColor>
+        <h1>This is text colors</h1>
+    </div>
+    <button (click)="changeColor()">Change Colors To Click</button> -->
+
 <section class="d-flex flex-column align-items-center justify-content-center" id="hero">
     <img ngSrc="../../../assets/Ajju-goa.webp" width="1000" height="1000" class="bg-img-goa kenburns-top img-fluid" alt="bg img" priority fill>
     <a class="allInstaPostsInOnePlaceClass" [ngClass]="{'shake-horizontal': isAnimate === true}" routerLink="/instagram">See All Posted Stories</a>
@@ -26,11 +31,11 @@
                 </div>
             </ng-container>
         </div>
-    <h1 @slideAnimation>Hi, I'm Syed Ajmathulla!</h1>
-    <h2>I am a Web Developer </h2>
-    <span class="badge badge-primary" routerLink="/about" fragment="hero">Check My Bio</span>
+    <h1 [@slideElement]>Hi, I'm Syed Ajmathulla!</h1>
+    <h2 @slideLeftElement>I am a Web Developer </h2>
+    <span @bounceAnimation class="badge badge-primary" routerLink="/about" fragment="hero">Check My Bio</span>
     <!-- <div class="overlay"></div> -->
 </section>
 <section id="profile-resume">
-    <app-about @slideAnimation></app-about>
+    <app-about></app-about>
 </section>

@@ -2,11 +2,11 @@
   <app-spinner></app-spinner>
 </div>
 <div class="productViewBlock" *ngIf="product">
-    <div class="productImage" [style.background-image]="'url('+product.image+')'">
+    <div @slideElement class="productImage" [style.background-image]="'url('+product.image+')'">
       <!-- <img src="{{product.image}}" alt="{{product.title}}" style="width:300px;height:auto;margin:auto;"> -->
     </div>
     <hr class="hr">
-    <div class="productDetailsBlock">
+    <div class="productDetailsBlock" @slideLeftElement>
       <div class="product-title">
         <h2 class="text-primary">{{product.title}}</h2>
       <small class="text-muted">Brand : <span class="badge badge-danger">Killer</span></small>

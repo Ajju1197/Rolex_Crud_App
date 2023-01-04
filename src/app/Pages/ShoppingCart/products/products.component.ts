@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
   searchString: string = '';
   loading: boolean = false;
   totalItem: number = 0;
+  
   constructor(
     private cartService: CartService,
     private toastr: ToastrService,

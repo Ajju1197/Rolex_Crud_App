@@ -13,7 +13,7 @@
   <ng-template #Content>
     <div class="row">
       <div class="col-md-12 col-lg-12 col-sm-12 mt-3">
-          <div class="posts">
+          <div class="posts" @slideBottomElement>
             <ng-container *ngFor="let post of posts">
               <!-- will render list of post here -->
                 <app-posts [post]="post" *ngIf="this.commonService.searchInputValue === '' || post.by.toLowerCase().includes(this.commonService.searchInputValue)" (notifyDelete)="deletePost($event)"></app-posts>

@@ -2,7 +2,7 @@
 <ngx-loading-bar [color]="'#0cf24e'"></ngx-loading-bar> 
 <div class="main" [ngClass]="{'backColor': darkTheme}">
     <div class="appnav">
-        <app-navbar (isDarkTheme)="changeDarkTheme($event)" [darkTheme]="darkTheme"></app-navbar>
+        <app-navbar (isDarkTheme)="changeDarkTheme()" [darkTheme]="darkTheme"></app-navbar>
         <!-- <label class="switch">
             <input type="checkbox" (change)="checkCheckBoxvalue($event)">
             <span class="slider round"></span>
@@ -25,7 +25,8 @@
     </div> -->
 
     <!-- This is Second method for animation routes -->
-    <div class="content" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+    <!-- <div class="content" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''"> -->
+    <div class="content">
         <app-alert></app-alert>
         <router-outlet #o="outlet"></router-outlet>
     </div>

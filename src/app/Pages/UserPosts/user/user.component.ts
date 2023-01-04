@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
 
   userId: any;
   users: IUser[] = [];
+  @Input() isSuccess: any;
 
   @Input() user: IUser;
   @Input()

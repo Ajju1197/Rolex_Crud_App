@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit,OnDestroy, SimpleChanges } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
+import { slideBottomElementAnimation } from 'src/app/Animations/animation';
 import { AuthService } from 'src/app/appServices/auth.service';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 //uuid
@@ -9,7 +10,8 @@ import { v4 as uuidv4 } from "uuid";
 @Component({
   selector: 'app-all-post-stories-in-one-place',
   templateUrl: './all-post-stories-in-one-place.component.html',
-  styleUrls: ['./all-post-stories-in-one-place.component.css']
+  styleUrls: ['./all-post-stories-in-one-place.component.css'],
+  animations:[slideBottomElementAnimation]
 })
 export class AllPostStoriesInOnePlaceComponent implements OnInit,OnDestroy {
 
