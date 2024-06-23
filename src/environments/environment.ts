@@ -12,6 +12,7 @@ export const environment = {
     messagingSenderId: "605668638605",
     appId: "1:605668638605:web:29418b20f9e75d2c7247c4"
   },
+  employeeUrl:"https://localhost:7099/api",
   production: false
 };
 

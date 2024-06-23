@@ -65,15 +65,6 @@ export const routeAnimation =
     ])
   ]);
 
-export const fade = 
-  trigger('fadeIn', [
-    state('void', style({ opacity: 0 })),
-    
-    transition('void => *,* => void', [
-      animate('600ms ease-out')
-    ]),
-  ])
-
 
   export const slideInAnimations = trigger('slideInAnimation', [
     // Transition between any two states
@@ -161,8 +152,13 @@ export const slideElementAnimation =
   transition(':enter', [
     style({ transform: 'translateX(-250px)', opacity: 0 }),
     animate(2000,style({ transform: 'translateX(0)',opacity:1}))
+  ]),
+  transition(':leave', [
+    style({ transform: 'translateX(0),', opacity: 1 }),
+    animate(2000,style({transform:'translateX(200px)',opacity:0}))
   ])
 ])
+
 // Slide left Element Animation
 export const slideLeftElementAnimation =
   trigger('slideLeftElement', [
@@ -171,6 +167,25 @@ export const slideLeftElementAnimation =
     animate(2000,style({ transform: 'translateX(0)',opacity:1}))
   ])
 ])
+//accordian Element Animation
+export const accordianAnimation =
+  trigger('accordianAnimation', [
+  transition(':enter', [
+    animate(2000,style({ height:'77px'}))
+  ]),
+    transition(':leave', [
+      animate(1000,style({height:'0px'}))
+    ])
+  ])
+// Fade Animation
+  export const fade = 
+  trigger('fadeIn', [
+    state('void', style({ opacity: 0 })),
+    
+    transition('void => *,* => void', [
+      animate('600ms ease-out')
+    ]),
+  ])
 // Slide top Element Animation
 export const slideTopElementAnimation =
   trigger('slideTopElement', [

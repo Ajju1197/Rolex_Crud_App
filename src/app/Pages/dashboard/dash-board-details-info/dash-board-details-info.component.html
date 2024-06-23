@@ -1,0 +1,22 @@
+<div class="searchClas">
+  <input type="text" [ngClass]="{'inputBorderDangerClass': dashboardUserData.length > 0}" class="form-control" #filter name="filter" id="filter">
+  <button (click)="filterEmployees(filter.value)" class="btn btn-primary">Search</button>
+</div>
+<div class="employeeListClass" *ngIf="dashboardUserData.length > 0; else errorBlock">
+    <ng-container *ngFor="let employee of dashboardUserData">
+        <div class="card" #childCardRef>
+            <h1>{{employee.employeeName}}</h1>
+            <h1>{{employee.employeeAddress}}</h1>
+            <h1>{{employee.employeeDOB}}</h1>
+            <!-- <img [src]="employee.employeeProfile" [alt]="employee.employeeName"> -->
+            <div class="d-flex actionBtnClass">
+                <button class="btn btn-primary" (click)="viewEditDeleteEmployee(employee,1)">Edit</button>
+                <button class="btn btn-primary" (click)="viewEditDeleteEmployee(employee,2)">Delete</button>
+                <button class="btn btn-primary" (click)="viewEditDeleteEmployee(employee,3)">View</button>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<ng-template #errorBlock>
+  <h1>No employee Is available</h1>
+</ng-template>

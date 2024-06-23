@@ -1,37 +1,70 @@
 <nav class="navbar navbar-expand-lg header" [ngClass]="{'backColor': darkTheme}" @onOff [ngClass]="{active: isActive}">
-    <div class="container">
-        <div class="d-flex align-items-center">
-            <mat-icon *ngIf="email"title="menu-bar" style="font-size:24px;cursor:pointer;width:25px;color:#fff;" (click)="openNav()">watch</mat-icon>
-            <a class="navbar-brand header_logo" style="color: #fff;font-size:26px;font-weight:700;">Profile Scope
-                <!-- <img width="30" height="30" style="vertical-align:sub;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAE50lEQVRoge1Ya2yTVRh+3q+XrbsGNjcvYRcFBAkYVy7BCV23JlonsEsw0xjUZGKiJgv4SxPj4g/jH/jhr8JQk6mJQrgYuSisFIZLvM6ITsZcHFtwiXPr7FpX2n79Xn+4VtZ07ddzmhjDnqRJv3Pe532e9zvnO9/5DrCIRdzaoGwm27x5s8VisTQRUSszrwGwDEB+rF9RFHtPT8+FbGoas5XIbre3EtF+ABXMnDQmGo2+DiCrBWRlBBoaGt5g5td0hg8x8wlFUfa73e7fZbWlC7Db7a8Q0ZsCVD8zP+PxeI7J6EsVUF9fvxFAH8SnYpSInG63+5yoB0WUOIe3IPccGZj5kNVqNYkmEC7A4XA8AMCuJ7ayTMUuhx/v7JnALoc/sbuiuLi4SdSH8N3TNG1Hqv7KMhW2dUHUrQuiskyNt1eV+5FjYnSdKbo53AngiIgP4QKY2UY0/xGKmbatDaKqXF2ACbTZAghFCN09hQAAIlor6kNm/t4DLHyn0+Fpx78jwcy3iZoQLoCISgHg3b0ToinQZgvEppJwATKrkEWCm4g8UaLsMvqfQ6gA7/nVjfdXh25ky0TN8htBr3ulU4Qr9Awws+vVJ7y5H12YtxTC1RUAEfB8e0FSXrL+ltoA2ur8FiY6AKAiUy/CU0ghxkvbffPa/llVF96dJOt/cdsMCMl3r3ogtBfyulc6GcrBJQW4i0h6Q6h5A/wbNOwucVz9LFOylDh/vWoQwL0yOUB0hTZcuU+ULrkK8SU5PgCNe2XocgWQ8rEUHwDAh6UsSMt/s+o8WN+uNAku0sbBOhn9LLzItHYAkwJELwyGdll16QJow9CvALWCMJ0BzQtWmsg6MCytL5sgBv5y9YqIOjtkMqfeIkUiQZhyC1ZkwzyQ5XOhqZMmNpnzYM7Jh9FsgUIGAIDGUajhIMI3AohEgih5LJI13aydC8UQCc8iEp7NdtoF8b/fjUqPgL3ppJWJnmXgkbHbl4yvWea9U/X1Q/X1I+rrBwAYimtgnPsNjC0dt7V4f4GmnGED3us9+uj3MvrCc9G+49SmqIJ9BNTG2pZXF/Yd2rclfj3hcoFDIZR3dMR57S9f6hse8dfelOoSKdh74WjjtyI+Mh4Bp/N0zqwFb2vMz1HCDRge8df4ZsJTxUXmkgmXCxMuV7yvvKMDvpnQ9PCIvyYh5RbW8JWt6ZRr0vTXnoEjj4cz8ZPRM1C37dPS2Vw+C+bdSD56loMfXP0JACgnJ94Y+3+ge+gykn+KKiC8UBrN9zRs/6Q8E0+6C2hoPlbCRuULAFtTxX3uuV6tMUeXNjfH20ra2qAxa2cvXq9OKcJ4UDUYPQ81nlyi15fOApginPshdGyd1ShXnOsd7w+NjsbbQmNjONc7/p0aZT1fXKsVM72vz5fOAmwtp58i4of1Ju3qHsTNBYRHR9HVPaiXDgIat7acelJPbNoCdu48bACjU7c6gMnpkPXaDyN/xq5HLl+bmZwOWTPJQYxOdHam9Zc24A8tzw7g7kzEASgnfjbGX8fHf1QCerQSsMJ2eb0trVC6ANZoW4bCAIC+UFVBhIyIkBF94cpCkRzElPIAGdD1HqANEDg1UEFF/cvsATAoCkWoAA1Yny5GRwGceulLgdPmTf45J/lpQpOC5g6QU0HPm1j3mpyIKS3vDlGurPYiFnGr4G+Cs6EefV0t0AAAAABJRU5ErkJggg=="> -->
-            </a>
-            <div class="ms-3 mobileScreen" routerLink="{{gobackLink.url}}" style="cursor: pointer;" *ngIf="gobackLink.text">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" class="w-6 h-6" style="width:20px;height:20px">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-                <span class="text-white" style="vertical-align: bottom;" *ngIf="gobackLink.text">{{gobackLink.text}}</span>
-            </div>
-            <div class="ms-3 mobileScreen" routerLink="{{goToCart.url}}" style="cursor: pointer;" *ngIf="goToCart.text">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" class="w-6 h-6" style="width:20px;height:20px">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-                <span class="text-white" style="vertical-align: bottom;" *ngIf="goToCart.text">{{goToCart.text}}</span>               
-            </div>
-            <div class="ms-3 mobileScreen" routerLink="{{goToAdmin.url}}" style="cursor: pointer;" *ngIf="goToAdmin.text">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" class="w-6 h-6" style="width:20px;height:20px">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-                <span class="text-white" style="vertical-align: bottom;" *ngIf="goToAdmin.text">{{goToAdmin.text}}</span>               
-            </div>
-            <div class="ms-3 mobileScreen" routerLink="{{goToAddPhotos.url}}" style="cursor: pointer;" *ngIf="goToAddPhotos.text">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" class="w-6 h-6" style="width:20px;height:20px">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-                <span class="text-white" style="vertical-align: bottom;" *ngIf="goToAddPhotos.text">{{goToAddPhotos.text}}</span>               
-            </div>
-        </div>
+  <div class="container-fluid">
+    <div class="d-flex align-items-center">
+      <mat-icon *ngIf="email" title="menu-bar" style="font-size:24px;cursor:pointer;width:25px;color:#fff;"
+        (click)="openNav()">watch</mat-icon>
+      <a class="navbar-brand header_logo" style="color: #fff;font-size:26px;font-weight:700;">Profile Scope
+        <!-- <img width="30" height="30" style="vertical-align:sub;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAE50lEQVRoge1Ya2yTVRh+3q+XrbsGNjcvYRcFBAkYVy7BCV23JlonsEsw0xjUZGKiJgv4SxPj4g/jH/jhr8JQk6mJQrgYuSisFIZLvM6ITsZcHFtwiXPr7FpX2n79Xn+4VtZ07ddzmhjDnqRJv3Pe532e9zvnO9/5DrCIRdzaoGwm27x5s8VisTQRUSszrwGwDEB+rF9RFHtPT8+FbGoas5XIbre3EtF+ABXMnDQmGo2+DiCrBWRlBBoaGt5g5td0hg8x8wlFUfa73e7fZbWlC7Db7a8Q0ZsCVD8zP+PxeI7J6EsVUF9fvxFAH8SnYpSInG63+5yoB0WUOIe3IPccGZj5kNVqNYkmEC7A4XA8AMCuJ7ayTMUuhx/v7JnALoc/sbuiuLi4SdSH8N3TNG1Hqv7KMhW2dUHUrQuiskyNt1eV+5FjYnSdKbo53AngiIgP4QKY2UY0/xGKmbatDaKqXF2ACbTZAghFCN09hQAAIlor6kNm/t4DLHyn0+Fpx78jwcy3iZoQLoCISgHg3b0ToinQZgvEppJwATKrkEWCm4g8UaLsMvqfQ6gA7/nVjfdXh25ky0TN8htBr3ulU4Qr9Awws+vVJ7y5H12YtxTC1RUAEfB8e0FSXrL+ltoA2ur8FiY6AKAiUy/CU0ghxkvbffPa/llVF96dJOt/cdsMCMl3r3ogtBfyulc6GcrBJQW4i0h6Q6h5A/wbNOwucVz9LFOylDh/vWoQwL0yOUB0hTZcuU+ULrkK8SU5PgCNe2XocgWQ8rEUHwDAh6UsSMt/s+o8WN+uNAku0sbBOhn9LLzItHYAkwJELwyGdll16QJow9CvALWCMJ0BzQtWmsg6MCytL5sgBv5y9YqIOjtkMqfeIkUiQZhyC1ZkwzyQ5XOhqZMmNpnzYM7Jh9FsgUIGAIDGUajhIMI3AohEgih5LJI13aydC8UQCc8iEp7NdtoF8b/fjUqPgL3ppJWJnmXgkbHbl4yvWea9U/X1Q/X1I+rrBwAYimtgnPsNjC0dt7V4f4GmnGED3us9+uj3MvrCc9G+49SmqIJ9BNTG2pZXF/Yd2rclfj3hcoFDIZR3dMR57S9f6hse8dfelOoSKdh74WjjtyI+Mh4Bp/N0zqwFb2vMz1HCDRge8df4ZsJTxUXmkgmXCxMuV7yvvKMDvpnQ9PCIvyYh5RbW8JWt6ZRr0vTXnoEjj4cz8ZPRM1C37dPS2Vw+C+bdSD56loMfXP0JACgnJ94Y+3+ge+gykn+KKiC8UBrN9zRs/6Q8E0+6C2hoPlbCRuULAFtTxX3uuV6tMUeXNjfH20ra2qAxa2cvXq9OKcJ4UDUYPQ81nlyi15fOApginPshdGyd1ShXnOsd7w+NjsbbQmNjONc7/p0aZT1fXKsVM72vz5fOAmwtp58i4of1Ju3qHsTNBYRHR9HVPaiXDgIat7acelJPbNoCdu48bACjU7c6gMnpkPXaDyN/xq5HLl+bmZwOWTPJQYxOdHam9Zc24A8tzw7g7kzEASgnfjbGX8fHf1QCerQSsMJ2eb0trVC6ANZoW4bCAIC+UFVBhIyIkBF94cpCkRzElPIAGdD1HqANEDg1UEFF/cvsATAoCkWoAA1Yny5GRwGceulLgdPmTf45J/lpQpOC5g6QU0HPm1j3mpyIKS3vDlGurPYiFnGr4G+Cs6EefV0t0AAAAABJRU5ErkJggg=="> -->
+      </a>
+      <div class="ms-3 mobileScreen" routerLink="{{gobackLink.url}}" style="cursor: pointer;" *ngIf="gobackLink.text">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+          class="w-6 h-6" style="width:20px;height:20px">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        <span class="text-white" style="vertical-align: bottom;" *ngIf="gobackLink.text">{{gobackLink.text}}</span>
+      </div>
+      <div class="ms-3 mobileScreen" routerLink="{{goToCart.url}}" style="cursor: pointer;" *ngIf="goToCart.text">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+          class="w-6 h-6" style="width:20px;height:20px">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        <span class="text-white" style="vertical-align: bottom;" *ngIf="goToCart.text">{{goToCart.text}}</span>
+      </div>
+      <div class="ms-3 mobileScreen" routerLink="{{goToAdmin.url}}" style="cursor: pointer;" *ngIf="goToAdmin.text">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+          class="w-6 h-6" style="width:20px;height:20px">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        <span class="text-white" style="vertical-align: bottom;" *ngIf="goToAdmin.text">{{goToAdmin.text}}</span>
+      </div>
+      <div class="ms-3 mobileScreen" routerLink="{{goToAddPhotos.url}}" style="cursor: pointer;"
+        *ngIf="goToAddPhotos.text">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+          class="w-6 h-6" style="width:20px;height:20px">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        <span class="text-white" style="vertical-align: bottom;"
+          *ngIf="goToAddPhotos.text">{{goToAddPhotos.text}}</span>
+      </div>
+      <div [hidden]="!showHideElementsObject.showHideElementsInDashboard" [routerLink]="navShowOnlyAdmin.url">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" class="w-6 h-6" style="width:20px;height:20px">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        <span class="text-white" style="vertical-align: bottom;">Go to Main
+          Home</span>
+      </div>
+      <a [hidden]="!showHideElementsObject.showHideElementsInYoutube" href="https://www.youtube.com/" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" class="w-6 h-6" style="width:20px;height:20px">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        <span class="text-white" style="vertical-align: bottom;">Go To youtube</span>
+      </a>
+    </div>
 
-        <!-- <div style="display:flex;justify-content:center;align-items:center;coulumn-gap:10px;" *ngIf="!gobackLink.text && !goToCart.text && !goToAdmin.text && !goToAddPhotos.text">
+    <div class="admin-links" *ngIf="navShowOnlyAdmin.text">
+      <ul class="navbar-nav me-auto mb-2 m-auto mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" style="font-size:20px;font-weight:400" [routerLink]="navShowOnlyAdmin.url"
+            fragment="hero">{{navShowOnlyAdmin.text}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-size:20px;font-weight:400" [routerLink]="navShowOnlyAdmin.url2"
+            fragment="about-section">{{navShowOnlyAdmin.text2}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div style="display:flex;justify-content:center;align-items:center;coulumn-gap:10px;" *ngIf="!gobackLink.text && !goToCart.text && !goToAdmin.text && !goToAddPhotos.text">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 m-auto mb-lg-0">
                     <li class="nav-item">
@@ -62,168 +95,192 @@
             </div>
         </div> -->
 
-        <!-- Nav Item - User Information -->
-        <div class="d-flex align-items-center position-relative">
-                
-            <div class="searchBar me-3" *ngIf="goToAdmin.text">
-                <app-search (searchPosts)="searchPostsValue($event)"></app-search>
-            </div>
+    <!-- Nav Item - User Information -->
+    <div class="d-flex align-items-center position-relative">
 
-            <li class="loginmail">
-                <a *ngIf="email" class="badge badge-primary" style="font-size: 1em !important;">
-                    {{email}}
-                </a>
-            </li>
-            <button class="btn" style="min-width: auto !important;">
-                <ng-container *ngIf="!email else logout">
-                    Sign Up
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 material-icons" style="width:20px;height:16px">
-                    <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z" clip-rule="evenodd" />
-                    <path fill-rule="evenodd" d="M6 10a.75.75 0 01.75-.75h9.546l-1.048-.943a.75.75 0 111.004-1.114l2.5 2.25a.75.75 0 010 1.114l-2.5 2.25a.75.75 0 11-1.004-1.114l1.048-.943H6.75A.75.75 0 016 10z" clip-rule="evenodd" />
-                </svg>
-                </ng-container>    
-                <ng-template #logout>
-                    Logout 
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 material-icons" style="width:20px;height:16px;">
-                        <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z" clip-rule="evenodd" />
-                        <path fill-rule="evenodd" d="M19 10a.75.75 0 00-.75-.75H8.704l1.048-.943a.75.75 0 10-1.004-1.114l-2.5 2.25a.75.75 0 000 1.114l2.5 2.25a.75.75 0 101.004-1.114l-1.048-.943h9.546A.75.75 0 0019 10z" clip-rule="evenodd" />
-                    </svg>
-                </ng-template>
-                <ul class="dropdown">
-                    <li>
-                        <a routerLink="/login" *ngIf="!email">
-                                LogIn
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['register']" *ngIf="!email">
-                            Register
-                        </a>
-                    </li>
-                    <li>
-                        <a (click)="signOut()" style="cursor:pointer;" *ngIf="email" data-toggle="modal" data-target="#logoutModal">
-                            <!-- <mat-icon>lock</mat-icon> -->
-                            Logout
-                        </a>
-                    </li>
-                    <li>
-                        <span (click)="toggleTheme()" style="cursor:pointer;" data-toggle="modal" data-target="#logoutModal">
-                            <a *ngIf="darkTheme === false; else light"> Dark Mode </a>
-                            <ng-template #light>
-                                <a>Light Mode</a>
-                            </ng-template>
-                        </span>
-                    </li>
-                </ul>
-            </button>
-        </div>
+      <div class="searchBar me-3" *ngIf="goToAdmin.text">
+        <app-search (searchPosts)="searchPostsValue($event)"></app-search>
+      </div>
+
+      <li class="loginmail">
+        <a *ngIf="email" class="badge badge-success" style="font-size: 1em !important;">
+          {{email}}
+        </a>
+      </li>
+      <button class="btn" style="min-width: auto !important;">
+        <ng-container *ngIf="!email else logout">
+          Sign Up
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 material-icons"
+            style="width:20px;height:16px">
+            <path fill-rule="evenodd"
+              d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z"
+              clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M6 10a.75.75 0 01.75-.75h9.546l-1.048-.943a.75.75 0 111.004-1.114l2.5 2.25a.75.75 0 010 1.114l-2.5 2.25a.75.75 0 11-1.004-1.114l1.048-.943H6.75A.75.75 0 016 10z"
+              clip-rule="evenodd" />
+          </svg>
+        </ng-container>
+        <ng-template #logout>
+          Logout
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 material-icons"
+            style="width:20px;height:16px;">
+            <path fill-rule="evenodd"
+              d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z"
+              clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M19 10a.75.75 0 00-.75-.75H8.704l1.048-.943a.75.75 0 10-1.004-1.114l-2.5 2.25a.75.75 0 000 1.114l2.5 2.25a.75.75 0 101.004-1.114l-1.048-.943h9.546A.75.75 0 0019 10z"
+              clip-rule="evenodd" />
+          </svg>
+        </ng-template>
+        <ul class="dropdown">
+          <li>
+            <a routerLink="/login" *ngIf="!email">
+              LogIn
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['register']" *ngIf="!email">
+              Register
+            </a>
+          </li>
+          <li>
+            <a (click)="signOut()" style="cursor:pointer;" *ngIf="email" data-toggle="modal" data-target="#logoutModal">
+              <!-- <mat-icon>lock</mat-icon> -->
+              Logout
+            </a>
+          </li>
+          <li>
+            <span (click)="toggleTheme()" style="cursor:pointer;" data-toggle="modal" data-target="#logoutModal">
+              <a *ngIf="darkTheme === false; else light"> Dark Mode </a>
+              <ng-template #light>
+                <a>Light Mode</a>
+              </ng-template>
+            </span>
+          </li>
+        </ul>
+      </button>
     </div>
+  </div>
 </nav>
 
 <div id="mySideNav" class="sidebar-slider" [class.sidebar-slide-in]="showSideNavShow">
-    <header class="d-flex" style="height:60px;background-color: #012970;">
-        <div class="container-fluid m-auto">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="logo">
-                    <mat-icon class="text-white" style="margin-top:10px;cursor: pointer;" (click)="openNav()">arrow_back</mat-icon>
-                </div>
-                <div class="logo-name">
-                    <h3 class="text-white m-0" *ngIf="userData">{{userData.name}}</h3>
-                </div>
-            </div>
+  <header class="d-flex" style="height:60px;background-color: #012970;">
+    <div class="container-fluid m-auto">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="logo">
+          <mat-icon class="text-white" style="margin-top:10px;cursor: pointer;"
+            (click)="openNav()">arrow_back</mat-icon>
         </div>
-    </header>
-    <div class="sidebar-content">
-        <ng-container *ngIf="userData">
-            <div class="userData">
-                <div class="profile">
-                    <img src="{{userData.picture}}" style="width: 100%;height: 100%;" class="rounded-circles" alt="{{userData.name}}">
-                    <!-- <pre>{{userData | json}}</pre>   -->
-                </div>
-                <h2 class="text-center text-primary bg-dark py-2 m-0">{{userData.name}}</h2>
-            </div>
-        </ng-container>
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="dropdownSideNav" *ngIf="userData">
-                    <div class="title-block w-100 h-100 py-2 bg-success" appDropdown>
-                        <h3 class="dropdown-title w-100 m-0 text-white" style="pointer-events: none;">Profile details</h3>
-                    </div>
-                    <div class="dropdown-content dropdown-text">
-                        <div class="profile-icon d-flex justify-content-start w-100 p-2 align-items-center" style="background-color: rgba(0,0,0,0.7);">
-                            <img src="{{userData.picture}}" alt="{{userData.name}}" style="width:30px;height:30px;border-radius:50%">
-                            <span class="text-white ms-2 bg-primary p-1">{{userData.name}}</span>
-                        </div>
-                        <hr class="m-0"/>
-                        <div class="lastActive px-2">
-                            <span class="text-secondary">{{userData.lastActive}}</span>
-                        </div>
-                        <div class="details p-2" style="background-color: #ccc;">
-                            <div class="roll">
-                                <h4 class="text-dark m-0">Bio: {{userData.bio}}</h4>
-                                <h4 class="text-dark m-0">Mail: {{userData.email}}</h4>
-                                <h4 class="text-dark m-0">InstaId: {{userData.instaId}}</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            <a routerLink="/" (click)="showSideNavOf()" type="button">Admin</a>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <!-- <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div> -->
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            <a routerLink="/about" (click)="showSideNavOf()" type="button">About</a>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                        <!-- <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div> -->
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingTheree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTheree" aria-expanded="false" aria-controls="flush-collapseTheree">
-                            <a routerLink="/albums" (click)="showSideNavOf()" type="button">Albums</a>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTheree" class="accordion-collapse collapse" aria-labelledby="flush-headingTheree" data-bs-parent="#accordionFlushExample">
-                        <!-- <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div> -->
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingTheree1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTheree1" aria-expanded="false" aria-controls="flush-collapseTheree">
-                            <a routerLink="/products" (click)="showSideNavOf()" type="button">Shopping Cart</a>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTheree1" class="accordion-collapse collapse" aria-labelledby="flush-headingTheree1" data-bs-parent="#accordionFlushExample">
-                        <!-- <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div> -->
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header sidebarContentDiv" id="flush-headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                            <a routerLink="/posts" (click)="showSideNavOf()" type="button">Posts</a>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body sidebarContentDiv">
-                            <a routerLink="posts/add" (click)="showSideNavOf()" type="button">Add User</a>
-                        </div>
-                    </div>
-                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body sidebarContentDiv">
-                            <a [routerLink]="['/addInstaPost']" (click)="showSideNavOf()" type="button">Post Your Story</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="logo-name">
+          <h3 class="text-white m-0" *ngIf="userData">{{userData.name}}</h3>
+        </div>
+      </div>
     </div>
+  </header>
+  <div class="sidebar-content">
+    <ng-container *ngIf="userData">
+      <div class="userData">
+        <div class="profile">
+          <img src="{{userData.picture}}" style="width: 100%;height: 100%;" class="rounded-circles"
+            alt="{{userData.name}}">
+          <!-- <pre>{{userData | json}}</pre>   -->
+        </div>
+        <h2 class="text-center text-primary bg-dark py-2 m-0">{{userData.name}}</h2>
+      </div>
+    </ng-container>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="dropdownSideNav" *ngIf="userData">
+        <div class="title-block w-100 h-100 py-2 bg-success" appDropdown>
+          <h3 class="dropdown-title w-100 m-0 text-white" style="pointer-events: none;">Profile details</h3>
+        </div>
+        <div class="dropdown-content dropdown-text">
+          <div class="profile-icon d-flex justify-content-start w-100 p-2 align-items-center"
+            style="background-color: rgba(0,0,0,0.7);">
+            <img src="{{userData.picture}}" alt="{{userData.name}}" style="width:30px;height:30px;border-radius:50%">
+            <span class="text-white ms-2 bg-primary p-1">{{userData.name}}</span>
+          </div>
+          <hr class="m-0" />
+          <div class="lastActive px-2">
+            <span class="text-secondary">{{userData.lastActive}}</span>
+          </div>
+          <div class="details p-2" style="background-color: #ccc;">
+            <div class="roll">
+              <h4 class="text-dark m-0">Bio: {{userData.bio}}</h4>
+              <h4 class="text-dark m-0">Mail: {{userData.email}}</h4>
+              <h4 class="text-dark m-0">InstaId: {{userData.instaId}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header sidebarContentDiv" id="flush-headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <a routerLink="/" (click)="showSideNavOf()" type="button">Admin</a>
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample">
+          <!-- <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div> -->
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header sidebarContentDiv" id="flush-headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <a routerLink="/about" (click)="showSideNavOf()" type="button">About</a>
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+          data-bs-parent="#accordionFlushExample">
+          <!-- <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div> -->
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header sidebarContentDiv" id="flush-headingTheree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTheree" aria-expanded="false" aria-controls="flush-collapseTheree">
+            <a routerLink="/albums" (click)="showSideNavOf()" type="button">Albums</a>
+          </button>
+        </h2>
+        <div id="flush-collapseTheree" class="accordion-collapse collapse" aria-labelledby="flush-headingTheree"
+          data-bs-parent="#accordionFlushExample">
+          <!-- <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div> -->
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header sidebarContentDiv" id="flush-headingTheree1">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTheree1" aria-expanded="false" aria-controls="flush-collapseTheree">
+            <a routerLink="/products" (click)="showSideNavOf()" type="button">Shopping Cart</a>
+          </button>
+        </h2>
+        <div id="flush-collapseTheree1" class="accordion-collapse collapse" aria-labelledby="flush-headingTheree1"
+          data-bs-parent="#accordionFlushExample">
+          <!-- <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div> -->
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header sidebarContentDiv" id="flush-headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            <a routerLink="/posts" (click)="showSideNavOf()" type="button">Posts</a>
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body sidebarContentDiv">
+            <a routerLink="posts/add" (click)="showSideNavOf()" type="button">Add User</a>
+          </div>
+        </div>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body sidebarContentDiv">
+            <a [routerLink]="['/addInstaPost']" (click)="showSideNavOf()" type="button">Post Your Story</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="overlay" [ngClass]="{'sidebar-slide-in': showSideNavShow}" (click)="openNav()"></div>

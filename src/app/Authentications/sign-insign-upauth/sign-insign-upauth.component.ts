@@ -37,7 +37,7 @@ export class SignInsignUpauthComponent implements OnInit {
   }
 
   onSubmitSignUp() {
-    console.log(this.Form.value.email + 'New Form'); 
+    console.log(this.Form.value.email + 'New Form');
     this.signUpUsers.push(
       this.signUpObj = {
         username: this.Form.value.username,
@@ -67,7 +67,7 @@ export class SignInsignUpauthComponent implements OnInit {
     // localStorage.removeItem('signUpUsers')
     // this.container.nativeElement.classList.add('right-panel-active')
   }
-  
+
   signInClick() {
     this.rightPanel = false;
     // this.container.nativeElement.classList.remove('right-panel-active')

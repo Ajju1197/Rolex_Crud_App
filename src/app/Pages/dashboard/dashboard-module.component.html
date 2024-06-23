@@ -1,0 +1,35 @@
+<div class="container-fluid p-2">
+    <div class="main-block">
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <div class="dashboardFormClass">
+                <div class="dashboardNameClass">
+                    <label><span class="text-danger">*</span>Employee Name :</label>
+                    <input type="text" class="form-control" id="txtEmployeeName" name="txtEmployeeName"
+                        placeholder="Enter Employee Name" [(ngModel)]="employeeData.employeeName">
+                </div>
+                <div class="dashboardAddressClass">
+                    <label><span class="text-danger">*</span>Address :</label>
+                    <input type="text" class="form-control" id="txtDashboardAddress" name="txtDashboardAddress"
+                        placeholder="Enter Address" [(ngModel)]="employeeData.employeeAddress">
+                </div>
+                <div class="dashboardDobClass">
+                    <label><span class="text-danger">*</span>Date Of Birth :</label>
+                    <input type="date" class="form-control" id="txtDashboardDob" name="txtDashboardDob"
+                        placeholder="Enter Dob" [(ngModel)]="employeeData.employeeDOB">
+                </div>
+                <div class="dashboardAddressClass">
+                    <label><span class="text-danger">*</span>Image :</label>
+                    <input type="file" [(ngModel)]="employeeData.employeeProfile" id="imagepicker" name="imagepicker"
+                        accept="image/*" multiple="{false}" (change)="uploadFile($event)" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">{{buttonTitle}}</button>
+            </div>
+        </form>
+        <div class="details-info-block mt-3 text-center">
+            <app-dash-board-details-info [dashboardUserData]="dashboardUsers" (deleteEmployeeWithId)="deleteEmployee($event)" (editEmployeeWithId)="editEmployee($event)" (viewEmployeeWithId)="viewEmployee($event)"></app-dash-board-details-info>
+        </div>
+        <div class="imgClass">
+            <img [src]="employeeData.employeeProfile" download [alt]="employeeData.employeeName"/>
+        </div>
+    </div>
+</div>

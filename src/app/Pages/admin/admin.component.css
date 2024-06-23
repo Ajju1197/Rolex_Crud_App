@@ -286,3 +286,12 @@
   /* background-image: linear-gradient(to right, #010b0b, #3c4042, transparent, transparent, transparent); */
   background-image: linear-gradient(to right top, rgba(0,0,0,0.8), #3c4042, transparent, transparent,transparent);
 }
+
+.seeLessClass{
+  height: 0px;
+  transition: all 0.5s ease;
+}
+.seeMoreShowHideClass{
+  height: 200px;
+  transition: all 0.5s ease;
+}

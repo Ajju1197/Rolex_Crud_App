@@ -3,6 +3,8 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~ngx-toastr/toastr";
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Work+Sans:wght@100;200;300&display=swap');
 
 /* Side Bar Style Code */
@@ -28,7 +30,11 @@ body {
 .material-icons{
   font-family: 'Material Icons' !important;
 }
-
+.scroll-position {
+  height: 70px;
+  margin-top: -70px;
+  z-index: 5;
+}
 
 .lazy-bg-image {
   width: 100%;

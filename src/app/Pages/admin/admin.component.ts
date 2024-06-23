@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ToastrService } from 'ngx-toastr';
@@ -16,11 +16,13 @@ import { interval } from 'rxjs';
     fade,slidesTwoWay,slideElementAnimation,bounceAnimation,slideLeftElementAnimation
   ]
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit,OnDestroy {
 
   isActive: boolean = false;
   isAnimate: boolean;
   title: string = 'Login Profiles';
+  color = this.isActive === true ? 'rgba(0,0,0,0.47)' : 'transparent'
+  display = this.isActive === true ? 'block' : 'none'
   
   public loginposts: any = [];
   userData: any;
@@ -76,12 +78,37 @@ export class AdminComponent implements OnInit {
     shakeObeservable$.subscribe((data) => {
       this.isAnimate =! this.isAnimate
     })
+
+    this.route.fragment.subscribe((data) => {
+      this.jumpTo(data);
+    })
+
+
+    this.commonService.navShowOnlyAdmin.next(
+      {
+        text: 'Admin', url: '/',
+        text2: 'About', url2: '/'
+      }
+    )
     
+  }
+
+  jumpTo(section) {
+    setTimeout(() => {
+      document.getElementById(section).scrollIntoView({behavior:'smooth'})
+    }, 1000);
   }
 
 
   clickToShowLoginUsersProfiles() {
     this.isActive =!this.isActive;
+  }
+  
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.commonService.navShowOnlyAdmin.next({text:'',url:'',text2:'',url2:''})
+    
   }
 
 }

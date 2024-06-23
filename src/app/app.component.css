@@ -5,7 +5,8 @@
 .main {
   width: 100%;
   min-height: 100%;
-  background-image: linear-gradient(to right top, #2335fb, #0079ff, #00a4ff, #00c7ff, #6ae4ef);
+  /* background-image: linear-gradient(to right top, #2335fb, #0079ff, #00a4ff, #00c7ff, #6ae4ef); */
+  background-color: #ffffff;
   background-attachment: fixed;
   display: flex;
   align-items: stretch;
@@ -94,7 +95,15 @@
   transform: translate(-50%,-50%);
   transition: .0s ease-in-out;
 }
-
+.transition{
+  transition: all .1s ease-in-out;
+}
+.whitebgColor{
+  background-color: #ffffff !important;
+}
+.blackbgColor{
+  background-color: #ffffff !important;
+}
 
 
 

@@ -45,4 +45,13 @@ pressMe(data) {
 
   // For Add Photos 
   goToAddPhotos = new BehaviorSubject({ text: '', url: '' })
+
+  navShowOnlyAdmin = new BehaviorSubject(
+    {
+      text: '',
+      url: '',
+      text2:'',
+      url2:''
+    },
+  )
 }

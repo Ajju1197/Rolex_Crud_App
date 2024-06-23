@@ -1,0 +1,59 @@
+.card{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    padding: 10px;
+}
+.card h1{
+    margin: 0px !important;
+}
+.employeeListClass{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.dashboardMainClass{
+    border: 1px solid #ccc;
+    height: 57vh;
+    overflow-y: scroll;
+    position: relative;
+    padding: 10px;
+}
+.dashboardDetailsInfo{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+    gap: 10px;
+    justify-content: center;
+}
+.error-block{
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.card-img{
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+}
+.card-img img{
+    width: 100%;
+    height: 100%;
+}
+.actionBtnClass{
+    display: flex;
+    gap: 10px;
+}
+img{
+    width: 200px;
+    height: 200px;
+}
+.inputBorderDangerClass:visited{
+  border: 1px solid red !important;
+}
+.searchClas{
+  display: flex;
+  gap: 5px;
+}

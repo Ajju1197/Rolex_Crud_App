@@ -1,14 +1,16 @@
 
-<ngx-loading-bar [color]="'#0cf24e'"></ngx-loading-bar> 
+<ngx-loading-bar [color]="'#0cf24e'"></ngx-loading-bar>
 <div class="main" [ngClass]="{'backColor': darkTheme}">
     <div class="appnav">
-        <app-navbar (isDarkTheme)="changeDarkTheme()" [darkTheme]="darkTheme"></app-navbar>
+        <app-navbar (isDarkTheme)="changeDarkTheme()" [darkTheme]="darkTheme" [showHideElementsObject]="showHideElementsObject"></app-navbar>
         <!-- <label class="switch">
             <input type="checkbox" (change)="checkCheckBoxvalue($event)">
             <span class="slider round"></span>
         </label> -->
+        <!-- <button (click)="onClickFullScreen()">Full Screen</button>
+        <button (click)="onClickExitFullScreen()">Exit Full Screen</button> -->
         <div *ngIf="email" class="py-2 navbaronadmin" style="background-image: linear-gradient(to left, #7ff4fb, #00bae0, #007fc1, #004496, #09045b);">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navlinks d-flex" style="column-gap: 1em;flex-wrap: wrap;row-gap: 1em;">
                     <ng-container *ngFor="let item of navLinks">
                         <div class="links" [routerLinkActiveOptions]={exact:true} [routerLinkActive]="item.routerLink" [routerLink]="item.url">{{item.name}}</div>

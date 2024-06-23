@@ -4,6 +4,7 @@ import { FirebaseService } from 'src/app/appServices/firebase.service';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { slideBottomElementAnimation } from 'src/app/Animations/animation';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Component({
   selector: 'app-photos',
@@ -25,18 +26,29 @@ export class PhotosComponent implements OnInit {
   public allPhotos: any;
   fullUrl: string;
   @ViewChild('dialogTemplate', { static: true }) dialogTemplate: TemplateRef<any>;
+  items = [];
+  currentPage = 1;
+  itemsPerPage = 10;
+  totalPages = 1;
+
+  startIndex = 0;
+  endIndex = this.itemsPerPage;
 
 
-  constructor(private _fbService:FirebaseService,public _commonService:CommonService,private dialog: MatDialog) { }
+  constructor(private _fbService:FirebaseService,public _commonService:CommonService,private dialog: MatDialog,private db:AngularFireDatabase) { }
 
   ngOnInit(): void {
-    this.allPhotos = this._fbService.getAll();
+    this.getPhotos()
     this._commonService.goToAddPhotos.next({text:'Go to Add Photos',url:'photos/add-photos'})
   }
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
     this._commonService.goToAddPhotos.next({text:'',url:''})
+  }
+
+  getPhotos() {
+    this.allPhotos = this._fbService.getAll();
   }
 
   

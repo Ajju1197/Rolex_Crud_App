@@ -8,7 +8,7 @@
 </div>
 
 <div class="container">
-  <div class="row custom-wrapper" style="padding:10px;border-radius:5px;" [ngStyle]="{'background': this._commonService.darkTheme ? '#fff':'#e6e6e6'}">
+  <div class="row custom-wrapper" style="padding:10px;border-radius:5px;" [ngStyle]="{'background-color' : this._commonService.darkTheme ? '#fff' : '#e6e6e6'}">
     <div class="col-md-12">
       <!-- Form starts -->
       <form [formGroup]="fb" (ngSubmit)="onSubmit()">

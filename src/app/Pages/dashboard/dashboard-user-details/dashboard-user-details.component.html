@@ -1,0 +1,11 @@
+<div class="container" *ngIf="user">
+    <div class="row">
+        <div class="col-lg-5 m-auto">
+            <div class="card p-3">
+                <h1>{{user.employeeName}}</h1>
+                <h1>{{user.employeeAddress}}</h1>
+                <button class="btn btn-primary" (click)="goBackHistory()">Go Back</button>
+            </div>
+        </div>
+    </div>
+</div>

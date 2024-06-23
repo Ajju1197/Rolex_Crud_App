@@ -22,17 +22,18 @@
                 </div>
             </div>
         </div>
-        <ng-container *ngFor="let album of albums">
+        <ng-container *ngFor="let album of albums | slice:startIndex:endIndex">
             <div class="col-lg-4 col-md-6 col-sm-12" *ngIf="albumCountRadioButtonSelected === 'All' || albumCountRadioButtonSelected === album.type">
-                <div class="card" *ngIf="this.commonService.searchInputValue === '' || album.type.toLowerCase().includes(this.commonService.searchInputValue)">
+                <div class="card" @fadeIn *ngIf="this.commonService.searchInputValue === '' || album.type.toLowerCase().includes(this.commonService.searchInputValue)">
                     <div class="card p-2" style="height: 300px;">
                         <img ngSrc="{{album.img}}" width="400" height="200" ngSrcset="100w, 200w, 300w" class="lazy-bg-image"
                             loading="lazy" alt="{{album.title}}">
                     </div>
                     <div class="d-flex justify-content-between p-2 albumflexClass">
-                        <span [ngStyle]="{'color':album.type === 'Premium' ? 'rgb(46, 218, 240)':'rgb(46, 240, 62)'}">{{album.type}}</span>
+                        <span [ngStyle]="album.type === 'Premium' ? {'color': 'rgb(46, 218, 240)'} : {'color': 'rgb(46, 240, 62)'}">{{album.type}}</span>
+                        <!-- <span [ngStyle]="{'color':album.type === 'Premium' ? 'rgb(46, 218, 240)':'rgb(46, 240, 62)'}">{{album.type}}</span> -->
                         <span >{{album.price}}</span>
-                        <span [ngStyle]="{'color': album.item === 'Available' ? 'rgb(46, 240, 62)':'red'}">{{album.item}}</span>
+                        <span [ngStyle]="album.item === 'Available' ? {'color': 'rgb(46, 240, 62)'} : {'color':'red'}">{{album.item}}</span>
                     </div>
                     <div class="d-flex justify-content-between p-2 mt-1 albumflexClass">
                         <button class="btn" style="background-color:rgb(46, 218, 240);color:#fff;" routerLink="/album/{{album.id}}">Show Details</button>
@@ -41,6 +42,10 @@
                 </div>
             </div>
         </ng-container>
+        <div class="text-center">
+            <button class="btn btn-primary me-2" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+            <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+        </div>
     </div>
     <!-- <div class="row mt-5">
         <ng-container>

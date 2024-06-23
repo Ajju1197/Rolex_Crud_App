@@ -59,6 +59,11 @@ import { AppModulesModule } from './shared/sharedModules/app-modules/app-modules
 import { DropdownDirective } from './CustomDirectives/dropdown.directive';
 import { ChangeBgColorDirective } from './CustomDirectives/change-bg-color.directive';
 
+// Pagination
+import { NgxPaginationModule } from 'ngx-pagination';
+// Ag grid Module
+import { AgGridModule } from 'ag-grid-angular';
+
 
 
 
@@ -112,6 +117,8 @@ import { ChangeBgColorDirective } from './CustomDirectives/change-bg-color.direc
     LoadingBarRouterModule,
     LoadingBarModule,
     AppModulesModule,
+    NgxPaginationModule,
+    AgGridModule,
   ],
   providers: [UsersService,AlertService,AuthService, {provide: PRECONNECT_CHECK_BLOCKLIST,multi: true, useValue: 'https://your-domain.com'}],
   exports: [AlertDirective,SearchComponent],

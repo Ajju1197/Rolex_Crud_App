@@ -43,6 +43,11 @@ export class NavbarComponent implements OnInit {
   userData: any;
   imageUrl: any;
   goToAddPhotos: any;
+  navShowOnlyAdmin: any;
+  @Input() showHideElementsObject = {
+    showHideElementsInDashboard: false,
+    showHideElementsInYoutube: false,
+  }
 
   constructor(
     private router: Router,
@@ -62,10 +67,10 @@ export class NavbarComponent implements OnInit {
         this.afdb.object(`loginposts/${user.uid}`).valueChanges().subscribe(userData => {
           this.userData = userData;
           console.log(this.userData);
-          
+
         })
       }
-      
+
     });
 
     // For Goto Shopping
@@ -87,7 +92,12 @@ export class NavbarComponent implements OnInit {
     this.commonService.goToAddPhotos.subscribe((res) => {
       this.goToAddPhotos = res;
     })
-    
+
+    // For NavOnlyInAdmin
+    this.commonService.navShowOnlyAdmin.subscribe((res) => {
+      this.navShowOnlyAdmin = res
+    })
+
   }
 
 
@@ -106,7 +116,7 @@ export class NavbarComponent implements OnInit {
   gotoPhotos = window.innerWidth < 767;
 
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     window.addEventListener('scroll', function () {
       navbarScroll();
     });
@@ -129,9 +139,8 @@ export class NavbarComponent implements OnInit {
   searchPostsValue(searchStringValue: string) {
     console.log(searchStringValue);
     this.commonService.searchInputValue = searchStringValue;
-    
-   console.log(  this.commonService.searchInputValue + ' Nav Bar compo');
-   
+
+    console.log(  this.commonService.searchInputValue + ' Nav Bar compo');
   }
 
 

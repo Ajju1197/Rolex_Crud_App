@@ -35,6 +35,10 @@ export class UsersService {
     return this._httpClient.post('https://angularrolexapp-default-rtdb.firebaseio.com/users.json', formParams)
   }
 
+  getUsersPage(page: number, size: number): Observable<any> {
+    return this._httpClient.get<any>(`https://angularrolexapp-default-rtdb.firebaseio.com/users.json?page=${page}&size=${size}`);
+  }
+
   getAllUsers(): Observable<IUser[]> {
     let dataUrl: string = `${this.serverUrl}/users.json`;
     return this._httpClient.get<IUser[]>('https://angularrolexapp-default-rtdb.firebaseio.com/users.json').pipe(shareReplay(),map((res) => {

@@ -91,7 +91,17 @@ const routes: Routes = [
   { path: 'instagram', loadChildren: () => import('./Pages/InstaPosts/instaposts.module').then(m => m.InstapostsModule), canActivate: [AngularFireAuthGuard],
     data:{ authGuardPipe: redirectUnauthorizedToLogin } },
 // =========== InSta Posts Routing End ==================== //
-  
+
+
+// ===========Youtube Posts Routing==================== //
+  { path: 'youtube', loadChildren: () => import('./Pages/youtube/youtube.module').then(m => m.YoutubeModule),canActivate: [AngularFireAuthGuard],
+  data:{ authGuardPipe: redirectUnauthorizedToLogin } },
+// =========== Youtube Posts Routing End ==================== //
+
+
+// ===========Dashboard Routing==================== //
+{ path: 'dashboard', loadChildren: () => import('./Pages/dashboard/dashboard-module.module').then(m => m.DashboardModuleModule), canActivate: [AngularFireAuthGuard], data:{ authGuardPipe: redirectUnauthorizedToLogin } },
+// =========== Dashboard Routing End ==================== //
 
 // =========== Page Not Found ================//
   { path: '**', component:PagenotfoundComponent },

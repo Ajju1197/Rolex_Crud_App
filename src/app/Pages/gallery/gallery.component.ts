@@ -7,11 +7,13 @@ import { IAlbums } from 'src/app/Modals/IUser';
 import { AlertService } from 'src/app/appServices/alert.service';
 import { UsersService } from 'src/app/appServices/users.service';
 import { CommonService } from 'src/app/shared/sharedServices/common.service';
+import { fade } from 'src/app/Animations/animation';
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css'],
+  animations:[fade]
 })
 export class GalleryComponent implements OnInit,OnDestroy {
 
@@ -25,6 +27,16 @@ export class GalleryComponent implements OnInit,OnDestroy {
   public normal = "Normal"
   public images = "Images"
   public albumCountRadioButtonSelected = 'All'
+
+  // Pagination
+  currentPage = 1;
+  itemsPerPage = 3;
+  totalPages = 1;
+
+  startIndex = 0;
+  endIndex = this.itemsPerPage;
+
+
   constructor(
     private alertServices: AlertService,
     private _userService: UsersService,
@@ -40,6 +52,7 @@ export class GalleryComponent implements OnInit,OnDestroy {
       this.toastr.success('Watches fetched successfully')
       this.showNotifications = true;
       this.albums = img
+      this.totalPages = Math.ceil(this.albums.length / this.itemsPerPage);
       this.loading = false;
       setTimeout(() => {
         this.showNotifications = false;
@@ -77,5 +90,21 @@ export class GalleryComponent implements OnInit,OnDestroy {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
     this.commonService.goToAdmin.next({ text: '', url: '' })
+  }
+
+  previousPage() {
+    if (this.currentPage) {
+      this.currentPage--;
+      this.startIndex -= this.itemsPerPage;
+      this.endIndex -= this.itemsPerPage;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.startIndex += this.itemsPerPage;
+      this.endIndex += this.itemsPerPage;
+      }
   }
 }

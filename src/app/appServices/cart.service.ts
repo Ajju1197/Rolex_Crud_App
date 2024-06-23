@@ -20,25 +20,10 @@ export class CartService {
         return res
     }))
   }
-
-
-  
   // GET Single Contact
   public getProduct(productId: any) {
-    return this.httpClient.get(`https://fakestoreapi.com/products/${productId}`).pipe(catchError(this.handleError), delay(1000), retryWhen(
-      (e) => {
-        return e.pipe(delay(1000),
-          scan(count => {
-          if (count >= 5) {
-            throw console.error();
-          } else {
-            count = count + 1
-          }
-          return count;
-        },0)
-        );
-      }
-    ))
+    return this.httpClient.get(`https://fakestoreapi.com/products/${productId}`).pipe(catchError(this.handleError), delay(1000)
+    )
   }
 
 
@@ -79,7 +64,6 @@ export class CartService {
     this.cartItemList = [];
     this.productList.next(this.cartItemList)
   }
-
 
   // Error Handling
   public handleError(error: HttpErrorResponse) {
