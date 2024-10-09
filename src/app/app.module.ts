@@ -111,7 +111,7 @@ import { AgGridModule } from 'ag-grid-angular';
     ToastrModule.forRoot(),
     MeterialModule,
     ReactiveFormsModule,
-    FormsModule, 
+    FormsModule,
     NgOptimizedImage,
     MatIconModule,
     LoadingBarRouterModule,
@@ -124,9 +124,15 @@ import { AgGridModule } from 'ag-grid-angular';
   exports: [AlertDirective,SearchComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
+  /**
+   * App Module Constructor
+   *
+   * This constructor is called when the AppModule is loaded.
+   * It just logs a message to the console.
+   */
   constructor() {
     console.log('App Modules Loaded');
-    
+
   }
 }

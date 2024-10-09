@@ -1,5 +1,5 @@
 <section class="d-flex flex-column align-items-center justify-content-center">
-  
+
   <div class="container">
     <div id="about-section" class="about-section py-5">
       <div @slideElement class="about-info justify-content-center">
@@ -27,7 +27,7 @@
           <div class="col-lg-6">
             <ul>
               <li>
-                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Birthday:</strong> <span>2 Oct 1997</span>
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Birthday:</strong> <span>{{dateOfBirthGetAge | date: 'longDate'}}</span>
               </li>
               <li>
                 <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Website:</strong> <span><a
@@ -44,14 +44,14 @@
           <div class="col-lg-6">
             <ul>
               <li>
-                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Age:</strong> <span>25</span>
+                <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Age:</strong> <span>{{calculateAndGetAge(dateOfBirthGetAge)}}</span>
               </li>
               <li>
                 <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Degree:</strong> <span>Bsc(Mpc)</span>
               </li>
               <li>
                 <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Email:</strong>
-                <span>sdajmathulla@gmail.com</span>
+                <span>sdajmathulla&#64;gmail.com</span>
               </li>
               <li>
                 <mat-icon class="text-dark">keyboard_arrow_right</mat-icon><strong>Freelance:</strong> <span>Available</span>
@@ -68,8 +68,9 @@
           <p style="text-decoration: underline;cursor: pointer;" (click)="onItSecExp()">IT SECTOR RELEVANT EXPIRIENCE</p>
           <div class="dropdown" [ngClass]="{'open': itSecExp}">
             <!-- Dropdown content goes here -->
-            <b>OROTRON HYDERABAD TS :</b> 01-07-2021 TO 27-12-2021<br>
-            <b>KJ SYSTEMS IND PVT LTD. VIJAYAWADA AP :</b> 29-12-2021 TO 20-12-2022
+            <strong>OROTRON HYDERABAD, TS:</strong> 01-07-2021 to 27-12-2021<br>
+            <strong>KJ SYSTEMS IND PVT LTD, VIJAYAWADA, AP:</strong> 29-12-2021 to Present
+
           </div>
         </div>
       </div>
@@ -113,7 +114,7 @@
       </mat-tab-group>
     </div>
   </div>
-  <div class="image-block">    
+  <div class="image-block">
     <img src="../../../assets/Angular_learncodeonline_certification.png" class="img-fluid" alt="Angular Certification">
   </div>
 </section>

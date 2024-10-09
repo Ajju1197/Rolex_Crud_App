@@ -21,14 +21,14 @@ export class AboutComponent implements OnInit,AfterViewInit {
   seeless: any = false;
   seeLessMore: any = '...see more'
 
-  
+
   calculateAge() {
     let birthYear = new Date(this.dateOfBirth.nativeElement.value).getFullYear();
     let currYear = new Date().getFullYear();
     let age = currYear - birthYear;
     this.age.nativeElement.value = age.toString();
   }
-  
+
   ngOnInit(): void {
     this.route.fragment.subscribe(res => {
       this.jumpTo(res)
@@ -44,7 +44,7 @@ export class AboutComponent implements OnInit,AfterViewInit {
     } else {
       this.seeLessMore = 'see less...';
       this.seeMoreLessText.nativeElement.innerText = '...see less'
-      
+
     }
   }
   ngAfterViewInit(): void {
@@ -64,5 +64,19 @@ export class AboutComponent implements OnInit,AfterViewInit {
     this.itSecExp = !this.itSecExp;
   }
 
+  dateOfBirthGetAge: Date = new Date(1997, 9, 2); // October 2, 1997 (Month is zero-based)
+
+  calculateAndGetAge(dob: Date): number {
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDiff = today.getMonth() - dob.getMonth();
+
+    // Check if birthday has not occurred yet this year
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    return age;
+  }
 
 }
